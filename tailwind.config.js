@@ -21,7 +21,7 @@ const themes = {
     'default': {
         primary  : {
             ...colors.indigo,
-            DEFAULT: colors.indigo[600]
+            DEFAULT: colors.violet[500]
         },
         accent   : {
             ...colors.slate,

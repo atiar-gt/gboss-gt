@@ -47,7 +47,7 @@ export class AuthSignInComponent implements OnInit
         this.signInForm = this._formBuilder.group({
             email     : ['hughes.brian@company.com', [Validators.required, Validators.email]],
             password  : ['admin', Validators.required],
-            rememberMe: ['']
+            // rememberMe: ['']
         });
     }
 
@@ -84,6 +84,8 @@ export class AuthSignInComponent implements OnInit
                     const redirectURL = this._activatedRoute.snapshot.queryParamMap.get('redirectURL') || '/signed-in-redirect';
 
                     // Navigate to the redirect url
+                    console.log('red', redirectURL);
+                    
                     this._router.navigateByUrl(redirectURL);
 
                 },

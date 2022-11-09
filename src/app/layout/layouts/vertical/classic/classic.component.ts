@@ -13,6 +13,8 @@ import { NavigationService } from 'app/core/navigation/navigation.service';
 })
 export class ClassicLayoutComponent implements OnInit, OnDestroy
 {
+    isNav = false;
+    menus = ['Employees', 'Admin']
     isScreenSmall: boolean;
     navigation: Navigation;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
@@ -89,6 +91,7 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy
      */
     toggleNavigation(name: string): void
     {
+        this.isNav = !this.isNav;
         // Get the navigation
         const navigation = this._fuseNavigationService.getComponent<FuseVerticalNavigationComponent>(name);
 
