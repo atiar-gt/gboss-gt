@@ -7,6 +7,12 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { UserModule } from 'app/layout/common/user/user.module';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 // import { featureRoutes } from './features.routing';
 
 const featureRoutes: Route[] = [
@@ -31,7 +37,13 @@ const featureRoutes: Route[] = [
     MatDividerModule,
     MatMenuModule,
     MatIconModule,
-    UserModule
+    UserModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class FeaturesModule { }
