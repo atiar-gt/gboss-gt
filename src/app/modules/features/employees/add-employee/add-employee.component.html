@@ -148,11 +148,11 @@
                 <mat-form-field class="w-full">
                     <mat-label>Blood Group</mat-label>
                     <mat-select>
-                      <mat-option *ngFor="let group of bloodGroups" [value]="group">
-                        {{group}}
-                      </mat-option>
+                        <mat-option *ngFor="let group of bloodGroups" [value]="group">
+                            {{group}}
+                        </mat-option>
                     </mat-select>
-                  </mat-form-field>
+                </mat-form-field>
             </div>
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 
@@ -162,7 +162,7 @@
                     <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
-                  </mat-form-field>
+                </mat-form-field>
             </div>
 
         </div>
@@ -182,7 +182,7 @@
             </div>
             <div class="w-full md:w-1/4 px-3 md:mb-0">
 
-                <mat-form-field class="w-full">
+                <!-- <mat-form-field class="w-full">
                     <mat-label>Profile Picture</mat-label>
                     <input id="email" matInput>
                     <mat-error>
@@ -191,6 +191,15 @@
                     <mat-error>
                         Please enter a valid email address
                     </mat-error>
+                </mat-form-field> -->
+                <mat-form-field style="width: 100%;">
+                    <mat-label>File matInput</mat-label>
+                    <button mat-icon-button matPrefix (click)="f_input.click()">
+                        <mat-icon>attach_file</mat-icon>
+                    </button>
+                    <input type="text" readonly matInput [formControl]="display" />
+                    <input type="file" multiple hidden #f_input (change)="handleFileInputChange(f_input.files)" />
+                    <mat-error>this field is required</mat-error>
                 </mat-form-field>
             </div>
 
@@ -210,7 +219,7 @@
                 </mat-form-field>
             </div>
         </div>
-        
+
         <div class="flex flex-row">
             <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
 

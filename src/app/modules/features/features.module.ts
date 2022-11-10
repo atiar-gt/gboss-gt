@@ -14,6 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { featureRoutes } from './features.routing';
 
 const featureRoutes: Route[] = [
@@ -35,6 +36,8 @@ const featureRoutes: Route[] = [
   imports: [
     CommonModule,
     RouterModule.forChild(featureRoutes),
+    FormsModule,
+    ReactiveFormsModule,
     MatDividerModule,
     MatMenuModule,
     MatIconModule,
