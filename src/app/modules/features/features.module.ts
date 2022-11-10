@@ -6,6 +6,7 @@ import { AddEmployeeComponent } from './employees/add-employee/add-employee.comp
 import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
+import { UserModule } from 'app/layout/common/user/user.module';
 // import { featureRoutes } from './features.routing';
 
 const featureRoutes: Route[] = [
@@ -29,7 +30,8 @@ const featureRoutes: Route[] = [
     RouterModule.forChild(featureRoutes),
     MatDividerModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    UserModule
   ]
 })
 export class FeaturesModule { }

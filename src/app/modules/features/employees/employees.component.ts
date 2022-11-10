@@ -13,9 +13,21 @@ export class EmployeesComponent implements OnInit {
     {
       "employeeCode": "111211",
       "email": "afratul.taohid1211111@gigatechltd.com",
-      "name": "Touhid",
+      "name": "Afratul Touhid",
       "mobileNumber": "01673260344",
       "designation": "Mobile Application Developer",
+      "payrollDesignation": "Assistant Manager",
+      "bloodGroup": "B+",
+      "officeName": "Gigatech - Main Office",
+      "officeAddress": "Lotus Kamal Tower",
+      "sittingLocation": "6th Floor - Left Side"
+    },
+    {
+      "employeeCode": "111212",
+      "email": "afratul.taohid1211111@gigatechltd.com",
+      "name": "Navid Al Hassan",
+      "mobileNumber": "01673260344",
+      "designation": "Full Stack Developer",
       "payrollDesignation": "Assistant Manager",
       "bloodGroup": "A+",
       "officeName": "Gigatech - Main Office",
@@ -25,15 +37,15 @@ export class EmployeesComponent implements OnInit {
     {
       "employeeCode": "111212",
       "email": "afratul.taohid1211111@gigatechltd.com",
-      "name": "Navid",
+      "name": "Shourav Aich",
       "mobileNumber": "01673260344",
       "designation": "Full Stack Developer",
       "payrollDesignation": "Assistant Manager",
-      "bloodGroup": "A+",
+      "bloodGroup": "B+",
       "officeName": "Gigatech - Main Office",
       "officeAddress": "Lotus Kamal Tower",
       "sittingLocation": "6th Floor - Left Side"
-    }
+    },
   ]
 
   constructor(private _router: Router) { }
