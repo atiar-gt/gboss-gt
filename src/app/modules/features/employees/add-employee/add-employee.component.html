@@ -192,14 +192,14 @@
                         Please enter a valid email address
                     </mat-error>
                 </mat-form-field> -->
-                <mat-form-field style="width: 100%;">
-                    <mat-label>File matInput</mat-label>
+                <mat-form-field class="w-full">
+                    <mat-label>Profile Picture</mat-label>
                     <button mat-icon-button matPrefix (click)="f_input.click()">
                         <mat-icon>attach_file</mat-icon>
                     </button>
                     <input type="text" readonly matInput [formControl]="display" />
                     <input type="file" multiple hidden #f_input (change)="handleFileInputChange(f_input.files)" />
-                    <mat-error>this field is required</mat-error>
+                    <mat-error class="text-xs">Image is required</mat-error>
                 </mat-form-field>
             </div>
 
@@ -223,10 +223,13 @@
         <div class="flex flex-row">
             <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
 
-                <button class="fuse-mat-button-large w-full rounded-md" mat-flat-button [color]="'primary'">
+                <!-- <button class="fuse-mat-button-large w-full rounded-md" mat-flat-button [color]="'primary'">
                     <span>
                         Save
                     </span>
+                </button> -->
+                <button class="bg-primary-500 large w-full hover:bg-primary-700 text-white py-2 px-8 rounded-md">
+                    Save
                 </button>
             </div>
         </div>
