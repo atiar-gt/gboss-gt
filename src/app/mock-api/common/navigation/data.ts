@@ -44,6 +44,26 @@ export const defaultNavigation: FuseNavigationItem[] = [
                     }
                 ]
             },
+            {
+                id      : 'apps.ecommerce',
+                title   : 'Role Management',
+                type    : 'collapsable',
+                icon    : 'heroicons_outline:sun',
+                children: [
+                    {
+                        id   : 'apps.ecommerce.inventory',
+                        title: 'Roles',
+                        type : 'basic',
+                        link : '/roles'
+                    },
+                    {
+                        id   : 'apps.ecommerce.inventory',
+                        title: 'Add Role',
+                        type : 'basic',
+                        link : '/add-role'
+                    }
+                ]
+            },
         ]
     }
 ];

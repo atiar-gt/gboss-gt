@@ -1,4 +1,4 @@
-<div class="flex flex-col m-8 w-full">
+<div class="flex flex-col m-6 w-full">
     <div><span class="font-semibold text-lg mb-3">Employee Management List</span></div>
 
     <div class="flex flex-row justify-between py-4">
@@ -61,30 +61,20 @@
                     <ng-container *ngIf="products.length > 0; else noProducts">
                         <div class="grid text-center">
                             <!-- Header -->
-                            <div
-                                class="inventory-grid items-center z-10 sticky top-0 grid gap-4 py-4 px-6 md:px-8 shadow text-md font-semibold text-secondary bg-gray-50 dark:bg-black dark:bg-opacity-5"
-                                matSort
-                                matSortDisableClear>
+                            <div class="inventory-grid items-center z-10 sticky top-0 grid gap-4 py-4 px-6 md:px-8 shadow text-md font-semibold text-secondary bg-gray-50 dark:bg-black dark:bg-opacity-5"
+                                matSort matSortDisableClear>
                                 <div class="text-center">Image</div>
                                 <div class="text-center" [mat-sort-header]="'name'">Name</div>
-                                <div
-                                    class="hidden sm:block text-center"
-                                    [mat-sort-header]="'price'">
+                                <div class="text-center" [mat-sort-header]="'price'">
                                     ID
                                 </div>
-                                <div
-                                    class="hidden lg:block"
-                                    [mat-sort-header]="'stock'">
+                                <div [mat-sort-header]="'stock'">
                                     Team
                                 </div>
-                                <div
-                                    class="hidden lg:block"
-                                    [mat-sort-header]="'stock'">
+                                <div [mat-sort-header]="'stock'">
                                     Assign
                                 </div>
-                                <div
-                                    class="hidden lg:block"
-                                    [mat-sort-header]="'stock'">
+                                <div [mat-sort-header]="'stock'">
                                     Actions
                                 </div>
                             </div>
@@ -92,70 +82,69 @@
                             <ng-container *ngIf="employeeData as products">
                                 <ng-container *ngFor="let product of products; trackBy: trackByFn">
                                     <div class="inventory-grid grid items-center gap-4 py-4 px-6 md:px-8 border-b">
-    
+
                                         <!-- Image -->
                                         <div class="flex items-center text-center">
-                                            <div class="relative flex flex-0 items-center justify-center w-12 h-12 mr-6 ">
-                                                <img
-                                                    class="w-8"
-                                                    *ngIf="product.thumbnail"
-                                                    [alt]="'Product thumbnail image'"
-                                                    [src]="product.thumbnail">
-                                                <div
-                                                    class="flex items-center justify-center w-full h-full text-xs font-semibold leading-none text-center uppercase"
+                                            <div
+                                                class="relative flex flex-0 items-center justify-center w-12 h-12 mr-6 ">
+                                                <img class="w-8" *ngIf="product.thumbnail"
+                                                    [alt]="'Product thumbnail image'" [src]="product.thumbnail">
+                                                <div class="flex items-center justify-center w-full h-full text-xs font-semibold leading-none text-center uppercase"
                                                     *ngIf="!product.thumbnail">
                                                     <user></user>
                                                 </div>
                                             </div>
                                         </div>
-    
+
                                         <!-- SKU -->
                                         <div class="hidden md:block ">
                                             {{product.name}}
                                         </div>
-    
+
                                         <!-- Name -->
                                         <div class="">
                                             {{product.employeeCode}}
                                         </div>
-    
+
                                         <!-- Price -->
                                         <div>
                                             {{product.bloodGroup}}
                                         </div>
-    
+
                                         <!-- Stock -->
                                         <div>
                                             <div class="min-w-4 text-center"><button
-                                                class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-8 border border-green-500 hover:border-transparent rounded-md">
-                                                Assign
-                                            </button></div>
+                                                    class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-8 border border-green-500 hover:border-transparent rounded-md">
+                                                    Assign
+                                                </button></div>
                                             <!-- Low stock -->
-                                            
+
                                         </div>
                                         <div>
-                                            <div class="min-w-5 text-center"><div class="flex flex-row w-20 justify-between cursor-pointer">
-                                                <div class="w-5">
-                                                    <img src="assets/icons/option-icon.svg">
+                                            <div class="min-w-5 text-center">
+                                                <div class="flex flex-row w-20 justify-between cursor-pointer">
+                                                    <div class="w-5">
+                                                        <img src="assets/icons/option-icon.svg">
+                                                    </div>
+                                                    <div class="w-5">
+                                                        <img src="assets/icons/edit-icon.svg">
+                                                    </div>
+                                                    <div class="w-5">
+                                                        <img src="assets/icons/delete-icon.svg">
+                                                    </div>
                                                 </div>
-                                                <div class="w-5">
-                                                    <img src="assets/icons/edit-icon.svg">
-                                                </div>
-                                                <div class="w-5">
-                                                    <img src="assets/icons/delete-icon.svg">
-                                                </div>
-                                            </div></div>
+                                            </div>
                                             <!-- Low stock -->
-                                            
+
                                         </div>
-    
-                                    
+
+
                                     </div>
-                                   
+
                                 </ng-container>
                             </ng-container>
                         </div>
-    
+
                         <!-- <mat-paginator
                             class="sm:absolute sm:inset-x-0 sm:bottom-0 border-b sm:border-t sm:border-b-0 z-10 bg-gray-50 dark:bg-transparent"
                             [ngClass]="{'pointer-events-none': isLoading}"
@@ -167,17 +156,18 @@
      -->
                     </ng-container>
                 </ng-container>
-    
-    
+
+
                 <ng-template #noProducts>
-                    <div class="p-8 sm:p-16 border-t text-4xl font-semibold tracking-tight text-center">There are no products!</div>
+                    <div class="p-8 sm:p-16 border-t text-4xl font-semibold tracking-tight text-center">There are no
+                        products!</div>
                 </ng-template>
-    
+
             </div>
-    
+
         </div>
     </div>
 
-    
-    
+
+
 </div>

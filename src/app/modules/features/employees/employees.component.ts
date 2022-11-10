@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class EmployeesComponent implements OnInit {
 
   departments = ['Software Development', 'HR', 'Finance', 'Admin'];
+  bloodGroups = ['B+', 'B-', 'A', 'A-', 'O+', 'O-', 'AB+', 'AB-']
   employeeData = [
     {
       "employeeCode": "111211",

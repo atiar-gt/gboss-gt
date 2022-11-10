@@ -15,6 +15,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RoleComponent } from './role/role.component';
+import { AddRolesComponent } from './role/add-roles/add-roles.component';
 // import { featureRoutes } from './features.routing';
 
 const featureRoutes: Route[] = [
@@ -25,13 +27,23 @@ const featureRoutes: Route[] = [
   {
     path: 'add-employee',
     component: AddEmployeeComponent
+  },
+  {
+    path: 'roles',
+    component: RoleComponent
+  },
+  {
+    path: 'add-role',
+    component: AddRolesComponent
   }
 ];
 
 @NgModule({
   declarations: [
     EmployeesComponent,
-    AddEmployeeComponent
+    AddEmployeeComponent,
+    RoleComponent,
+    AddRolesComponent
   ],
   imports: [
     CommonModule,
