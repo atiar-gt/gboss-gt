@@ -57,8 +57,8 @@
 
             <!-- Products list -->
             <div class="flex flex-col flex-auto sm:mb-18 overflow-hidden sm:overflow-y-auto">
-                <ng-container *ngIf="employeeData as products">
-                    <ng-container *ngIf="products.length > 0; else noProducts">
+                <ng-container *ngIf="employeeData">
+                    <ng-container *ngIf="employeeData.length > 0; else noProducts">
                         <div class="grid text-center">
                             <!-- Header -->
                             <div class="inventory-grid items-center z-10 sticky top-0 grid gap-4 py-4 px-6 md:px-8 shadow text-md font-semibold text-secondary bg-gray-50 dark:bg-black dark:bg-opacity-5"
@@ -66,10 +66,10 @@
                                 <div class="text-center">Image</div>
                                 <div class="text-center" [mat-sort-header]="'name'">Name</div>
                                 <div class="text-center" [mat-sort-header]="'price'">
-                                    ID
+                                    Email
                                 </div>
                                 <div [mat-sort-header]="'stock'">
-                                    Team
+                                    Phone
                                 </div>
                                 <div [mat-sort-header]="'stock'">
                                     Assign
@@ -79,36 +79,39 @@
                                 </div>
                             </div>
                             <!-- Rows -->
-                            <ng-container *ngIf="employeeData as products">
-                                <ng-container *ngFor="let product of products; trackBy: trackByFn">
+                            <ng-container *ngIf="employeeData">
+                                <ng-container *ngFor="let employee of employeeData;">
                                     <div class="inventory-grid grid items-center gap-4 py-4 px-6 md:px-8 border-b">
 
                                         <!-- Image -->
-                                        <div class="flex items-center text-center">
+                                        <!-- <div class="flex items-center text-center">
                                             <div
                                                 class="relative flex flex-0 items-center justify-center w-12 h-12 mr-6 ">
-                                                <img class="w-8" *ngIf="product.thumbnail"
-                                                    [alt]="'Product thumbnail image'" [src]="product.thumbnail">
+                                                <img class="w-8" *ngIf="employee.thumbnail"
+                                                    [alt]="'Product thumbnail image'" [src]="employee.thumbnail">
                                                 <div class="flex items-center justify-center w-full h-full text-xs font-semibold leading-none text-center uppercase"
-                                                    *ngIf="!product.thumbnail">
-                                                    <!-- <user></user> -->
+                                                    *ngIf="!employee.thumbnail">
                                                 </div>
                                             </div>
-                                        </div>
-
-                                        <!-- SKU -->
-                                        <div class="hidden md:block ">
-                                            {{product.name}}
-                                        </div>
+                                        </div> -->
 
                                         <!-- Name -->
-                                        <div class="">
-                                            {{product.employeeCode}}
+                                        <div class="hidden md:block ">
+                                            {{employee.id}}
+                                        </div>
+                                        
+                                        <div class="hidden md:block ">
+                                            {{employee.name}}
                                         </div>
 
-                                        <!-- Price -->
+                                        <!-- Email -->
+                                        <div class="">
+                                            {{employee.email}}
+                                        </div>
+                                        
+                                        <!-- Phone -->
                                         <div>
-                                            {{product.bloodGroup}}
+                                            {{employee.mobileNumber}}
                                         </div>
 
                                         <!-- Stock -->
