@@ -44,7 +44,7 @@
                 <mat-icon [svgIcon]="'heroicons_outline:chat-alt-2'"></mat-icon>
             </button> -->
             <!-- <user></user> -->
-            <button [matMenuTriggerFor]="userActions">Admin</button>
+            <button [matMenuTriggerFor]="userActions">{{userInfo.name}}</button>
             <mat-menu [xPosition]="'before'" #userActions="matMenu">
                 <!-- <button mat-menu-item>
                     <span class="flex flex-col leading-none">

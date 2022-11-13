@@ -15,6 +15,7 @@ import { AuthService } from 'app/core/auth/auth.service';
 export class ClassicLayoutComponent implements OnInit, OnDestroy
 {
     isNav = false;
+    userInfo;
     menus = ['Employees', 'Admin']
     isScreenSmall: boolean;
     navigation: Navigation;
@@ -55,6 +56,7 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
+        this.getUserInfo();
         // Subscribe to navigation data
         this._navigationService.navigation$
             .pipe(takeUntil(this._unsubscribeAll))
@@ -104,8 +106,11 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy
         }
     }
 
+    getUserInfo():void {
+        this.userInfo = this._authService.authInfo;        
+    }
+
     signOut() {
-        console.log('sign out)'),
         this._authService.signOut();
     }
 }

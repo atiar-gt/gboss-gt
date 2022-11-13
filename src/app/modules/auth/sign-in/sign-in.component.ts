@@ -5,7 +5,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { fuseAnimations } from '@fuse/animations';
 import { FuseAlertType } from '@fuse/components/alert';
 import { AuthService } from 'app/core/auth/auth.service';
-import { head } from 'lodash';
 
 @Component({
     selector: 'auth-sign-in',
@@ -22,6 +21,7 @@ export class AuthSignInComponent implements OnInit {
     };
     signInForm: UntypedFormGroup;
     showAlert: boolean = false;
+    isLoading: boolean = false;
 
     /**
      * Constructor
@@ -30,7 +30,7 @@ export class AuthSignInComponent implements OnInit {
         private _activatedRoute: ActivatedRoute,
         private _authService: AuthService,
         private _formBuilder: UntypedFormBuilder,
-        private _router: Router
+        private _router: Router,
     ) {
     }
 
@@ -58,6 +58,7 @@ export class AuthSignInComponent implements OnInit {
      * Sign in
      */
     signIn(): void {
+        this.isLoading = true;
         console.log('this.signInForm.value', this.signInForm.value);
 
         // Return if the form is invalid
@@ -66,7 +67,7 @@ export class AuthSignInComponent implements OnInit {
         }
 
         // Disable the form
-        this.signInForm.disable();
+        // this.signInForm.disable();
 
         // Hide the alert
         this.showAlert = false;
@@ -74,34 +75,41 @@ export class AuthSignInComponent implements OnInit {
         // Sign in
         this._authService.signIn(this.signInForm.value).subscribe(
             (res) => {
+                this.isLoading = false;
                 console.log('res', res.body.success);
                 if (res.body.success) {
                     console.log('success', res.body);
-                    
-                    
+
+
                     let authToken = res.headers.get("authorization");
-    
+
                     console.log(authToken);
                     this._authService.setAuthInfoInLocalStorage(authToken, res);
-    
-    
+
+
                     // Set the redirect url.
                     // The '/signed-in-redirect' is a dummy url to catch the request and redirect the user
                     // to the correct page after a successful sign in. This way, that url can be set via
                     // routing file and we don't have to touch here.
-    
+
                     // Navigate to the redirect url
                     console.log('res', res);
                     const redirectURL = this._activatedRoute.snapshot.queryParamMap.get('redirectURL') || '/signed-in-redirect';
                     console.log('redirectURL', redirectURL);
-    
+
                     this._router.navigate(['/employee']);
                 }
                 else {
                     console.log(res.body.message);
-                    
+                    this.alert = {
+                        type: 'error',
+                        message: res.body.message
+                    };
+                    this.showAlert = true;
+
+
                 }
-                
+
 
             },
             (error) => {

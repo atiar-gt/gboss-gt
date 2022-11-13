@@ -115,12 +115,11 @@
                     class="fuse-mat-button-large w-full mt-6 rounded-md"
                     mat-flat-button
                     [color]="'primary'"
-                    [disabled]="signInForm.disabled"
                     (click)="signIn()"
                 >
-                    <span *ngIf="!signInForm.disabled"> Sign in </span>
+                    <span *ngIf="!isLoading"> Sign in </span>
                     <mat-progress-spinner
-                        *ngIf="signInForm.disabled"
+                        *ngIf="isLoading"
                         [diameter]="24"
                         [mode]="'indeterminate'"
                     ></mat-progress-spinner>
