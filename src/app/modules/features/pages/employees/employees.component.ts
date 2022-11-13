@@ -55,7 +55,7 @@ export class EmployeesComponent implements OnInit {
   }
 
   onEmployee(): void {
-    this._router.navigateByUrl('add-employee');
+    this._router.navigateByUrl('employees/add-new');
   }
 
 }

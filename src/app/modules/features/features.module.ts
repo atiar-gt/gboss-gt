@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EmployeesComponent } from './employees/employees.component';
 import { Route, RouterModule } from '@angular/router';
-import { AddEmployeeComponent } from './employees/add-employee/add-employee.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,19 +13,11 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RoleComponent } from './role/role.component';
-import { AddRolesComponent } from './role/add-roles/add-roles.component';
+import { AddRolesComponent } from './pages/role/add-roles/add-roles.component';
+import { RoleComponent } from './pages/role/role.component';
 // import { featureRoutes } from './features.routing';
 
 const featureRoutes: Route[] = [
-  {
-    path: 'employee',
-    component: EmployeesComponent
-  },
-  {
-    path: 'add-employee',
-    component: AddEmployeeComponent
-  },
   {
     path: 'roles',
     component: RoleComponent
@@ -40,8 +30,6 @@ const featureRoutes: Route[] = [
 
 @NgModule({
   declarations: [
-    EmployeesComponent,
-    AddEmployeeComponent,
     RoleComponent,
     AddRolesComponent
   ],

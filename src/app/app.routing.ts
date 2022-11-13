@@ -66,7 +66,7 @@ export const appRoutes: Route[] = [
 
     // Admin routes
     {
-        path: '',
+        path: 'employees',
         canActivate: [AuthGuard],
         // canActivateChild: [AuthGuard],
         component: LayoutComponent,
@@ -74,7 +74,7 @@ export const appRoutes: Route[] = [
             initialData: InitialDataResolver,
         },
         children: [
-            { path: '', loadChildren: () => import('app/modules/features/features.module').then(m => m.FeaturesModule) },
+            { path: '', loadChildren: () => import('app/modules/features/pages/employees/employees.module').then(m => m.EmployeesModule) },
         ]
     },
 
