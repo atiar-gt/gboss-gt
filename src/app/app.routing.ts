@@ -77,6 +77,18 @@ export const appRoutes: Route[] = [
             { path: '', loadChildren: () => import('app/modules/features/pages/employees/employees.module').then(m => m.EmployeesModule) },
         ]
     },
+    {
+        path: 'roles',
+        canActivate: [AuthGuard],
+        // canActivateChild: [AuthGuard],
+        component: LayoutComponent,
+        resolve: {
+            initialData: InitialDataResolver,
+        },
+        children: [
+            { path: '', loadChildren: () => import('app/modules/features/pages/role/role.module').then(m => m.RoleModule) },
+        ]
+    },
 
     // { path: '**', canActivate: [AuthGuard], pathMatch: 'full', redirectTo: 'employee' },
 ];
