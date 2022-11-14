@@ -32,15 +32,15 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 children: [
                     {
                         id   : 'apps.ecommerce.inventory',
-                        title: 'Add Employee',
+                        title: 'Employee Management',
                         type : 'basic',
-                        link : '/add-employee'
+                        link : '/employees'
                     },
                     {
                         id   : 'apps.ecommerce.inventory',
-                        title: 'Employee Management',
+                        title: 'Add Employee',
                         type : 'basic',
-                        link : '/employee'
+                        link : '/employees/add-new'
                     }
                 ]
             },
@@ -60,7 +60,7 @@ export const defaultNavigation: FuseNavigationItem[] = [
                         id   : 'apps.ecommerce.inventory',
                         title: 'Add Role',
                         type : 'basic',
-                        link : '/add-role'
+                        link : '/roles/add-new'
                     }
                 ]
             },
