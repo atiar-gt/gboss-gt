@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SnackbarComponent } from './components/snackbar/snackbar.component';
 
 @NgModule({
     imports: [
@@ -13,9 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         FormsModule,
         ReactiveFormsModule
     ],
-    declarations: [
-
-    ]
+    declarations: []
 })
 export class SharedModule {
 }

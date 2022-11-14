@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
 import { Employee } from '../../models/employee.model';
 import { EmployeesService } from '../../services/employees/employees.service';
 
@@ -11,7 +12,8 @@ import { EmployeesService } from '../../services/employees/employees.service';
 export class EmployeesComponent implements OnInit {
 
   departments = ['Software Development', 'HR', 'Finance', 'Admin'];
-  bloodGroups = ['B+', 'B-', 'A', 'A-', 'O+', 'O-', 'AB+', 'AB-']
+  bloodGroups = ['B+', 'B-', 'A', 'A-', 'O+', 'O-', 'AB+', 'AB-'];
+  private _unsubscribeAll: Subject<any> = new Subject<any>();
   // employeeData = [
   //   {
   //     "employeeCode": "111211",
@@ -52,7 +54,7 @@ export class EmployeesComponent implements OnInit {
   // ]
   employeeData: Employee[] = [];
 
-  constructor(private _router: Router, private _service: EmployeesService) { }
+  constructor(private _router: Router, private _employeeService: EmployeesService) { }
 
   ngOnInit(): void {
     this.getEmployees();
@@ -73,9 +75,15 @@ export class EmployeesComponent implements OnInit {
 
     //   },
     // })
-    this._service.getAll().subscribe(res=> {
+    this._employeeService.getAll().pipe(takeUntil(this._unsubscribeAll)).subscribe(res => {
       this.employeeData = res.data;
     })
   }
+
+  ngOnDestroy(): void {
+    this._unsubscribeAll.next(null);
+    this._unsubscribeAll.complete();
+  }
+
 
 }

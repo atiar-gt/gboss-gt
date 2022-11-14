@@ -10,21 +10,25 @@ import { CoreModule } from 'app/core/core.module';
 import { appConfig } from 'app/core/config/app.config';
 import { mockApiServices } from 'app/mock-api';
 import { LayoutModule } from 'app/layout/layout.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AppComponent } from 'app/app.component';
 import { appRoutes } from 'app/app.routing';
+import { SnackbarComponent } from './shared/components/snackbar/snackbar.component';
 
 const routerConfig: ExtraOptions = {
-    preloadingStrategy       : PreloadAllModules,
+    preloadingStrategy: PreloadAllModules,
     scrollPositionRestoration: 'enabled'
 };
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        SnackbarComponent
     ],
-    imports     : [
+    imports: [
         BrowserModule,
         BrowserAnimationsModule,
+        MatSnackBarModule,
         RouterModule.forRoot(appRoutes, routerConfig),
 
         // Fuse, FuseConfig & FuseMockAPI
@@ -41,10 +45,9 @@ const routerConfig: ExtraOptions = {
         // 3rd party modules that require global configuration via forRoot
         MarkdownModule.forRoot({})
     ],
-    bootstrap   : [
+    bootstrap: [
         AppComponent
     ]
 })
-export class AppModule
-{
+export class AppModule {
 }

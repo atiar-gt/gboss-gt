@@ -3,109 +3,24 @@
         <span class="font-semibold text-lg mb-3">Add User</span>
         <mat-divider class="mt-4"></mat-divider>
     </div>
-    <form class="m-6">
+    <form [formGroup]="form" class="m-6">
 
         <div class="flex flex-row">
             <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
 
                 <mat-form-field class="w-full">
-                    <mat-label>Employee ID</mat-label>
-                    <input id="email" matInput>
+                    <mat-label>Employee Code</mat-label>
+                    <input formControlName="employeeCode" id="email" matInput>
                     <mat-error>
-                        Email address is required
-                    </mat-error>
-                    <mat-error>
-                        Please enter a valid email address
+                        Employee Code address is required
                     </mat-error>
                 </mat-form-field>
             </div>
             <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
-
-                <mat-form-field class="w-full">
-                    <mat-label>Employee Name</mat-label>
-                    <input id="email" matInput>
-                    <mat-error>
-                        Email address is required
-                    </mat-error>
-                    <mat-error>
-                        Please enter a valid email address
-                    </mat-error>
-                </mat-form-field>
-            </div>
-            <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
-
-                <mat-form-field class="w-full">
-                    <mat-label>Designation</mat-label>
-                    <input id="email" matInput>
-                    <mat-error>
-                        Email address is required
-                    </mat-error>
-                    <mat-error>
-                        Please enter a valid email address
-                    </mat-error>
-                </mat-form-field>
-            </div>
-            <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
-
-                <mat-form-field class="w-full">
-                    <mat-label>Reporting Lead</mat-label>
-                    <input id="email" matInput>
-                    <mat-error>
-                        Email address is required
-                    </mat-error>
-                    <mat-error>
-                        Please enter a valid email address
-                    </mat-error>
-                </mat-form-field>
-            </div>
-
-        </div>
-
-        <div class="flex flex-row">
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-
-                <mat-form-field class="w-full">
-                    <mat-label>Assign Role</mat-label>
-                    <input id="email" matInput>
-                    <mat-error>
-                        Email address is required
-                    </mat-error>
-                    <mat-error>
-                        Please enter a valid email address
-                    </mat-error>
-                </mat-form-field>
-            </div>
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-
-                <mat-form-field class="w-full">
-                    <mat-label>Seating Position</mat-label>
-                    <input id="email" matInput>
-                    <mat-error>
-                        Email address is required
-                    </mat-error>
-                    <mat-error>
-                        Please enter a valid email address
-                    </mat-error>
-                </mat-form-field>
-            </div>
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-
-                <mat-form-field class="w-full">
-                    <mat-label>Department</mat-label>
-                    <input id="email" matInput>
-                    <mat-error>
-                        Email address is required
-                    </mat-error>
-                    <mat-error>
-                        Please enter a valid email address
-                    </mat-error>
-                </mat-form-field>
-            </div>
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 
                 <mat-form-field class="w-full">
                     <mat-label>Email</mat-label>
-                    <input id="email" matInput>
+                    <input formControlName="email" id="email" matInput>
                     <mat-error>
                         Email address is required
                     </mat-error>
@@ -114,19 +29,47 @@
                     </mat-error>
                 </mat-form-field>
             </div>
+            <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
+
+                <mat-form-field class="w-full">
+                    <mat-label>Name</mat-label>
+                    <input formControlName="name" matInput>
+                    <mat-error>
+                        Name is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
+
+                <mat-form-field class="w-full">
+                    <mat-label>Password</mat-label>
+                    <input matInput formControlName="password">
+                    <mat-error>
+                        Password is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
 
         </div>
+
         <div class="flex flex-row">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 
                 <mat-form-field class="w-full">
                     <mat-label>Mobile Number</mat-label>
-                    <input id="email" matInput>
+                    <input formControlName="mobileNumber" matInput>
                     <mat-error>
-                        Email address is required
+                        Mobile Number is required
                     </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+
+                <mat-form-field class="w-full">
+                    <mat-label>Designation</mat-label>
+                    <input formControlName="designation" matInput>
                     <mat-error>
-                        Please enter a valid email address
+                        Designation is required
                     </mat-error>
                 </mat-form-field>
             </div>
@@ -134,12 +77,9 @@
 
                 <mat-form-field class="w-full">
                     <mat-label>Payroll Designation</mat-label>
-                    <input id="email" matInput>
+                    <input formControlName="payrollDesignation" matInput>
                     <mat-error>
-                        Email address is required
-                    </mat-error>
-                    <mat-error>
-                        Please enter a valid email address
+                        Designation is required
                     </mat-error>
                 </mat-form-field>
             </div>
@@ -147,26 +87,58 @@
 
                 <mat-form-field class="w-full">
                     <mat-label>Blood Group</mat-label>
-                    <mat-select>
+                    <mat-select formControlName="bloodGroup">
                         <mat-option *ngFor="let group of bloodGroups" [value]="group">
                             {{group}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
+
+        </div>
+        <div class="flex flex-row">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+
+                <mat-form-field class="w-full">
+                    <mat-label>Office Name</mat-label>
+                    <input formControlName="officeName" matInput>
+                    <mat-error>
+                        Office Name is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+
+                <mat-form-field class="w-full">
+                    <mat-label>Office Address</mat-label>
+                    <input formControlName="officeAddress" matInput>
+                    <mat-error>
+                        Office Address is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+
+                <mat-form-field class="w-full">
+                    <mat-label>Sitting Location</mat-label>
+                    <input formControlName="sittingLocation" matInput>
+                    <mat-error>
+                        Sitting Location is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <!-- <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 
                 <mat-form-field class="w-full">
                     <mat-label>Date of Birth</mat-label>
                     <input matInput [matDatepicker]="picker">
-                    <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
-            </div>
+            </div> -->
 
         </div>
-        <div class="flex flex-row">
+        <!-- <div class="flex flex-row">
             <div class="w-full md:w-1/4 px-3 md:mb-0">
 
                 <mat-form-field class="w-full">
@@ -182,16 +154,6 @@
             </div>
             <div class="w-full md:w-1/4 px-3 md:mb-0">
 
-                <!-- <mat-form-field class="w-full">
-                    <mat-label>Profile Picture</mat-label>
-                    <input id="email" matInput>
-                    <mat-error>
-                        Email address is required
-                    </mat-error>
-                    <mat-error>
-                        Please enter a valid email address
-                    </mat-error>
-                </mat-form-field> -->
                 <mat-form-field class="w-full">
                     <mat-label>Profile Picture</mat-label>
                     <button mat-icon-button matPrefix (click)="f_input.click()">
@@ -203,9 +165,9 @@
                 </mat-form-field>
             </div>
 
-        </div>
+        </div> -->
 
-        <div class="flex flex-row">
+        <!-- <div class="flex flex-row">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <mat-form-field class="w-full" appearance="fill">
                     <mat-label>Description</mat-label>
@@ -218,17 +180,11 @@
                     </mat-error>
                 </mat-form-field>
             </div>
-        </div>
+        </div> -->
 
         <div class="flex flex-row">
             <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
-
-                <!-- <button class="fuse-mat-button-large w-full rounded-md" mat-flat-button [color]="'primary'">
-                    <span>
-                        Save
-                    </span>
-                </button> -->
-                <button class="bg-primary-500 large w-full hover:bg-primary-700 text-white py-2 px-8 rounded-md">
+                <button (click)="onSubmit()" class="bg-primary-500 large w-full hover:bg-primary-700 text-white py-2 px-8 rounded-md">
                     Save
                 </button>
             </div>
