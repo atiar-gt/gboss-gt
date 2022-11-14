@@ -1,1 +1,156 @@
-<p>role works!</p>
+<div class="flex flex-col m-6 w-full">
+    <div class="flex flex- justify-between py-4">
+    <div><span class="font-semibold text-lg mb-3">Role Management</span></div>
+
+        <div>
+            <button (click)="onEmployee()" class="bg-primary-500 hover:bg-primary-700 text-white py-2 px-8 rounded-md">
+                Add Role
+            </button>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <!-- <div class="flex flex-row justify-between py-4">
+        <div class="bg-white relative flex self-start pt-2 pb-1 pl-5 pr-4 cursor-pointer overflow-hidden rounded-md border border-b-0"
+            matRipple [matMenuTriggerFor]="projectsMenu">
+            <div class="flex items-center">
+                <div class="overflow-hidden">
+                    <div class="font-medium leading-6 truncate">Select a Department</div>
+                </div>
+                <div class="flex items-center justify-center pl-2">
+                    <mat-icon class="icon-size-5" [svgIcon]="'heroicons_solid:chevron-down'"></mat-icon>
+                </div>
+            </div>
+            <mat-menu #projectsMenu="matMenu" [xPosition]="'before'">
+                <button class="h-6" mat-menu-item>Software Development
+                </button>
+                <button class="h-6" mat-menu-item>HR
+                </button>
+                <button class="h-6" mat-menu-item>Finance
+                </button>
+                <button class="h-6" mat-menu-item>Admin
+                </button>
+            </mat-menu>
+        </div>
+        <div>
+            <div class="relative w-full">
+                <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none rounded-md">
+                    <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
+                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </div>
+                <input type="text" id="simple-search" (keyup)="applyFilter($event.target.value)"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    placeholder="Search by Name or Email" required>
+            </div>
+        </div>
+    </div> -->
+
+
+    <div>
+        <div class="flex flex-auto overflow-hidden bg-white">
+
+            <!-- Products list -->
+            <div class="flex flex-col flex-auto sm:mb-18 overflow-hidden sm:overflow-y-auto">
+                <ng-container *ngIf="roleData">
+                    <ng-container *ngIf="roleData.length > 0; else noProducts">
+                        <div class="grid text-center">
+                            <!-- Header -->
+                            <div class="inventory-grid items-center z-10 sticky top-0 grid gap-4 py-4 px-6 md:px-8 shadow text-md font-semibold text-secondary bg-gray-50 dark:bg-black dark:bg-opacity-5"
+                                matSort matSortDisableClear>
+                                <!-- <div class="text-center">Image</div> -->
+                                <div class="text-center" [mat-sort-header]="'name'">Name</div>
+                                <div class="text-center" [mat-sort-header]="'code'">
+                                    Code
+                                </div>
+                                <!-- <div class="text-center" [mat-sort-header]="'code'">
+                                    Actions
+                                </div> -->
+                            </div>
+                            <!-- Rows -->
+                            <ng-container *ngIf="roleData">
+                                <ng-container *ngFor="let role of roleData;">
+                                    <div class="inventory-grid grid items-center gap-4 py-4 px-6 md:px-8 border-b">
+
+                                        <div class="hidden md:block ">
+                                            {{role.name}}
+                                        </div>
+
+                                        <!-- Code -->
+                                        <div class="">
+                                            {{role.code}}
+                                        </div>
+
+                                        <div>
+                                            <div class="min-w-5 text-center">
+                                                <div class="flex flex-row w-20 justify-between cursor-pointer">
+                                                    <button mat-icon-button [matMenuTriggerFor]="menu"
+                                                        aria-label="Example icon-button with a menu">
+                                                        <mat-icon>more_vert</mat-icon>
+                                                    </button>
+                                                    <mat-menu #menu="matMenu">
+                                                        <button mat-menu-item>
+                                                            <img class="h-6 w-6 mr-4"
+                                                                src="assets/icons/option-icon.svg">
+                                                            <span>View</span>
+                                                        </button>
+                                                        <button (click)="onEdit(role)" mat-menu-item>
+                                                            <img class="h-6 w-6 mr-4" src="assets/icons/edit-icon.svg">
+                                                            <span>Edit</span>
+                                                        </button>
+                                                        <button (click)="onDelete(role)" mat-menu-item>
+                                                            <img class="h-6 w-6 mr-4"
+                                                                src="assets/icons/delete-icon.svg">
+                                                            <span>Delete</span>
+                                                        </button>
+                                                    </mat-menu>
+
+                                                </div>
+                                            </div>
+                                            <!-- Low stock -->
+
+                                        </div>
+
+
+                                    </div>
+
+                                </ng-container>
+                            </ng-container>
+                        </div>
+
+                        <!-- <app-paginator></app-paginator> -->
+
+                        <!-- <mat-paginator
+                            class="sm:absolute sm:inset-x-0 sm:bottom-0 border-b sm:border-t sm:border-b-0 z-10 bg-gray-50 dark:bg-transparent"
+                            (page)="onPageChange($event)" [length]="this.totalCount" [pageSize]="0"
+                            [pageSizeOptions]=" [5, 10, 25, 100]">
+                        </mat-paginator> -->
+
+                        <!-- <mat-paginator
+                            class="sm:absolute sm:inset-x-0 sm:bottom-0 border-b sm:border-t sm:border-b-0 z-10 bg-gray-50 dark:bg-transparent"
+                            [ngClass]="{'pointer-events-none': isLoading}"
+                            [length]="pagination.length"
+                            [pageIndex]="pagination.page"
+                            [pageSize]="pagination.size"
+                            [pageSizeOptions]="[5, 10, 25, 100]"
+                            [showFirstLastButtons]="true"></mat-paginator>
+     -->
+                    </ng-container>
+                </ng-container>
+
+
+                <ng-template #noProducts>
+                    <div class="p-8 sm:p-16 border-t text-4xl font-semibold tracking-tight text-center">There are no
+                        products!</div>
+                </ng-template>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+</div>

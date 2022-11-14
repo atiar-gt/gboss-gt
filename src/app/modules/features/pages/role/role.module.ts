@@ -24,6 +24,10 @@ const roleRoutes: Route[] = [
   {
     path: 'add-new',
     component: AddRolesComponent
+  },
+  {
+    path: 'edit/:id',
+    component: AddRolesComponent
   }
 ];
 
