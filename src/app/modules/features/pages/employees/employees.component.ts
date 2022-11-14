@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FuseConfirmationService } from '@fuse/services/confirmation';
 import { SnackbarComponent } from 'app/shared/components/snackbar/snackbar.component';
-import { Subject, takeUntil } from 'rxjs';
+import { debounceTime, Subject, takeUntil } from 'rxjs';
 import { Employee } from '../../models/employee.model';
 import { EmployeesService } from '../../services/employees/employees.service';
 
@@ -84,6 +84,15 @@ export class EmployeesComponent implements OnInit {
 
   onEdit(employee: Employee) {
     this._router.navigateByUrl(`employees/edit/${employee.id}`);
+  }
+
+  applyFilter(value) {
+    console.log('value', value);
+    this._employeeService.filterByValue(value).pipe((debounceTime(500)), takeUntil(this._unsubscribeAll)).subscribe(res => {
+      console.log('Filtered Data', res);
+      this.employeeData = res.data;
+    })
+
   }
 
   onDelete(employee: Employee) {

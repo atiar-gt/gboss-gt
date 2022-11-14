@@ -36,6 +36,10 @@ export class DataService {
         return this.http.delete(`${this._baseUrl}/${id}`);
     }
 
+    filterByValue(value: string): Observable<any> {
+        return this.http.get(`${this._baseUrl}?query=${value}`);
+    }
+
     // menuPermission(url): Observable<any> {
     //     return this.http.get(`${environment.baseUrl}check-page-permission?link=${url}`);
     // }
