@@ -8,6 +8,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
   declarations: [
     PaginatorComponent
   ],
+  exports: [PaginatorComponent],
   imports: [
     CommonModule,
     MatPaginatorModule

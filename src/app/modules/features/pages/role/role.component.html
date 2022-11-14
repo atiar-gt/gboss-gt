@@ -1,6 +1,6 @@
 <div class="flex flex-col m-6 w-full">
     <div class="flex flex- justify-between py-4">
-    <div><span class="font-semibold text-lg mb-3">Role Management</span></div>
+        <div><span class="font-semibold text-lg mb-3">Role Management</span></div>
 
         <div>
             <button (click)="onEmployee()" class="bg-primary-500 hover:bg-primary-700 text-white py-2 px-8 rounded-md">
@@ -119,31 +119,13 @@
                                 </ng-container>
                             </ng-container>
                         </div>
-
-                        <!-- <app-paginator></app-paginator> -->
-
-                        <!-- <mat-paginator
-                            class="sm:absolute sm:inset-x-0 sm:bottom-0 border-b sm:border-t sm:border-b-0 z-10 bg-gray-50 dark:bg-transparent"
-                            (page)="onPageChange($event)" [length]="this.totalCount" [pageSize]="0"
-                            [pageSizeOptions]=" [5, 10, 25, 100]">
-                        </mat-paginator> -->
-
-                        <!-- <mat-paginator
-                            class="sm:absolute sm:inset-x-0 sm:bottom-0 border-b sm:border-t sm:border-b-0 z-10 bg-gray-50 dark:bg-transparent"
-                            [ngClass]="{'pointer-events-none': isLoading}"
-                            [length]="pagination.length"
-                            [pageIndex]="pagination.page"
-                            [pageSize]="pagination.size"
-                            [pageSizeOptions]="[5, 10, 25, 100]"
-                            [showFirstLastButtons]="true"></mat-paginator>
-     -->
                     </ng-container>
                 </ng-container>
 
 
                 <ng-template #noProducts>
                     <div class="p-8 sm:p-16 border-t text-4xl font-semibold tracking-tight text-center">There are no
-                        products!</div>
+                        items!</div>
                 </ng-template>
 
             </div>

@@ -12,9 +12,9 @@ export class PaginatorService {
   _onTableDataChange: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   tableChangeEvent: BehaviorSubject<any> = new BehaviorSubject<any>(
     {
-      currentPage: 1,
-      pageCount: 3,
-      dataCount: 3,
+      // currentPage: 1,
+      page: 1,
+      // dataCount: 3,
       // order_by: 'desc',
       // order_by_field: 'created_at',
     }
@@ -28,6 +28,8 @@ export class PaginatorService {
   }
 
   setTableData(totalCount): void {
+    console.log('total count', totalCount);
+    
     this._onTableDataChange.next(totalCount);
   }
 
@@ -37,10 +39,9 @@ export class PaginatorService {
 
     this._page = { pageNumber: $event.pageIndex, pageSize: $event.pageSize };
     const PageEventChange = {
-      per_page: $event.pageSize,
-      page: $event.pageIndex + 1,
-      order_by: this._sort ? this._sort.order_by : 'asc',
-      order_by_field: this._sort ? this._sort.order_by_field : '',
+      page: $event.pageIndex + 1
+      // order_by: this._sort ? this._sort.order_by : 'asc',
+      // order_by_field: this._sort ? this._sort.order_by_field : '',
     };
     this.tableChangeEvent.next(PageEventChange);
   }

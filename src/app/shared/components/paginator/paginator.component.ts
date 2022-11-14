@@ -15,12 +15,13 @@ export class PaginatorComponent implements OnInit {
     ngOnInit(): void {
         this.paginatorService._onTableDataChange.subscribe( (res) => {
             if (res) {
+                res
                 this.totalCount = res;
             }
             return;
         });
     }
-    onPageChange($event: PageEvent): void {
+    onPageChange($event: PageEvent): void {        
         this.paginatorService.onPageChange($event);
     }
 

@@ -15,6 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { UserModule } from 'app/layout/common/user/user.module';
+import { PaginatorModule } from 'app/shared/components/paginator/paginator.module';
 
 const employeeRoutes: Route[] = [
   {
@@ -48,7 +49,8 @@ const employeeRoutes: Route[] = [
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
+    PaginatorModule
   ]
 })
 export class EmployeesModule { }

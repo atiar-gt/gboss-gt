@@ -12,7 +12,7 @@ import { RoleService } from '../../services/role/role.service';
 })
 export class RoleComponent implements OnInit {
     private _unsubscribeAll: Subject<any> = new Subject<any>();
-
+    paginator;
     roleData;
 
     constructor(
@@ -31,21 +31,12 @@ export class RoleComponent implements OnInit {
     }
 
     getData(): void {
-        // this._service.getAll().subscribe({
-        //   next(res) {
-        //     this.roleData = res.data;
-        //     console.log('res', this.roleData)
-        //   },
-        //   error(err) {
-        //     console.log(err);
-
-        //   },
-        // })
         this._roleService
             .getAll()
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((res) => {
                 this.roleData = res.data;
+                this.paginator = res.pagination;
             });
     }
 
@@ -54,7 +45,6 @@ export class RoleComponent implements OnInit {
     }
 
     applyFilter(value) {
-        console.log('value', value);
         this._roleService
             .filterByValue(value)
             .pipe(debounceTime(500), takeUntil(this._unsubscribeAll))
@@ -64,19 +54,16 @@ export class RoleComponent implements OnInit {
     }
 
     onDelete(role) {
-        console.log('delete', role);
         this._confirmationService
             .open()
             .afterClosed()
             .subscribe((result) => {
-                console.log('result', result);
                 if (result === 'confirmed') {
                     this.roleData = this.roleData.filter(
                         (item: any) => item.id !== role.id
                     );
 
                     this._roleService.delete(role.id).subscribe((res) => {
-                        console.log('rest', res);
                         this._snackbar.openSnackBar(res.message);
                     });
                 }
