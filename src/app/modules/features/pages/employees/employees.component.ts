@@ -89,7 +89,6 @@ export class EmployeesComponent implements OnInit {
   applyFilter(value) {
     console.log('value', value);
     this._employeeService.filterByValue(value).pipe((debounceTime(500)), takeUntil(this._unsubscribeAll)).subscribe(res => {
-      console.log('Filtered Data', res);
       this.employeeData = res.data;
     })
 

@@ -46,7 +46,7 @@
                 </div>
                 <input type="text" id="simple-search" (keyup)="applyFilter($event.target.value)"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                    placeholder="Search" required>
+                    placeholder="Search by Name or Email" required>
             </div>
         </div>
     </div>
@@ -124,7 +124,7 @@
                                         <div>
                                             <div class="min-w-5 text-center">
                                                 <div class="flex flex-row w-20 justify-between cursor-pointer">
-                                                    <div class="w-5">
+                                                    <!-- <div class="w-5">
                                                         <img src="assets/icons/option-icon.svg">
                                                     </div>
                                                     <div (click)="onEdit(employee)" class="w-5">
@@ -132,7 +132,31 @@
                                                     </div>
                                                     <div (click)="onDelete(employee)" class="w-5">
                                                         <img src="assets/icons/delete-icon.svg">
-                                                    </div>
+                                                    </div> -->
+
+
+                                                    <button mat-icon-button [matMenuTriggerFor]="menu"
+                                                        aria-label="Example icon-button with a menu">
+                                                        <mat-icon>more_vert</mat-icon>
+                                                    </button>
+                                                    <mat-menu #menu="matMenu">
+                                                        <button mat-menu-item>
+                                                            <img class="h-6 w-6 mr-4"
+                                                                src="assets/icons/option-icon.svg">
+                                                            <span>View</span>
+                                                        </button>
+                                                        <button (click)="onEdit(employee)" mat-menu-item>
+                                                            <img class="h-6 w-6 mr-4" src="assets/icons/edit-icon.svg">
+                                                            <span>Edit</span>
+                                                        </button>
+                                                        <button (click)="onDelete(employee)" mat-menu-item>
+                                                            <!-- <mat-icon>notifications_off</mat-icon> -->
+                                                            <img class="h-6 w-6 mr-4"
+                                                                src="assets/icons/delete-icon.svg">
+                                                            <span>Delete</span>
+                                                        </button>
+                                                    </mat-menu>
+
                                                 </div>
                                             </div>
                                             <!-- Low stock -->

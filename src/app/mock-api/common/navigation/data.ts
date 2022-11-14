@@ -25,50 +25,48 @@ export const defaultNavigation: FuseNavigationItem[] = [
             //     link: '/dashboards/project'
             // },
             {
-                id      : 'apps.ecommerce',
-                title   : 'Employees',
-                type    : 'collapsable',
-                icon    : 'heroicons_outline:users',
+                id: 'apps.ecommerce',
+                title: 'Employees',
+                type: 'collapsable',
+                icon: 'heroicons_outline:users',
                 children: [
                     {
-                        id   : 'apps.ecommerce.inventory',
+                        id: 'apps.ecommerce.inventory',
                         title: 'Employee Management',
-                        type : 'basic',
-                        link : '/employees'
+                        type: 'basic',
+                        link: '/employees',
                     },
                     {
-                        id   : 'apps.ecommerce.inventory',
+                        id: 'apps.ecommerce.inventory',
                         title: 'Add Employee',
-                        type : 'basic',
-                        link : '/employees/add-new'
-                    }
-                ]
+                        type: 'basic',
+                        link: '/employees/add-new',
+                    },
+                ],
             },
             {
-                id      : 'apps.ecommerce',
-                title   : 'Role Management',
-                type    : 'collapsable',
-                icon    : 'heroicons_outline:sun',
+                id: 'apps.ecommerce',
+                title: 'Role Management',
+                type: 'collapsable',
+                icon: 'heroicons_outline:sun',
                 children: [
                     {
-                        id   : 'apps.ecommerce.inventory',
+                        id: 'apps.ecommerce.inventory',
                         title: 'Roles',
-                        type : 'basic',
-                        link : '/roles'
+                        type: 'basic',
+                        link: '/roles',
                     },
                     {
-                        id   : 'apps.ecommerce.inventory',
+                        id: 'apps.ecommerce.inventory',
                         title: 'Add Role',
-                        type : 'basic',
-                        link : '/roles/add-new'
-                    }
-                ]
+                        type: 'basic',
+                        link: '/roles/add-new',
+                    },
+                ],
             },
-        ]
-    }
+        ],
+    },
 ];
-
-
 
 export const compactNavigation: FuseNavigationItem[] = [
     {
@@ -76,8 +74,8 @@ export const compactNavigation: FuseNavigationItem[] = [
         title: 'Example',
         type: 'basic',
         icon: 'heroicons_outline:chart-pie',
-        link: '/example'
-    }
+        link: '/example',
+    },
 ];
 export const futuristicNavigation: FuseNavigationItem[] = [
     {
@@ -85,8 +83,8 @@ export const futuristicNavigation: FuseNavigationItem[] = [
         title: 'Example',
         type: 'basic',
         icon: 'heroicons_outline:chart-pie',
-        link: '/example'
-    }
+        link: '/example',
+    },
 ];
 export const horizontalNavigation: FuseNavigationItem[] = [
     {
@@ -94,6 +92,6 @@ export const horizontalNavigation: FuseNavigationItem[] = [
         title: 'Example',
         type: 'basic',
         icon: 'heroicons_outline:chart-pie',
-        link: '/example'
-    }
+        link: '/example',
+    },
 ];

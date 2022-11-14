@@ -20,7 +20,7 @@ export class AddEmployeeComponent implements OnInit {
   form: FormGroup;
   file_store: FileList;
   display: FormControl = new FormControl('', Validators.required);
-  bloodGroups = ['B+', 'B-', 'A', 'A-', 'O+', 'O-', 'AB+', 'AB-'];
+  bloodGroups = ['B+', 'B-', 'A+', 'A-', 'O+', 'O-', 'AB+', 'AB-'];
   private _unsubscribeAll: Subject<any> = new Subject<any>();
 
   constructor(private _fb: FormBuilder, private _route: ActivatedRoute, private _router: Router, private _employeeService: EmployeesService, private _snackbar: SnackbarComponent) { }
@@ -36,7 +36,7 @@ export class AddEmployeeComponent implements OnInit {
       employeeCode: [''],
       email: ['', [Validators.required, Validators.email]],
       name: ['', Validators.required],
-      password: ['', Validators.required],
+      password: [''],
       mobileNumber: ['', Validators.required],
       designation: ['', Validators.required],
       payrollDesignation: ['', Validators.required],

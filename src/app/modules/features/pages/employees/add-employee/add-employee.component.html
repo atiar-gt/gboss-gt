@@ -43,20 +43,6 @@
             <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
 
                 <mat-form-field class="w-full">
-                    <mat-label>Password</mat-label>
-                    <input matInput formControlName="password">
-                    <mat-error>
-                        Password is required
-                    </mat-error>
-                </mat-form-field>
-            </div>
-
-        </div>
-
-        <div class="flex flex-row">
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-
-                <mat-form-field class="w-full">
                     <mat-label>Mobile Number</mat-label>
                     <input formControlName="mobileNumber" matInput>
                     <mat-error>
@@ -64,6 +50,11 @@
                     </mat-error>
                 </mat-form-field>
             </div>
+
+        </div>
+
+        <div class="flex flex-row">
+            
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 
                 <mat-form-field class="w-full">
@@ -95,11 +86,7 @@
                     </mat-select>
                 </mat-form-field>
             </div>
-
-        </div>
-        <div class="flex flex-row">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-
                 <mat-form-field class="w-full">
                     <mat-label>Office Name</mat-label>
                     <input formControlName="officeName" matInput>
@@ -107,7 +94,12 @@
                         Office Name is required
                     </mat-error>
                 </mat-form-field>
+                
             </div>
+
+        </div>
+        <div class="flex flex-row">
+            
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 
                 <mat-form-field class="w-full">
@@ -137,6 +129,21 @@
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
             </div> -->
+            <div  class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+
+                <mat-form-field *ngIf="!userId" class="w-full">
+                    <mat-label>Password</mat-label>
+                    <input matInput formControlName="password">
+                    <mat-error>
+                        Password is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+
+                
+            </div>
 
         </div>
         <!-- <div class="flex flex-row">
