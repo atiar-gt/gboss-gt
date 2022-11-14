@@ -5,9 +5,10 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeesService } from 'app/modules/features/services/employees/employees.service';
 import { SnackbarComponent } from 'app/shared/components/snackbar/snackbar.component';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-add-employee',
@@ -15,14 +16,22 @@ import { SnackbarComponent } from 'app/shared/components/snackbar/snackbar.compo
   styleUrls: ['./add-employee.component.scss'],
 })
 export class AddEmployeeComponent implements OnInit {
+  userId: string;
   form: FormGroup;
   file_store: FileList;
   display: FormControl = new FormControl('', Validators.required);
   bloodGroups = ['B+', 'B-', 'A', 'A-', 'O+', 'O-', 'AB+', 'AB-'];
+  private _unsubscribeAll: Subject<any> = new Subject<any>();
 
-  constructor(private _fb: FormBuilder, private _router: Router, private _employeeService: EmployeesService, private _snackbar: SnackbarComponent) { }
+  constructor(private _fb: FormBuilder, private _route: ActivatedRoute, private _router: Router, private _employeeService: EmployeesService, private _snackbar: SnackbarComponent) { }
 
   ngOnInit(): void {
+    this.userId = this._route.snapshot.paramMap.get('id');
+    if (this.userId) {
+      this.setFormData();
+    }
+    console.log('user id', this.userId);
+
     this.form = this._fb.group({
       employeeCode: [''],
       email: ['', [Validators.required, Validators.email]],
@@ -52,14 +61,37 @@ export class AddEmployeeComponent implements OnInit {
   onSubmit(): void {
     console.log(this.form.valid);
     if (this.form.valid) {
-      this._employeeService.create(this.form.value).subscribe(res => {
-        console.log('res', res);
-        this._snackbar.openSnackBar(res.message);
-        if (res.success) {
-          this._router.navigateByUrl('employees');
-        }
-  
-      })
+      if (this.userId) {
+        this.updateEmployee();
+      } else {
+        this.addEmployee();
+      }
     }
+  }
+  
+  addEmployee(): void {
+  }
+  
+  updateEmployee(): void {
+    this._employeeService.update(this.form.value, +this.userId).subscribe(res => {
+      console.log('res', res);
+      this._snackbar.openSnackBar(res.message);
+      if (res.success) {
+        this._router.navigateByUrl('employees');
+      }
+  
+    })
+  }
+
+  setFormData(): void {
+    this._employeeService.getById(+this.userId).pipe(takeUntil(this._unsubscribeAll)).subscribe(res => {
+      console.log('res', res);
+      this.form.patchValue(res.data);
+    })
+  }
+
+  ngOnDestroy(): void {
+    this._unsubscribeAll.next(null);
+    this._unsubscribeAll.complete();
   }
 }

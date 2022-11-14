@@ -24,6 +24,10 @@ const employeeRoutes: Route[] = [
   {
     path: 'add-new',
     component: AddEmployeeComponent
+  },
+  {
+    path: 'edit/:id',
+    component: AddEmployeeComponent
   }
 ];
 

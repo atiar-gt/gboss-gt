@@ -80,6 +80,15 @@ export class EmployeesComponent implements OnInit {
     })
   }
 
+  onEdit(employee: Employee){
+    console.log('e', employee);
+    this._router.navigateByUrl(`employees/edit/${employee.id}`);
+  }
+  
+  onDelete(employee: Employee){
+    console.log('delete', employee)
+  }
+
   ngOnDestroy(): void {
     this._unsubscribeAll.next(null);
     this._unsubscribeAll.complete();

@@ -28,8 +28,8 @@ export class DataService {
         return this.http.post(`${this._baseUrl}`, resource);
     }
 
-    update(resource: any): Observable<any> {
-        return this.http.put(`${this._baseUrl}/${resource.id}`, resource);
+    update(resource: any, id: number): Observable<any> {
+        return this.http.put(`${this._baseUrl}/${id}`, resource);
     }
 
     delete(id: number): Observable<any> {
