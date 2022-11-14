@@ -68,18 +68,24 @@ export class AddEmployeeComponent implements OnInit {
       }
     }
   }
-  
+
   addEmployee(): void {
-  }
-  
-  updateEmployee(): void {
-    this._employeeService.update(this.form.value, +this.userId).subscribe(res => {
-      console.log('res', res);
+    this._employeeService.create(this.form.value).subscribe(res => {
       this._snackbar.openSnackBar(res.message);
       if (res.success) {
         this._router.navigateByUrl('employees');
       }
-  
+
+    })
+  }
+
+  updateEmployee(): void {
+    this._employeeService.update(this.form.value, +this.userId).subscribe(res => {
+      this._snackbar.openSnackBar(res.message);
+      if (res.success) {
+        this._router.navigateByUrl('employees');
+      }
+
     })
   }
 
