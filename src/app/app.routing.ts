@@ -4,14 +4,12 @@ import { NoAuthGuard } from 'app/core/auth/guards/noAuth.guard';
 import { LayoutComponent } from 'app/layout/layout.component';
 import { InitialDataResolver } from 'app/app.resolvers';
 
-// @formatter:off
-/* eslint-disable max-len */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
+
 export const appRoutes: Route[] = [
 
     // Redirect empty path to '/example'
-    // { path: '', pathMatch: 'full', redirectTo: 'employee' },
-    { path: '', canActivate: [AuthGuard], loadChildren: () => import('app/modules/features/pages/employees/employees.module').then(m => m.EmployeesModule) },
+    { path: '', pathMatch: 'full', redirectTo: 'employees' },
+    // { path: '', canActivate: [AuthGuard], loadChildren: () => import('app/modules/features/pages/employees/employees.module').then(m => m.EmployeesModule) },
 
     // Redirect signed in user to the '/example'
     //
@@ -67,7 +65,7 @@ export const appRoutes: Route[] = [
 
     // Admin routes
     {
-        path: 'employees',
+        path: '',
         canActivate: [AuthGuard],
         // canActivateChild: [AuthGuard],
         component: LayoutComponent,
@@ -75,11 +73,11 @@ export const appRoutes: Route[] = [
             initialData: InitialDataResolver,
         },
         children: [
-            { path: '', loadChildren: () => import('app/modules/features/pages/employees/employees.module').then(m => m.EmployeesModule) },
+            { path: 'employees', loadChildren: () => import('app/modules/features/pages/employees/employees.module').then(m => m.EmployeesModule) },
         ]
     },
     {
-        path: 'roles',
+        path: '',
         canActivate: [AuthGuard],
         // canActivateChild: [AuthGuard],
         component: LayoutComponent,
@@ -87,10 +85,9 @@ export const appRoutes: Route[] = [
             initialData: InitialDataResolver,
         },
         children: [
-            { path: '', loadChildren: () => import('app/modules/features/pages/role/role.module').then(m => m.RoleModule) },
+            { path: 'roles', loadChildren: () => import('app/modules/features/pages/role/role.module').then(m => m.RoleModule) },
         ]
     },
+    {path: '**', redirectTo: 'employees', pathMatch: 'full'},
 
-    // { path: '**', canActivate: [AuthGuard], pathMatch: 'full', redirectTo: 'employee' },
-    { path: '**', canActivate: [AuthGuard], loadChildren: () => import('app/modules/features/pages/employees/employees.module').then(m => m.EmployeesModule) },
 ];
