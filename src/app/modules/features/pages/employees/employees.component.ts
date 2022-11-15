@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { FuseConfirmationService } from '@fuse/services/confirmation';
+import { DetailsViewComponent } from 'app/shared/components/details-view/details-view.component';
 import { SnackbarComponent } from 'app/shared/components/snackbar/snackbar.component';
 import { PaginatorService } from 'app/shared/services/paginator/paginator.service';
 import { debounceTime, Subject, takeUntil } from 'rxjs';
@@ -58,19 +60,16 @@ export class EmployeesComponent implements OnInit {
     paginator;
 
     constructor(
-        private _router: Router,
+        private _confirmationService: FuseConfirmationService,
         private _employeeService: EmployeesService,
         private _paginatorService: PaginatorService,
-        private _snackbar: SnackbarComponent,
-        private _confirmationService: FuseConfirmationService
+        private _router: Router,
+        public dialog: MatDialog,
+        private _snackbar: SnackbarComponent
     ) {}
 
     ngOnInit(): void {
         this.getEmployees();
-    }
-
-    onEmployee(): void {
-        this._router.navigateByUrl('employees/add-new');
     }
 
     getEmployees(): void {
@@ -91,8 +90,20 @@ export class EmployeesComponent implements OnInit {
         );
     }
 
+    onEmployee(): void {
+        this._router.navigateByUrl('employees/add-new');
+    }
+
     onEdit(employee: Employee) {
         this._router.navigateByUrl(`employees/edit/${employee.id}`);
+    }
+
+    onView(data): void {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.data = { data: data };
+        dialogConfig.width = '600px';
+
+        const dialogRef = this.dialog.open(DetailsViewComponent, dialogConfig);
     }
 
     applyFilter(value) {
