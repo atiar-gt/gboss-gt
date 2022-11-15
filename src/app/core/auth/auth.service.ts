@@ -161,6 +161,9 @@ export class AuthService {
         return this.authInfo;
     }
 
+    getMenu() {
+        return this._httpClient.get(`${environment.baseUrl}/employee/role/menu`);
+    }
 
 
     /**

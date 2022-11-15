@@ -283,6 +283,8 @@ export class FuseVerticalNavigationCollapsableItemComponent implements OnInit, O
     private _hasActiveChild(item: FuseNavigationItem, currentUrl: string): boolean
     {
         const children = item.children;
+        console.log('children', children);
+        
 
         if ( !children )
         {

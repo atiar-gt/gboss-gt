@@ -21,7 +21,7 @@
         <div class="fuse-vertical-navigation-item-title-wrapper">
             <div class="fuse-vertical-navigation-item-title">
                 <span [ngClass]="item.classes?.title">
-                    {{item.title}}
+                    {{item.name}}
                 </span>
             </div>
             <ng-container *ngIf="item.subtitle">
@@ -64,7 +64,7 @@
         <ng-container *ngIf="(item.hidden && !item.hidden(item)) || !item.hidden">
 
             <!-- Basic -->
-            <ng-container *ngIf="item.type === 'basic'">
+            <ng-container *ngIf="item.type === 0">
                 <fuse-vertical-navigation-basic-item
                     [item]="item"
                     [name]="name"></fuse-vertical-navigation-basic-item>

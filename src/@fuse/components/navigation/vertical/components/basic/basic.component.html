@@ -4,12 +4,13 @@
     [class.fuse-vertical-navigation-item-has-subtitle]="!!item.subtitle"
     [ngClass]="item.classes?.wrapper">
 
+    
     <!-- Item with an internal link -->
-    <ng-container *ngIf="item.link && !item.externalLink && !item.function && !item.disabled">
+    <ng-container *ngIf="item.route && !item.externalLink && !item.function && !item.disabled">
         <a
             class="fuse-vertical-navigation-item"
             [ngClass]="{'fuse-vertical-navigation-item-active-forced': item.active}"
-            [routerLink]="[item.link]"
+            [routerLink]="[item.route]"
             [fragment]="item.fragment ?? null"
             [preserveFragment]="item.preserveFragment ?? false"
             [queryParams]="item.queryParams ?? null"
@@ -22,10 +23,10 @@
     </ng-container>
 
     <!-- Item with an external link -->
-    <ng-container *ngIf="item.link && item.externalLink && !item.function && !item.disabled">
+    <ng-container *ngIf="item.route && item.externalLink && !item.function && !item.disabled">
         <a
             class="fuse-vertical-navigation-item"
-            [href]="item.link"
+            [href]="item.route"
             [target]="item.target || '_self'"
             [matTooltip]="item.tooltip || ''">
             <ng-container *ngTemplateOutlet="itemTemplate"></ng-container>
@@ -33,7 +34,7 @@
     </ng-container>
 
     <!-- Item with a function -->
-    <ng-container *ngIf="!item.link && item.function && !item.disabled">
+    <ng-container *ngIf="!item.route && item.function && !item.disabled">
         <div
             class="fuse-vertical-navigation-item"
             [ngClass]="{'fuse-vertical-navigation-item-active-forced': item.active}"
@@ -44,11 +45,11 @@
     </ng-container>
 
     <!-- Item with an internal link and function -->
-    <ng-container *ngIf="item.link && !item.externalLink && item.function && !item.disabled">
+    <ng-container *ngIf="item.route && !item.externalLink && item.function && !item.disabled">
         <a
             class="fuse-vertical-navigation-item"
             [ngClass]="{'fuse-vertical-navigation-item-active-forced': item.active}"
-            [routerLink]="[item.link]"
+            [routerLink]="[item.route]"
             [fragment]="item.fragment ?? null"
             [preserveFragment]="item.preserveFragment ?? false"
             [queryParams]="item.queryParams ?? null"
@@ -62,10 +63,10 @@
     </ng-container>
 
     <!-- Item with an external link and function -->
-    <ng-container *ngIf="item.link && item.externalLink && item.function && !item.disabled">
+    <ng-container *ngIf="item.route && item.externalLink && item.function && !item.disabled">
         <a
             class="fuse-vertical-navigation-item"
-            [href]="item.link"
+            [href]="item.route"
             [target]="item.target || '_self'"
             [matTooltip]="item.tooltip || ''"
             (click)="item.function(item)">
@@ -74,7 +75,7 @@
     </ng-container>
 
     <!-- Item with a no link and no function -->
-    <ng-container *ngIf="!item.link && !item.function && !item.disabled">
+    <ng-container *ngIf="!item.route && !item.function && !item.disabled">
         <div
             class="fuse-vertical-navigation-item"
             [ngClass]="{'fuse-vertical-navigation-item-active-forced': item.active}"
@@ -109,7 +110,7 @@
     <div class="fuse-vertical-navigation-item-title-wrapper">
         <div class="fuse-vertical-navigation-item-title">
             <span [ngClass]="item.classes?.title">
-                {{item.title}}
+                {{item.name}}
             </span>
         </div>
         <ng-container *ngIf="item.subtitle">

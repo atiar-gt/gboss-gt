@@ -146,7 +146,7 @@ export const appRoutes: Route[] = [
         },
         children: [
             {
-                path: 'roles',
+                path: 'role',
                 loadChildren: () =>
                     import('app/modules/features/pages/role/role.module').then(
                         (m) => m.RoleModule
