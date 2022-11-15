@@ -4,9 +4,7 @@ import { NoAuthGuard } from 'app/core/auth/guards/noAuth.guard';
 import { LayoutComponent } from 'app/layout/layout.component';
 import { InitialDataResolver } from 'app/app.resolvers';
 
-
 export const appRoutes: Route[] = [
-
     // Redirect empty path to '/example'
     { path: '', pathMatch: 'full', redirectTo: 'employees' },
     // { path: '', canActivate: [AuthGuard], loadChildren: () => import('app/modules/features/pages/employees/employees.module').then(m => m.EmployeesModule) },
@@ -19,36 +17,86 @@ export const appRoutes: Route[] = [
     { path: 'signed-in-redirect', pathMatch: 'full', redirectTo: 'example' },
 
     // Auth routes for guests
+
     {
         path: '',
         canActivate: [NoAuthGuard],
         canActivateChild: [NoAuthGuard],
         component: LayoutComponent,
         data: {
-            layout: 'empty'
+            layout: 'empty',
         },
         children: [
-            { path: 'confirmation-required', loadChildren: () => import('app/modules/auth/confirmation-required/confirmation-required.module').then(m => m.AuthConfirmationRequiredModule) },
-            { path: 'forgot-password', loadChildren: () => import('app/modules/auth/forgot-password/forgot-password.module').then(m => m.AuthForgotPasswordModule) },
-            { path: 'reset-password', loadChildren: () => import('app/modules/auth/reset-password/reset-password.module').then(m => m.AuthResetPasswordModule) },
-            { path: 'sign-in', loadChildren: () => import('app/modules/auth/sign-in/sign-in.module').then(m => m.AuthSignInModule) },
-            { path: 'sign-up', loadChildren: () => import('app/modules/auth/sign-up/sign-up.module').then(m => m.AuthSignUpModule) }
-        ]
+            {
+                path: 'confirmation-required',
+                loadChildren: () =>
+                    import(
+                        'app/modules/auth/confirmation-required/confirmation-required.module'
+                    ).then((m) => m.AuthConfirmationRequiredModule),
+            },
+            {
+                path: 'forgot-password',
+                loadChildren: () =>
+                    import(
+                        'app/modules/auth/forgot-password/forgot-password.module'
+                    ).then((m) => m.AuthForgotPasswordModule),
+            },
+            {
+                path: 'reset-password',
+                loadChildren: () =>
+                    import(
+                        'app/modules/auth/reset-password/reset-password.module'
+                    ).then((m) => m.AuthResetPasswordModule),
+            },
+            {
+                path: 'sign-in',
+                loadChildren: () =>
+                    import('app/modules/auth/sign-in/sign-in.module').then(
+                        (m) => m.AuthSignInModule
+                    ),
+            },
+            {
+                path: 'sign-up',
+                loadChildren: () =>
+                    import('app/modules/auth/sign-up/sign-up.module').then(
+                        (m) => m.AuthSignUpModule
+                    ),
+            },
+        ],
     },
 
     // Auth routes for authenticated users
+    {
+        path: 'sign-in',
+        canActivate: [AuthGuard],
+        canActivateChild: [AuthGuard],
+        pathMatch: 'full',
+        redirectTo: '',
+    },
     {
         path: '',
         canActivate: [AuthGuard],
         canActivateChild: [AuthGuard],
         component: LayoutComponent,
         data: {
-            layout: 'empty'
+            layout: 'empty',
         },
         children: [
-            { path: 'sign-out', loadChildren: () => import('app/modules/auth/sign-out/sign-out.module').then(m => m.AuthSignOutModule) },
-            { path: 'unlock-session', loadChildren: () => import('app/modules/auth/unlock-session/unlock-session.module').then(m => m.AuthUnlockSessionModule) }
-        ]
+            {
+                path: 'sign-out',
+                loadChildren: () =>
+                    import('app/modules/auth/sign-out/sign-out.module').then(
+                        (m) => m.AuthSignOutModule
+                    ),
+            },
+            {
+                path: 'unlock-session',
+                loadChildren: () =>
+                    import(
+                        'app/modules/auth/unlock-session/unlock-session.module'
+                    ).then((m) => m.AuthUnlockSessionModule),
+            },
+        ],
     },
 
     // Landing routes
@@ -56,11 +104,17 @@ export const appRoutes: Route[] = [
         path: '',
         component: LayoutComponent,
         data: {
-            layout: 'empty'
+            layout: 'empty',
         },
         children: [
-            { path: 'home', loadChildren: () => import('app/modules/landing/home/home.module').then(m => m.LandingHomeModule) },
-        ]
+            {
+                path: 'home',
+                loadChildren: () =>
+                    import('app/modules/landing/home/home.module').then(
+                        (m) => m.LandingHomeModule
+                    ),
+            },
+        ],
     },
 
     // Admin routes
@@ -73,8 +127,14 @@ export const appRoutes: Route[] = [
             initialData: InitialDataResolver,
         },
         children: [
-            { path: 'employees', loadChildren: () => import('app/modules/features/pages/employees/employees.module').then(m => m.EmployeesModule) },
-        ]
+            {
+                path: 'employees',
+                loadChildren: () =>
+                    import(
+                        'app/modules/features/pages/employees/employees.module'
+                    ).then((m) => m.EmployeesModule),
+            },
+        ],
     },
     {
         path: '',
@@ -85,9 +145,14 @@ export const appRoutes: Route[] = [
             initialData: InitialDataResolver,
         },
         children: [
-            { path: 'roles', loadChildren: () => import('app/modules/features/pages/role/role.module').then(m => m.RoleModule) },
-        ]
+            {
+                path: 'roles',
+                loadChildren: () =>
+                    import('app/modules/features/pages/role/role.module').then(
+                        (m) => m.RoleModule
+                    ),
+            },
+        ],
     },
-    {path: '**', redirectTo: 'employees', pathMatch: 'full'},
-
+    { path: '**', redirectTo: 'employees', pathMatch: 'full' },
 ];

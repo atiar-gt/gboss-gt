@@ -56,7 +56,7 @@
         <div class="flex flex-auto overflow-hidden bg-white">
 
             <!-- Products list -->
-            <div class="flex flex-col flex-auto sm:mb-18 overflow-hidden sm:overflow-y-auto">
+            <div class="flex flex-col flex-auto overflow-hidden sm:overflow-y-auto">
                 <ng-container *ngIf="employeeData">
                     <ng-container *ngIf="employeeData.length > 0; else noProducts">
                         <div class="grid text-center">
@@ -68,10 +68,10 @@
                                 <div class="text-center" [mat-sort-header]="'price'">
                                     Email
                                 </div>
-                                <div [mat-sort-header]="'stock'">
+                                <div [mat-sort-header]="'phone'">
                                     Phone
                                 </div>
-                                <div [mat-sort-header]="'stock'">
+                                <div [mat-sort-header]="'assign'">
                                     Assign
                                 </div>
                                 <!-- <div [mat-sort-header]="'stock'">
@@ -124,17 +124,6 @@
                                         <div>
                                             <div class="min-w-5 text-center">
                                                 <div class="flex flex-row w-20 justify-between cursor-pointer">
-                                                    <!-- <div class="w-5">
-                                                        <img src="assets/icons/option-icon.svg">
-                                                    </div>
-                                                    <div (click)="onEdit(employee)" class="w-5">
-                                                        <img src="assets/icons/edit-icon.svg">
-                                                    </div>
-                                                    <div (click)="onDelete(employee)" class="w-5">
-                                                        <img src="assets/icons/delete-icon.svg">
-                                                    </div> -->
-
-
                                                     <button mat-icon-button [matMenuTriggerFor]="menu"
                                                         aria-label="Example icon-button with a menu">
                                                         <mat-icon>more_vert</mat-icon>

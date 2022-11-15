@@ -31,8 +31,6 @@ export class AddRolesComponent implements OnInit {
         if (this.userId) {
             this.setFormData();
         }
-        console.log('user id', this.userId);
-
         this.form = this._fb.group({
             name: ['', Validators.required],
             code: ['', Validators.required],
@@ -41,7 +39,6 @@ export class AddRolesComponent implements OnInit {
 
     
     onSubmit(): void {
-        console.log(this.form.valid);
         if (this.form.valid) {
             if (this.userId) {
                 this.updateEmployee();
@@ -76,7 +73,6 @@ export class AddRolesComponent implements OnInit {
             .getById(+this.userId)
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((res) => {
-                console.log('res', res);
                 this.form.patchValue(res.data);
             });
     }

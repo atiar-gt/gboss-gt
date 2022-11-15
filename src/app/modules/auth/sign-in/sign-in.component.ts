@@ -58,13 +58,12 @@ export class AuthSignInComponent implements OnInit {
      * Sign in
      */
     signIn(): void {
-        this.isLoading = true;
-        console.log('this.signInForm.value', this.signInForm.value);
-
+        
         // Return if the form is invalid
         if (this.signInForm.invalid) {
             return;
         }
+        this.isLoading = true;
 
         // Disable the form
         // this.signInForm.disable();
@@ -76,14 +75,8 @@ export class AuthSignInComponent implements OnInit {
         this._authService.signIn(this.signInForm.value).subscribe(
             (res) => {
                 this.isLoading = false;
-                console.log('res', res.body.success);
                 if (res.body.success) {
-                    console.log('success', res.body);
-
-
                     let authToken = res.headers.get("authorization");
-
-                    console.log(authToken);
                     this._authService.setAuthInfoInLocalStorage(authToken, res);
 
 

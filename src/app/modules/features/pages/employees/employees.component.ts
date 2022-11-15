@@ -74,20 +74,8 @@ export class EmployeesComponent implements OnInit {
     }
 
     getEmployees(): void {
-        // this._service.getAll().subscribe({
-        //   next(res) {
-        //     this.employeeData = res.data;
-        //     console.log('res', this.employeeData)
-        //   },
-        //   error(err) {
-        //     console.log(err);
-
-        //   },
-        // })
         this._paginatorService.tableChangeEvent.subscribe(
             (reloadEvent) => {
-                console.log('reload event', reloadEvent);
-
                 this._employeeService
                     .getAll(reloadEvent)
                     .pipe(takeUntil(this._unsubscribeAll))
@@ -108,7 +96,6 @@ export class EmployeesComponent implements OnInit {
     }
 
     applyFilter(value) {
-        console.log('value', value);
         this._employeeService
             .filterByValue(value)
             .pipe(debounceTime(500), takeUntil(this._unsubscribeAll))
@@ -118,12 +105,10 @@ export class EmployeesComponent implements OnInit {
     }
 
     onDelete(employee: Employee) {
-        console.log('delete', employee);
         this._confirmationService
             .open()
             .afterClosed()
             .subscribe((result) => {
-                console.log('result', result);
                 if (result === 'confirmed') {
                     this.employeeData = this.employeeData.filter(
                         (item: any) => item.id !== employee.id
@@ -132,7 +117,6 @@ export class EmployeesComponent implements OnInit {
                     this._employeeService
                         .delete(employee.id)
                         .subscribe((res) => {
-                            console.log('rest', res);
                             this._snackbar.openSnackBar(res.message);
                         });
                 }
