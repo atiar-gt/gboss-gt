@@ -33,7 +33,7 @@ export class AddEmployeeComponent implements OnInit {
     console.log('user id', this.userId);
 
     this.form = this._fb.group({
-      employeeCode: [''],
+      employeeCode: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       name: ['', Validators.required],
       password: [''],
@@ -57,6 +57,11 @@ export class AddEmployeeComponent implements OnInit {
       this.display.patchValue('');
     }
   }
+
+  public checkError = (controlName: string, errorName: string) => {
+    return this.form.controls[controlName].hasError(errorName);
+  };
+
 
   onSubmit(): void {
     console.log(this.form.valid);

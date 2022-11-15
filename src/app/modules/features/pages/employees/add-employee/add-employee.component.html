@@ -1,6 +1,6 @@
 <div class="w-full flex flex-col">
     <div class="pl-9 pt-5">
-        <span *ngIf="userId"class="font-semibold text-lg mb-3">Edit User</span>
+        <span *ngIf="userId" class="font-semibold text-lg mb-3">Edit User</span>
         <span *ngIf="!userId" class="font-semibold text-lg mb-3">Add User</span>
         <mat-divider class="mt-4"></mat-divider>
     </div>
@@ -10,41 +10,38 @@
             <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
 
                 <mat-form-field class="w-full">
-                    <mat-label>Employee Code</mat-label>
+                    <mat-label>Employee ID</mat-label>
                     <input formControlName="employeeCode" id="email" matInput>
                     <mat-error>
-                        Employee Code address is required
+                        Employee ID address is required
                     </mat-error>
                 </mat-form-field>
             </div>
             <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
+                <mat-form-field class="w-full">
+                    <mat-label>Employee Name</mat-label>
+                    <input formControlName="name" matInput>
+                    <mat-error>
+                        Employee Name is required
+                    </mat-error>
+                </mat-form-field>
+
+            </div>
+            <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
+
 
                 <mat-form-field class="w-full">
                     <mat-label>Email</mat-label>
                     <input formControlName="email" id="email" matInput>
-                    <mat-error>
-                        Email address is required
-                    </mat-error>
-                    <mat-error>
-                        Please enter a valid email address
-                    </mat-error>
-                </mat-form-field>
-            </div>
-            <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
-
-                <mat-form-field class="w-full">
-                    <mat-label>Name</mat-label>
-                    <input formControlName="name" matInput>
-                    <mat-error>
-                        Name is required
-                    </mat-error>
+                    <mat-error *ngIf="checkError('email', 'required')">Email is required</mat-error>
+                    <mat-error *ngIf="checkError('email', 'email')">Please enter a valid email address!</mat-error>
                 </mat-form-field>
             </div>
             <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
 
                 <mat-form-field class="w-full">
                     <mat-label>Mobile Number</mat-label>
-                    <input formControlName="mobileNumber" matInput>
+                    <input type="number" formControlName="mobileNumber" matInput>
                     <mat-error>
                         Mobile Number is required
                     </mat-error>
@@ -54,7 +51,7 @@
         </div>
 
         <div class="flex flex-row">
-            
+
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 
                 <mat-form-field class="w-full">
@@ -94,12 +91,12 @@
                         Office Name is required
                     </mat-error>
                 </mat-form-field>
-                
+
             </div>
 
         </div>
         <div class="flex flex-row">
-            
+
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 
                 <mat-form-field class="w-full">
@@ -129,20 +126,38 @@
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
             </div> -->
-            <div  class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 
-                <mat-form-field *ngIf="!userId" class="w-full">
+                <!-- <mat-form-field *ngIf="!userId" class="w-full">
                     <mat-label>Password</mat-label>
                     <input matInput formControlName="password">
                     <mat-error>
                         Password is required
                     </mat-error>
+                </mat-form-field> -->
+
+
+
+                <mat-form-field *ngIf="!userId" class="w-full">
+                    <mat-label>Password</mat-label>
+                    <input id="password" matInput type="password" formControlName="password" #passwordField />
+                    <button mat-icon-button type="button" (click)="
+                            passwordField.type === 'password'
+                                ? (passwordField.type = 'text')
+                                : (passwordField.type = 'password')
+                        " matSuffix>
+                        <mat-icon class="icon-size-5" *ngIf="passwordField.type === 'password'"
+                            [svgIcon]="'heroicons_solid:eye'"></mat-icon>
+                        <mat-icon class="icon-size-5" *ngIf="passwordField.type === 'text'"
+                            [svgIcon]="'heroicons_solid:eye-off'"></mat-icon>
+                    </button>
+                    <mat-error> Password is required </mat-error>
                 </mat-form-field>
             </div>
 
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 
-                
+
             </div>
 
         </div>
@@ -192,7 +207,8 @@
 
         <div class="flex flex-row">
             <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
-                <button (click)="onSubmit()" class="bg-primary-500 large w-full hover:bg-primary-700 text-white py-2 px-8 rounded-md">
+                <button (click)="onSubmit()"
+                    class="bg-primary-500 large w-full hover:bg-primary-700 text-white py-2 px-8 rounded-md">
                     Save
                 </button>
             </div>
