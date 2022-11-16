@@ -5,6 +5,8 @@
         <ng-content select="[fuseVerticalNavigationHeader]"></ng-content>
     </div>
 
+    <div class="py-4"></div>
+
     <!-- Content -->
     <div
         class="fuse-vertical-navigation-content"
@@ -16,7 +18,6 @@
         <!-- <div class="fuse-vertical-navigation-content-header">
             <ng-content select="[fuseVerticalNavigationContentHeader]"></ng-content>
         </div> -->
-        <div class="my-4"></div>
 
         <!-- Items -->
         <ng-container *ngFor="let item of navigation; trackBy: trackByFn">

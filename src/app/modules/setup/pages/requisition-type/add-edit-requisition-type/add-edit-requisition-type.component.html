@@ -1,0 +1,43 @@
+<div class="w-full flex flex-col">
+    <div class="pl-9 pt-5">
+        <span *ngIf="userId"class="font-semibold text-lg mb-3">Edit Requisition Type</span>
+        <span *ngIf="!userId" class="font-semibold text-lg mb-3">Add Requisition Type</span>
+        <mat-divider class="mt-4"></mat-divider>
+    </div>
+    <form [formGroup]="form" class="m-6">
+
+        <div class="flex flex-row">
+            <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
+
+                <mat-form-field class="w-full">
+                    <mat-label>Requisition Type</mat-label>
+                    <input formControlName="name" matInput>
+                    <mat-error>
+                        Requisition Type is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
+
+                <mat-form-field class="w-full">
+                    <mat-label>Code</mat-label>
+                    <input formControlName="code" matInput>
+                    <mat-error>
+                        Code is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+        </div>
+
+        <div class="flex flex-row">
+            <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
+                <button (click)="onSubmit()" class="bg-primary-500 large w-full hover:bg-primary-700 text-white py-2 px-8 rounded-md">
+                    Save
+                </button>
+            </div>
+        </div>
+
+    </form>
+
+</div>

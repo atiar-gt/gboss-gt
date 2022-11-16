@@ -2,27 +2,26 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RoleService } from 'app/modules/features/services/role/role.service';
+import { RequisitionTypeService } from 'app/modules/setup/services/requisition-type/requisition-type.service';
 import { SnackbarComponent } from 'app/shared/components/snackbar/snackbar.component';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
-    selector: 'app-add-roles',
-    templateUrl: './add-roles.component.html',
-    styleUrls: ['./add-roles.component.scss'],
+    selector: 'app-add-edit-requisition-type',
+    templateUrl: './add-edit-requisition-type.component.html',
+    styleUrls: ['./add-edit-requisition-type.component.scss'],
 })
-export class AddRolesComponent implements OnInit {
+export class AddEditRequisitionTypeComponent implements OnInit {
     userId: string;
     form: FormGroup;
     file_store: FileList;
-    // display: FormControl = new FormControl('', Validators.required);
-    // bloodGroups = ['B+', 'B-', 'A+', 'A-', 'O+', 'O-', 'AB+', 'AB-'];
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     constructor(
         private _fb: FormBuilder,
         private _route: ActivatedRoute,
         private _router: Router,
-        private _roleService: RoleService,
+        private _service: RequisitionTypeService,
         private _snackbar: SnackbarComponent
     ) {}
 
@@ -37,39 +36,38 @@ export class AddRolesComponent implements OnInit {
         });
     }
 
-    
     onSubmit(): void {
         if (this.form.valid) {
             if (this.userId) {
-                this.updateEmployee();
+                this.update();
             } else {
-                this.addEmployee();
+                this.add();
             }
         }
     }
 
-    addEmployee(): void {
-        this._roleService.create(this.form.value).subscribe((res) => {
+    add(): void {
+        this._service.create(this.form.value).subscribe((res) => {
             this._snackbar.openSnackBar(res.message);
             if (res.success) {
-                this._router.navigateByUrl('role');
+                this._router.navigateByUrl('setup/requisition-type');
             }
         });
     }
 
-    updateEmployee(): void {
-        this._roleService
+    update(): void {
+        this._service
             .update(this.form.value, +this.userId)
             .subscribe((res) => {
                 this._snackbar.openSnackBar(res.message);
                 if (res.success) {
-                    this._router.navigateByUrl('role');
+                    this._router.navigateByUrl('setup/requisition-type');
                 }
             });
     }
 
     setFormData(): void {
-        this._roleService
+        this._service
             .getById(+this.userId)
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((res) => {
