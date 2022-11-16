@@ -1,9 +1,9 @@
 <div style="background-image: url('../../../../assets/images/logo/login-bg.svg'); background-repeat: no-repeat; background-size: cover;" class="flex flex-row flex-auto items-center sm:justify-evenly min-w-0 ">
-    <div class="hidden md:block">
-        <p class="text-4xl">We are dedicated to becoming a <br />forerunner in presenting</p>
+    <div class="hidden md:block leading-snug">
+        <p class="text-4xl font-semibold">We are dedicated to becoming a <br />forerunner in presenting</p>
         <p class="text-[80px] font-bold">Bangladeshi</p>
         <p class="text-[80px] font-bold">Technologies</p>
-        <p class="text-3xl">to the world market</p>
+        <p class="text-3xl font-semibold">to the world market</p>
     </div>
 
     <div
@@ -117,7 +117,7 @@
                     [color]="'primary'"
                     (click)="signIn()"
                 >
-                    <span *ngIf="!isLoading"> Sign in </span>
+                    <span *ngIf="!isLoading">Login</span>
                     <mat-progress-spinner
                         *ngIf="isLoading"
                         [diameter]="24"
