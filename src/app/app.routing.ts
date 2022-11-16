@@ -164,6 +164,42 @@ export const appRoutes: Route[] = [
         },
         children: [
             {
+                path: 'requisition',
+                loadChildren: () =>
+                    import('app/modules/features/pages/requisition/requisition.module').then(
+                        (m) => m.RequisitionModule
+                    ),
+            },
+        ],
+    },
+    {
+        path: '',
+        canActivate: [AuthGuard],
+        // canActivateChild: [AuthGuard],
+        component: LayoutComponent,
+        resolve: {
+            initialData: InitialDataResolver,
+        },
+        children: [
+            {
+                path: 'menu-management',
+                loadChildren: () =>
+                    import('app/modules/features/pages/menu/menu.module').then(
+                        (m) => m.MenuModule
+                    ),
+            },
+        ],
+    },
+    {
+        path: '',
+        canActivate: [AuthGuard],
+        // canActivateChild: [AuthGuard],
+        component: LayoutComponent,
+        resolve: {
+            initialData: InitialDataResolver,
+        },
+        children: [
+            {
                 path: 'setup',
                 loadChildren: () =>
                     import('app/modules/setup/setup.module').then(

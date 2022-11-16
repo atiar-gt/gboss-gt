@@ -13,9 +13,6 @@ import { Subject, takeUntil } from 'rxjs';
 export class AddRolesComponent implements OnInit {
     userId: string;
     form: FormGroup;
-    file_store: FileList;
-    // display: FormControl = new FormControl('', Validators.required);
-    // bloodGroups = ['B+', 'B-', 'A+', 'A-', 'O+', 'O-', 'AB+', 'AB-'];
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     constructor(

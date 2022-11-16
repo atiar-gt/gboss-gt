@@ -154,10 +154,10 @@ export class FuseVerticalNavigationCollapsableItemComponent implements OnInit, O
                 else
                 {
                     // If the autoCollapse is on, collapse...
-                    if ( this.autoCollapse )
-                    {
-                        this.collapse();
-                    }
+                    // if ( this.autoCollapse )
+                    // {
+                    //     this.collapse();
+                    // }
                 }
             });
 
@@ -246,6 +246,9 @@ export class FuseVerticalNavigationCollapsableItemComponent implements OnInit, O
      */
     toggleCollapsable(): void
     {
+        console.log('toggled', this.isCollapsed);
+        
+        this.isCollapsed = true;
         // Toggle collapse/expand
         if ( this.isCollapsed )
         {

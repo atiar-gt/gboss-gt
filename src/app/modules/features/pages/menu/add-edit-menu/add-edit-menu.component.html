@@ -1,0 +1,84 @@
+<div class="w-full flex flex-col">
+    <div class="pl-9 pt-5">
+        <span *ngIf="userId"class="font-semibold text-lg mb-3">Edit Menu</span>
+        <span *ngIf="!userId" class="font-semibold text-lg mb-3">Add Menu</span>
+        <mat-divider class="mt-4"></mat-divider>
+    </div>
+    <form [formGroup]="form" class="m-6">
+
+        <div class="flex flex-row">
+            <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
+
+                <mat-form-field class="w-full">
+                    <mat-label>Menu Name</mat-label>
+                    <input formControlName="name" matInput>
+                    <mat-error>
+                        Menu Name is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
+
+                <mat-form-field class="w-full">
+                    <mat-label>Code</mat-label>
+                    <input type="number" formControlName="code" matInput>
+                </mat-form-field>
+            </div>
+            <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
+
+                <mat-form-field class="w-full">
+                    <mat-label>Menu Type</mat-label>
+                    <mat-select formControlName="type">
+                        <mat-option *ngFor="let type of types" [value]="type.type" (click)="onMenuType(type)">
+                            {{type.name}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error>
+                        Menu Type is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div *ngIf="isChild" class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
+                
+                <mat-form-field class="w-full">
+                    <mat-label>Parent Menu</mat-label>
+                    <mat-select formControlName="parentId">
+                        <mat-option *ngFor="let menu of menus" [value]="menu.id">
+                            {{menu.name}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="checkError('parentId', 'required')">Parent Menu is required</mat-error>
+                </mat-form-field>
+            </div>
+
+        </div>
+
+        <div class="flex flex-row">
+            <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
+                <mat-form-field class="w-full">
+                    <mat-label>Route</mat-label>
+                    <input formControlName="route" matInput>
+                    <mat-error>
+                        Route is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
+                <mat-form-field class="w-full">
+                    <mat-label>Icon</mat-label>
+                    <input formControlName="icon" matInput>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="flex flex-row">
+            <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
+                <button (click)="onSubmit()" class="bg-primary-500 large w-full hover:bg-primary-700 text-white py-2 px-8 rounded-md">
+                    Save
+                </button>
+            </div>
+        </div>
+
+    </form>
+
+</div>
