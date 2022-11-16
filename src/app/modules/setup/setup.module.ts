@@ -49,10 +49,25 @@ const setupRoutes: Route[] = [
         path: 'requisition-product',
         component: RequisitionProductComponent,
     },
+    {
+        path: 'requisition-product/add-new',
+        component: AddEditRequisitionProductComponent,
+    },
+    {
+        path: 'requisition-product/edit/:id',
+        component: AddEditRequisitionProductComponent,
+    },
 ];
 
 @NgModule({
-    declarations: [RequisitionTypeComponent, RequisitionCategoryComponent, AddEditRequisitionTypeComponent, AddEditRequisitionCategoryComponent, AddEditRequisitionProductComponent],
+    declarations: [
+        RequisitionTypeComponent,
+        RequisitionCategoryComponent,
+        RequisitionProductComponent,
+        AddEditRequisitionTypeComponent,
+        AddEditRequisitionCategoryComponent,
+        AddEditRequisitionProductComponent,
+    ],
     imports: [
         CommonModule,
         RouterModule.forChild(setupRoutes),

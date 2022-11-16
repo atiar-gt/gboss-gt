@@ -1,1 +1,98 @@
-<p>requisition-product works!</p>
+<div class="flex flex-col m-6 w-full">
+    <div class="flex flex- justify-between py-4">
+        <div><span class="font-semibold text-lg mb-3">Requisition Product</span></div>
+
+        <div>
+            <button (click)="addNew()" class="bg-primary-500 hover:bg-primary-700 text-white py-2 px-8 rounded-md">
+                Add New
+            </button>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div>
+        <div class="flex flex-auto overflow-hidden bg-white">
+
+            <!-- Products list -->
+            <div class="flex flex-col flex-auto overflow-hidden sm:overflow-y-auto">
+                <ng-container *ngIf="requisitionProductData">
+                    <ng-container *ngIf="requisitionProductData.length > 0; else noProducts">
+                        <div class="grid text-center">
+                            <!-- Header -->
+                            <div class="inventory-grid items-center z-10 sticky top-0 grid gap-4 py-4 px-6 md:px-8 shadow text-md font-semibold text-secondary bg-gray-50 dark:bg-black dark:bg-opacity-5"
+                                matSort matSortDisableClear>
+                                <!-- <div class="text-center">Image</div> -->
+                                <div class="text-center" >Name</div>
+                                <div class="text-center">
+                                    Category
+                                </div>
+                                <div class="text-center">
+                                    Actions
+                                </div>
+                            </div>
+                            <!-- Rows -->
+                            <ng-container *ngIf="requisitionProductData">
+                                <ng-container *ngFor="let item of requisitionProductData;">
+                                    <div class="inventory-grid grid items-center gap-4 py-2 px-6 md:px-8 border-b">
+
+                                        <div class="hidden md:block ">
+                                            {{item.name}}
+                                        </div>
+
+                                        <div class="">
+                                            {{item.categoryId}}
+                                        </div>
+
+                                        <div>
+                                            <div class="min-w-5 text-center">
+                                                <div class="flex flex-row w-20 justify-between cursor-pointer">
+                                                    <button mat-icon-button [matMenuTriggerFor]="menu"
+                                                        aria-label="Example icon-button with a menu">
+                                                        <mat-icon>more_vert</mat-icon>
+                                                    </button>
+                                                    <mat-menu #menu="matMenu">
+                                                        <!-- <button mat-menu-item>
+                                                            <img class="h-6 w-6 mr-4"
+                                                                src="assets/icons/option-icon.svg">
+                                                            <span>View</span>
+                                                        </button> -->
+                                                        <button (click)="onEdit(item)" mat-menu-item>
+                                                            <img class="h-6 w-6 mr-4" src="assets/icons/edit-icon.svg">
+                                                            <span>Edit</span>
+                                                        </button>
+                                                        <button (click)="onDelete(item)" mat-menu-item>
+                                                            <img class="h-6 w-6 mr-4"
+                                                                src="assets/icons/delete-icon.svg">
+                                                            <span>Delete</span>
+                                                        </button>
+                                                    </mat-menu>
+
+                                                </div>
+                                            </div>
+                                            <!-- Low stock -->
+
+                                        </div>
+
+
+                                    </div>
+
+                                </ng-container>
+                            </ng-container>
+                        </div>
+                    </ng-container>
+                </ng-container>
+
+
+                <ng-template #noProducts>
+                    <div class="p-8 sm:p-16 border-t text-4xl font-semibold tracking-tight text-center">There are no
+                        items!</div>
+                </ng-template>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+</div>

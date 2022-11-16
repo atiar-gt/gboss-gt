@@ -4,6 +4,8 @@ import { FuseConfirmationService } from '@fuse/services/confirmation';
 import { SnackbarComponent } from 'app/shared/components/snackbar/snackbar.component';
 import { Subject, takeUntil } from 'rxjs';
 import { RequisitionCategoryService } from '../../services/requisition-category/requisition-category.service';
+import { RequisitionProductService } from '../../services/requisition-product/requisition-product.service';
+
 
 @Component({
   selector: 'app-requisition-product',
@@ -14,11 +16,11 @@ export class RequisitionProductComponent implements OnInit {
 
   private _unsubscribeAll: Subject<any> = new Subject<any>();
     paginator;
-    requisitionCategoryData;
+    requisitionProductData;
 
     constructor(
         private _router: Router,
-        private _service: RequisitionCategoryService,
+        private _service: RequisitionProductService,
         private _snackbar: SnackbarComponent,
         private _confirmationService: FuseConfirmationService
     ) {}
@@ -28,7 +30,7 @@ export class RequisitionProductComponent implements OnInit {
     }
 
     addNew(): void {
-        this._router.navigateByUrl('setup/requisition-category/add-new');
+        this._router.navigateByUrl('setup/requisition-product/add-new');
     }
 
     getData(): void {
@@ -36,13 +38,13 @@ export class RequisitionProductComponent implements OnInit {
             .getAll()
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((res) => {
-                this.requisitionCategoryData = res.data;
+                this.requisitionProductData = res.data;
                 this.paginator = res.pagination;
             });
     }
 
     onEdit(role) {
-        this._router.navigateByUrl(`setup/requisition-category/edit/${role.id}`);
+        this._router.navigateByUrl(`setup/requisition-product/edit/${role.id}`);
     }
 
     // applyFilter(value) {
@@ -60,7 +62,7 @@ export class RequisitionProductComponent implements OnInit {
             .afterClosed()
             .subscribe((result) => {
                 if (result === 'confirmed') {
-                    this.requisitionCategoryData = this.requisitionCategoryData.filter(
+                    this.requisitionProductData = this.requisitionProductData.filter(
                         (item: any) => item.id !== role.id
                     );
 
