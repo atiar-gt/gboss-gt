@@ -208,5 +208,5 @@ export const appRoutes: Route[] = [
             },
         ],
     },
-    { path: '**', redirectTo: 'employees', pathMatch: 'full' },
+    { path: '**', redirectTo: 'employee', pathMatch: 'full' },
 ];
