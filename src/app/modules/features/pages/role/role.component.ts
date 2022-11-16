@@ -27,7 +27,7 @@ export class RoleComponent implements OnInit {
     }
 
     onEmployee(): void {
-        this._router.navigateByUrl('roles/add-new');
+        this._router.navigateByUrl('role/add-new');
     }
 
     getData(): void {
@@ -41,7 +41,7 @@ export class RoleComponent implements OnInit {
     }
 
     onEdit(role) {
-        this._router.navigateByUrl(`roles/edit/${role.id}`);
+        this._router.navigateByUrl(`role/edit/${role.id}`);
     }
 
     applyFilter(value) {

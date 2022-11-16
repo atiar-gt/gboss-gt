@@ -91,11 +91,11 @@ export class EmployeesComponent implements OnInit {
     }
 
     onEmployee(): void {
-        this._router.navigateByUrl('employees/add-new');
+        this._router.navigateByUrl('employee/add-new');
     }
 
     onEdit(employee: Employee) {
-        this._router.navigateByUrl(`employees/edit/${employee.id}`);
+        this._router.navigateByUrl(`employee/edit/${employee.id}`);
     }
 
     onView(data): void {

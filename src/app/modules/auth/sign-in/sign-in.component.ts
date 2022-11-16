@@ -90,7 +90,7 @@ export class AuthSignInComponent implements OnInit {
                     const redirectURL = this._activatedRoute.snapshot.queryParamMap.get('redirectURL') || '/signed-in-redirect';
                     console.log('redirectURL', redirectURL);
 
-                    this._router.navigate(['/employees']);
+                    this._router.navigate(['/employee']);
                 }
                 else {
                     console.log(res.body.message);
