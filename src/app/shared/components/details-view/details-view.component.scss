@@ -1,0 +1,38 @@
+table,
+td,
+th {
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    padding: 5px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.file {
+    cursor: pointer;
+}
+
+.disabled {
+    pointer-events: none;
+    display: none;
+}
+
+.file-hover {
+    color: red;
+}
+
+.file-hover:hover {
+    text-decoration: underline;
+}
+

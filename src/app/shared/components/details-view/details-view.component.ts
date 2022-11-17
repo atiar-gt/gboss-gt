@@ -7,6 +7,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
     styleUrls: ['./details-view.component.scss'],
 })
 export class DetailsViewComponent implements OnInit {
+    allData;
+    Object;
     constructor(
         private _dialogRef: MatDialogRef<DetailsViewComponent>,
         @Inject(MAT_DIALOG_DATA) public data
@@ -14,5 +16,6 @@ export class DetailsViewComponent implements OnInit {
 
     ngOnInit(): void {
         console.log('data', this.data);
+        this.allData = this.data.data;
     }
 }

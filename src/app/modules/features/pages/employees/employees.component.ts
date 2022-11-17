@@ -8,6 +8,7 @@ import { PaginatorService } from 'app/shared/services/paginator/paginator.servic
 import { debounceTime, Subject, takeUntil } from 'rxjs';
 import { Employee } from '../../models/employee.model';
 import { EmployeesService } from '../../services/employees/employees.service';
+import { AssignRoleComponent } from './assign-role/assign-role.component';
 
 @Component({
     selector: 'app-employees',
@@ -100,10 +101,20 @@ export class EmployeesComponent implements OnInit {
 
     onView(data): void {
         const dialogConfig = new MatDialogConfig();
-        dialogConfig.data = { data: data };
+        dialogConfig.data = { data };
         dialogConfig.width = '600px';
 
         const dialogRef = this.dialog.open(DetailsViewComponent, dialogConfig);
+    }
+
+    onAssign(data: Employee): void {
+        console.log('data', data);
+        
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.data = { data };
+        dialogConfig.width = '600px';
+
+        const dialogRef = this.dialog.open(AssignRoleComponent, dialogConfig);
     }
 
     applyFilter(value) {
