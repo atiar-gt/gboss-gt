@@ -154,10 +154,10 @@ export class FuseVerticalNavigationCollapsableItemComponent implements OnInit, O
                 else
                 {
                     // If the autoCollapse is on, collapse...
-                    // if ( this.autoCollapse )
-                    // {
-                    //     this.collapse();
-                    // }
+                    if ( this.autoCollapse )
+                    {
+                        this.collapse();
+                    }
                 }
             });
 
@@ -246,9 +246,6 @@ export class FuseVerticalNavigationCollapsableItemComponent implements OnInit, O
      */
     toggleCollapsable(): void
     {
-        console.log('toggled', this.isCollapsed);
-        
-        this.isCollapsed = true;
         // Toggle collapse/expand
         if ( this.isCollapsed )
         {
@@ -286,8 +283,6 @@ export class FuseVerticalNavigationCollapsableItemComponent implements OnInit, O
     private _hasActiveChild(item: FuseNavigationItem, currentUrl: string): boolean
     {
         const children = item.children;
-        console.log('children', children);
-        
 
         if ( !children )
         {
@@ -305,7 +300,7 @@ export class FuseVerticalNavigationCollapsableItemComponent implements OnInit, O
             }
 
             // Check if the child has a link and is active
-            if ( child.link && this._router.isActive(child.link, child.exactMatch || false) )
+            if ( child.route && this._router.isActive(child.route, child.exactMatch || false) )
             {
                 return true;
             }

@@ -39,6 +39,8 @@ export class AuthInterceptor implements HttpInterceptor {
         return next.handle(tokenizedRequest).pipe(
             tap((event: HttpEvent<any>) => {}),
             catchError((error: HttpErrorResponse) => {
+                console.log('ERROR', error);
+                
                 if (error.status === 403) {
                     localStorage.clear();
                     this._router.navigate(['/sign-in']).then((r) => r);
