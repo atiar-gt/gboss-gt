@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { FuseConfirmationService } from '@fuse/services/confirmation';
 import { SnackbarComponent } from 'app/shared/components/snackbar/snackbar.component';
@@ -6,6 +7,7 @@ import { PaginatorService } from 'app/shared/services/paginator/paginator.servic
 import { Subject, takeUntil, debounceTime } from 'rxjs';
 import { Menu } from '../../models/menu.model';
 import { MenuService } from '../../services/menu/menu.service';
+import { AssignRoleToMenuComponent } from './assign-role-to-menu/assign-role-to-menu.component';
 
 @Component({
     selector: 'app-menu',
@@ -22,7 +24,8 @@ export class MenuComponent implements OnInit {
         private _menuService: MenuService,
         private _snackbar: SnackbarComponent,
         private _confirmationService: FuseConfirmationService,
-        private _paginatorService: PaginatorService
+        private _paginatorService: PaginatorService,
+        public _dialog: MatDialog
     ) {}
 
     ngOnInit(): void {
@@ -33,31 +36,42 @@ export class MenuComponent implements OnInit {
         this._router.navigateByUrl('menu-management/add-new');
     }
 
+    addRoleToMenu(data) {
+        console.log('menu data', data);
+
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.data = { roleId: data.id };
+        dialogConfig.width = '600px';
+
+        const dialogRef = this._dialog.open(
+            AssignRoleToMenuComponent,
+            dialogConfig
+        );
+    }
+
+    assignPermission(menu): void {
+        console.log(menu);
+
+        console.log('go to assign permission page');
+        this._router.navigateByUrl(`menu-management/permission/${menu.id}`);
+    }
+
     getData(): void {
-        // this._menuService
-        //     .getAll()
-        //     .pipe(takeUntil(this._unsubscribeAll))
-        //     .subscribe((res) => {
-        //         this.menuData = res.data;
-        //         this.paginator = res.pagination;
-        //     });
-
-
-            this._paginatorService.tableChangeEvent.subscribe(
-                (reloadEvent) => {
-                    this._menuService
-                        .getAll(reloadEvent)
-                        .pipe(takeUntil(this._unsubscribeAll))
-                        .subscribe((res) => {
-                            this.menuData = res.data;
-                            this.paginator = res.pagination;
-                            this._paginatorService._onTableDataChange.next(
-                                res.pagination.dataCount
-                            );
-                        });
-                },
-                (error) => {}
-            );
+        this._paginatorService.tableChangeEvent.subscribe(
+            (reloadEvent) => {
+                this._menuService
+                    .getAll(reloadEvent)
+                    .pipe(takeUntil(this._unsubscribeAll))
+                    .subscribe((res) => {
+                        this.menuData = res.data;
+                        this.paginator = res.pagination;
+                        this._paginatorService._onTableDataChange.next(
+                            res.pagination.dataCount
+                        );
+                    });
+            },
+            (error) => {}
+        );
     }
 
     onEdit(menu) {

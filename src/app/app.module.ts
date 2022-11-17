@@ -14,6 +14,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AppComponent } from 'app/app.component';
 import { appRoutes } from 'app/app.routing';
 import { SnackbarComponent } from './shared/components/snackbar/snackbar.component';
+import { PermissionComponent } from './modules/features/pages/permission/permission.component';
 
 const routerConfig: ExtraOptions = {
     preloadingStrategy: PreloadAllModules,
