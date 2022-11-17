@@ -17,6 +17,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { UserModule } from 'app/layout/common/user/user.module';
 import { PaginatorModule } from 'app/shared/components/paginator/paginator.module';
+import { EmployeeDetailsViewComponent } from './employee-details-view/employee-details-view.component';
 
 const employeeRoutes: Route[] = [
     {
@@ -34,7 +35,7 @@ const employeeRoutes: Route[] = [
 ];
 
 @NgModule({
-    declarations: [EmployeesComponent, AddEmployeeComponent],
+    declarations: [EmployeesComponent, AddEmployeeComponent, EmployeeDetailsViewComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(employeeRoutes),

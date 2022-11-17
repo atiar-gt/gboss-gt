@@ -3,6 +3,7 @@ export interface Employee {
     employeeCode: string;
     email: string;
     name: string;
+    gender: string;
     mobileNumber: string;
     designation: string;
     payrollDesignation: string;

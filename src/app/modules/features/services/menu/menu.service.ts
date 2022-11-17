@@ -9,10 +9,10 @@ import { Observable } from 'rxjs';
 })
 export class MenuService extends DataService {
     constructor(http: HttpClient) {
-        super(http, '/menu');
+        super(http, '/menus');
     }
 
     getParentMenus(): Observable<any> {
-        return this.http.get(`${environment.baseUrl}/menu?type=1&page=0`);
+        return this.http.get(`${environment.baseUrl}/menus?type=1&page=0`);
     }
 }

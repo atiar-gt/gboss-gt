@@ -8,7 +8,7 @@ import { DataService } from 'app/shared/services/data/data.service';
 export class EmployeesService extends DataService {
 
   constructor(http: HttpClient) {
-    super(http, '/employee');
+    super(http, '/employees');
   }
 
 }

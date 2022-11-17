@@ -1,0 +1,68 @@
+<div style="display: block !important;">
+    <div class="dialog">
+        <div
+            class="relative bg-primary-300 flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between py-4 px-6 md:px-8 border-b">
+
+            <div class="text-3xl font-extrabold tracking-tight">Employee Details</div>
+        </div>
+        <mat-dialog-content>
+            <!-- <h2 class="ml-12 pt-8"><b>Employee Details</b></h2> -->
+            <div style="display: block !important;">
+                <div fxLayout="row" fxFlex="100" fxLayoutGap="10px" class="fuse-card">
+                    <div class="sidebar" fxFlex="50">
+                        <div class="m-12 leading-loose">
+                            <p><b>Employee Name:&nbsp;&nbsp;; </b>{{employeeData.name}}</p>
+                            <p><b>Employee ID: &nbsp;&nbsp;</b>{{employeeData.employeeCode}}</p>
+                            <p><b>Email: &nbsp;&nbsp;</b>{{employeeData ? employeeData.email : 'N/A'}}</p>
+                            <p><b>Phone: &nbsp;&nbsp;</b>{{employeeData ? employeeData.mobileNumber : 'N/A'}}</p>
+                            <p><b>Gender: &nbsp;&nbsp;</b>{{employeeData ? employeeData.gender : 'N/A'}}</p>
+                            <p><b>Designation: &nbsp;&nbsp;</b>{{employeeData.designation ? employeeData.designation :
+                                'N/A'}}</p>
+                            <p><b>Office Name: &nbsp;&nbsp;</b>{{employeeData.officeName ? employeeData.officeName :
+                                'N/A'}}</p>
+                            <p><b>Payroll Designation: &nbsp;&nbsp;</b>{{employeeData.payrollDesignation ?
+                                employeeData.payrollDesignation : 'N/A' }}</p>
+                            <p><b>Sitting Location: &nbsp;&nbsp;</b>{{employeeData.sittingLocation}}</p>
+                        </div>
+                    </div>
+                    <!--                     
+                    <div class="sidebar" fxFlex="50">
+                        <div class="m-12">
+
+                        </div>
+                    </div> -->
+                </div>
+
+            </div>
+            <!--            file show-->
+            <!-- <table>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Item Amount</th>
+                </tr>
+                <tr *ngFor="let file of fileItems">
+                    <td>{{ file.receipt_description }}</td>
+                    <td> {{ file.requested_amount }} BDT </td>
+                </tr>
+            </table> -->
+
+            <br>
+
+
+
+
+
+            <br>
+            <!--              form start-->
+            <div class="hello">
+
+                <mat-dialog-actions>
+                    <!-- <button [disabled]="form.invalid" class="mat-raised-button mat-primary  " (click)="save()">Save
+                    </button> -->
+                    <!-- <button mat-dialog-close class="mat-raised-button" (click)="close()">Close</button> -->
+                </mat-dialog-actions>
+            </div>
+        </mat-dialog-content>
+    </div>
+
+</div>

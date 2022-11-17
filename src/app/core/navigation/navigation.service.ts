@@ -51,7 +51,7 @@ export class NavigationService {
     get(): Observable<Navigation> {
         const userId: number = this._authService.authInfo.id;
         return this._httpClient
-            .get<any>(`${environment.baseUrl}/employee/role/menu`)
+            .get<any>(`${environment.baseUrl}/employees/role/menu`)
             .pipe(
                 tap((res) => {
                     
