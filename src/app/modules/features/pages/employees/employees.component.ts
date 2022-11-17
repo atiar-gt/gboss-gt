@@ -16,47 +16,7 @@ import { EmployeeDetailsViewComponent } from './employee-details-view/employee-d
     styleUrls: ['./employees.component.scss'],
 })
 export class EmployeesComponent implements OnInit {
-    departments = ['Software Development', 'HR', 'Finance', 'Admin'];
-    bloodGroups = ['B+', 'B-', 'A', 'A-', 'O+', 'O-', 'AB+', 'AB-'];
     private _unsubscribeAll: Subject<any> = new Subject<any>();
-    // employeeData = [
-    //   {
-    //     "employeeCode": "111211",
-    //     "email": "afratul.taohid1211111@gigatechltd.com",
-    //     "name": "Afratul Touhid",
-    //     "mobileNumber": "01673260344",
-    //     "designation": "Mobile Application Developer",
-    //     "payrollDesignation": "Assistant Manager",
-    //     "bloodGroup": "B+",
-    //     "officeName": "Gigatech - Main Office",
-    //     "officeAddress": "Lotus Kamal Tower",
-    //     "sittingLocation": "6th Floor - Left Side"
-    //   },
-    //   {
-    //     "employeeCode": "111212",
-    //     "email": "afratul.taohid1211111@gigatechltd.com",
-    //     "name": "Navid Al Hassan",
-    //     "mobileNumber": "01673260344",
-    //     "designation": "Full Stack Developer",
-    //     "payrollDesignation": "Assistant Manager",
-    //     "bloodGroup": "A+",
-    //     "officeName": "Gigatech - Main Office",
-    //     "officeAddress": "Lotus Kamal Tower",
-    //     "sittingLocation": "6th Floor - Left Side"
-    //   },
-    //   {
-    //     "employeeCode": "111212",
-    //     "email": "afratul.taohid1211111@gigatechltd.com",
-    //     "name": "Shourav Aich",
-    //     "mobileNumber": "01673260344",
-    //     "designation": "Full Stack Developer",
-    //     "payrollDesignation": "Assistant Manager",
-    //     "bloodGroup": "B+",
-    //     "officeName": "Gigatech - Main Office",
-    //     "officeAddress": "Lotus Kamal Tower",
-    //     "sittingLocation": "6th Floor - Left Side"
-    //   },
-    // ]
     employeeData: Employee[] = [];
     paginator;
 
