@@ -7,6 +7,6 @@ import { DataService } from 'app/shared/services/data/data.service';
 })
 export class RequisitionCategoryService extends DataService {
     constructor(http: HttpClient) {
-        super(http, '/requisition/category');
+        super(http, '/requisition/categories');
     }
 }
