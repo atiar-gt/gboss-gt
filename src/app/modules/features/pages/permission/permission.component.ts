@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import {
+    FormBuilder,
+    FormControl,
+    FormGroup,
+    Validators,
+} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { PaginatorService } from 'app/shared/services/paginator/paginator.service';
 import { Subject, takeUntil } from 'rxjs';
@@ -10,20 +16,74 @@ import { MenuPermissionService } from '../../services/menu-permission/menu-permi
     styleUrls: ['./permission.component.scss'],
 })
 export class PermissionComponent implements OnInit {
+    toppings = new FormControl('');
+    form: FormGroup;
+    toppingList: string[] = ['Create', 'Edit', 'Approve', 'Delete'];
     userId: number;
     permissionData;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
     paginator;
+    menuId;
     constructor(
+        private _fb: FormBuilder,
         private _route: ActivatedRoute,
         private _paginatorService: PaginatorService,
         private _menuPermissionService: MenuPermissionService
     ) {}
 
     ngOnInit(): void {
+        this.form = this._fb.group({
+            isAdd: [false],
+            isEdit: [false],
+            isApprove: [false],
+            isDelete: [false],
+        });
         this.userId = +this._route.snapshot.paramMap.get('id');
         if (this.userId) {
             this.getData();
+        }
+    }
+
+    onChange(event, select, id) {
+        // this.menuId = id;
+        console.log('menuId', id);
+
+        if (!event) {
+            console.log('EVENT', event);
+            console.log('SELECT', select);
+
+            if (this.toppings.value.includes('Create')) {
+                this.form.get('isAdd').setValue(true);
+            } else {
+                this.form.get('isAdd').setValue(false);
+            }
+
+            if (this.toppings.value.includes('Edit')) {
+                this.form.get('isEdit').setValue(true);
+            } else {
+                this.form.get('isEdit').setValue(false);
+            }
+
+            if (this.toppings.value.includes('Approve')) {
+                this.form.get('isApprove').setValue(true);
+            } else {
+                this.form.get('isApprove').setValue(false);
+            }
+
+            if (this.toppings.value.includes('Delete')) {
+                this.form.get('isDelete').setValue(true);
+            } else {
+                this.form.get('isDelete').setValue(false);
+            }
+            // else if (this.toppings.value.includes('Edit'))
+            console.log('toppings', this.form.value);
+            console.log('idddd', id);
+
+            this._menuPermissionService
+                .update(this.form.value, id)
+                .subscribe((res) => {
+                    console.log('res', res);
+                });
         }
     }
 
@@ -33,7 +93,6 @@ export class PermissionComponent implements OnInit {
         //     this.permissionData = res.data;
         // });
 
-
         this._paginatorService.tableChangeEvent.subscribe(
             (reloadEvent) => {
                 this._menuPermissionService
@@ -42,6 +101,7 @@ export class PermissionComponent implements OnInit {
                     .subscribe((res) => {
                         this.permissionData = res.data;
                         this.paginator = res.pagination;
+                        this.setFormData();
                         this._paginatorService._onTableDataChange.next(
                             res.pagination.dataCount
                         );
@@ -49,6 +109,17 @@ export class PermissionComponent implements OnInit {
             },
             (error) => {}
         );
+    }
+
+    setFormData(): void {
+        console.log('setFormData', this.permissionData);
+        // if (this.permissionData.isAdd) {
+        //     this.form.get('isAdd').setValue(true);
+        // }
+        // else {
+        //     this.form.get('isAdd').setValue(false);
+        // }
+        // this.form.patchValue(this.permissionData);
     }
 
     ngOnDestroy(): void {
