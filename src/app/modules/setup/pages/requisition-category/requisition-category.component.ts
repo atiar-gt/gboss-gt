@@ -6,13 +6,12 @@ import { Subject, takeUntil } from 'rxjs';
 import { RequisitionCategoryService } from '../../services/requisition-category/requisition-category.service';
 
 @Component({
-  selector: 'app-requisition-category',
-  templateUrl: './requisition-category.component.html',
-  styleUrls: ['./requisition-category.component.scss']
+    selector: 'app-requisition-category',
+    templateUrl: './requisition-category.component.html',
+    styleUrls: ['./requisition-category.component.scss'],
 })
 export class RequisitionCategoryComponent implements OnInit {
-
-  private _unsubscribeAll: Subject<any> = new Subject<any>();
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
     paginator;
     requisitionCategoryData;
 
@@ -42,7 +41,9 @@ export class RequisitionCategoryComponent implements OnInit {
     }
 
     onEdit(role) {
-        this._router.navigateByUrl(`setup/requisition-category/edit/${role.id}`);
+        this._router.navigateByUrl(
+            `setup/requisition-category/edit/${role.id}`
+        );
     }
 
     // applyFilter(value) {
@@ -60,9 +61,10 @@ export class RequisitionCategoryComponent implements OnInit {
             .afterClosed()
             .subscribe((result) => {
                 if (result === 'confirmed') {
-                    this.requisitionCategoryData = this.requisitionCategoryData.filter(
-                        (item: any) => item.id !== role.id
-                    );
+                    this.requisitionCategoryData =
+                        this.requisitionCategoryData.filter(
+                            (item: any) => item.id !== role.id
+                        );
 
                     this._service.delete(role.id).subscribe((res) => {
                         this._snackbar.openSnackBar(res.message);
@@ -75,5 +77,4 @@ export class RequisitionCategoryComponent implements OnInit {
         this._unsubscribeAll.next(null);
         this._unsubscribeAll.complete();
     }
-
 }
