@@ -3,7 +3,7 @@
         <div><span class="font-semibold text-lg mb-3">Menu Permission</span></div>
         <div class="w-full md:w-1/2 mt-3 mb-6 md:mb-0">
 
-            <mat-form-field class="w-1/4">
+            <mat-form-field class="w-44">
                 <mat-label>Filter by Role</mat-label>
                 <mat-select [(value)]="selected">
                     <mat-option (click)="onRole(role.id)" *ngFor="let role of roles" [value]="role.id">
