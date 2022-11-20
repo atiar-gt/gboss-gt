@@ -15,7 +15,9 @@ export class EditPermissionComponent implements OnInit {
         private _fb: FormBuilder,
         private _dialogRef: MatDialogRef<EditPermissionComponent>,
         @Inject(MAT_DIALOG_DATA) public data
-    ) {}
+    ) {
+        _dialogRef.disableClose = true;
+    }
 
     ngOnInit(): void {
         this.form = this._fb.group({

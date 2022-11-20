@@ -7,8 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RequisitionComponent implements OnInit {
 
-  selectedProject: string = 'ACME Corp. Backend App';
-
   constructor() { }
 
   ngOnInit(): void {

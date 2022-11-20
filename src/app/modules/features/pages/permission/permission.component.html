@@ -1,10 +1,16 @@
 <div class="flex flex-col m-6 w-full">
-    <div class="flex flex- justify-between py-4">
+    <div class="flex flex-col">
         <div><span class="font-semibold text-lg mb-3">Menu Permission</span></div>
-        <div>
-            <!-- <button (click)="addNew()" class="bg-primary-500 hover:bg-primary-700 text-white py-2 px-8 rounded-md">
-                Add New
-            </button> -->
+        <div class="w-full md:w-1/2 mt-3 mb-6 md:mb-0">
+
+            <mat-form-field class="w-1/4">
+                <mat-label>Filter by Role</mat-label>
+                <mat-select>
+                    <mat-option (click)="onRole(role.id)" *ngFor="let role of roles" [value]="role.id">
+                        {{role.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
         </div>
     </div>
     <mat-divider></mat-divider>

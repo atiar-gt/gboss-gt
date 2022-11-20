@@ -20,4 +20,13 @@ export class MenuPermissionService extends DataService {
             }
         );
     }
+    
+    getPermissionByMenuIdAndRoleId(menuId: number, roleId: number,  urlParameters): Observable<any> {
+        return this.http.get(
+            `${environment.baseUrl}/menu/permissions?menuId=${menuId}&roleId=${roleId}`,
+            {
+                params: urlParameters ? urlParameters : null,
+            }
+        );
+    }
 }
