@@ -53,55 +53,7 @@ export class PermissionComponent implements OnInit {
         }
     }
 
-    onChange(event, select, id) {
-        // this.menuId = id;
-        console.log('menuId', id);
-
-        if (!event) {
-            console.log('EVENT', event);
-            console.log('SELECT', select);
-
-            if (this.toppings.value.includes('Create')) {
-                this.form.get('isAdd').setValue(true);
-            } else {
-                this.form.get('isAdd').setValue(false);
-            }
-
-            if (this.toppings.value.includes('Edit')) {
-                this.form.get('isEdit').setValue(true);
-            } else {
-                this.form.get('isEdit').setValue(false);
-            }
-
-            if (this.toppings.value.includes('Approve')) {
-                this.form.get('isApprove').setValue(true);
-            } else {
-                this.form.get('isApprove').setValue(false);
-            }
-
-            if (this.toppings.value.includes('Delete')) {
-                this.form.get('isDelete').setValue(true);
-            } else {
-                this.form.get('isDelete').setValue(false);
-            }
-            // else if (this.toppings.value.includes('Edit'))
-            console.log('toppings', this.form.value);
-            console.log('idddd', id);
-
-            this._menuPermissionService
-                .update(this.form.value, id)
-                .subscribe((res) => {
-                    console.log('res', res);
-                });
-        }
-    }
-
     getData(): void {
-        // this._menuPermissionService.getPermissionByMenuId(this.userId).subscribe((res) => {
-        //     console.log('permission data', res.data);
-        //     this.permissionData = res.data;
-        // });
-
         this._paginatorService.tableChangeEvent.subscribe(
             (reloadEvent) => {
                 this._menuPermissionService
@@ -141,24 +93,19 @@ export class PermissionComponent implements OnInit {
             dialogConfig
         );
 
-        // this.updateData(dialogRef);
-
         dialogRef.afterClosed().subscribe((data) => {
             if (data) {
                 this._menuPermissionService
                     .update(data, item.id)
                     .subscribe((res) => {
-                        console.log('res', res);
                         if (res.success) {
-                            this._snackbar.openSnackBar(res.message);
                             this.getData();
                         }
+                        this._snackbar.openSnackBar(res.message);
                     });
             }
         });
     }
-
-    updateData(dialogRef: MatDialogRef<EditPermissionComponent, any>): void {}
 
     ngOnDestroy(): void {
         this._unsubscribeAll.next(null);

@@ -62,7 +62,7 @@
 
             <!-- Cancel -->
             <ng-container *ngIf="data.actions.cancel.show">
-                <button
+                <button class="rounded-md"
                     mat-stroked-button
                     [matDialogClose]="'cancelled'">
                     {{data.actions.cancel.label}}
@@ -71,7 +71,7 @@
 
             <!-- Confirm -->
             <ng-container *ngIf="data.actions.confirm.show">
-                <button
+                <button class="rounded-md"
                     mat-flat-button
                     [color]="data.actions.confirm.color"
                     [matDialogClose]="'confirmed'">

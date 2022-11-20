@@ -15,7 +15,7 @@
 
 
 <!-- Wrapper -->
-<div class="flex flex-col flex-auto w-full min-w-0">
+<div class="flex flex-col flex-auto max-w-full h-screen">
 
 
     <!-- Header -->
@@ -105,7 +105,7 @@
     </div> -->
 
     <!-- Navigation -->
-    <div class="flex flex-row">
+    <div class="flex flex-row max-h-36">
         <fuse-vertical-navigation class="dark bg-gray-900 print:hidden rounded-md"
             [mode]="isScreenSmall ? 'over' : 'side'" [name]="'mainNavigation'" [navigation]="navigation.default"
             [opened]="!isScreenSmall">

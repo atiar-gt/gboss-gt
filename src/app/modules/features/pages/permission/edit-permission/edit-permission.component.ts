@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MenuPermissionService } from 'app/modules/features/services/menu-permission/menu-permission.service';
 
 @Component({
     selector: 'app-edit-permission',
@@ -15,12 +14,10 @@ export class EditPermissionComponent implements OnInit {
     constructor(
         private _fb: FormBuilder,
         private _dialogRef: MatDialogRef<EditPermissionComponent>,
-        private _menuPermissionService: MenuPermissionService,
         @Inject(MAT_DIALOG_DATA) public data
     ) {}
 
     ngOnInit(): void {
-        console.log('permission data', this.data);
         this.form = this._fb.group({
             isAdd: [],
             isEdit: [],
@@ -40,13 +37,9 @@ export class EditPermissionComponent implements OnInit {
             isEdit: this.form.get('isEdit').value,
             isApprove: this.form.get('isApprove').value,
             isDelete: this.form.get('isDelete').value,
-        }
+        };
 
         this._dialogRef.close(body);
-        console.log('id', this.permissionData.id);
-        console.log('Body', body);
-        // 
-        
     }
 
     setFormData(): void {

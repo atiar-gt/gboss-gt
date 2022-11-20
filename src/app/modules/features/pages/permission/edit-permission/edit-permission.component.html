@@ -10,12 +10,12 @@
 
                 <mat-checkbox formControlName="isAdd" class="example-margin">Create</mat-checkbox>
             </div>
-            
+
             <div class="w-full md:w-1/4 py-3 mb-2 md:mb-0">
 
                 <mat-checkbox formControlName="isEdit" class="example-margin">Edit</mat-checkbox>
             </div>
-            
+
             <div class="w-full md:w-1/4 py-3 mb-2 md:mb-0">
 
                 <mat-checkbox formControlName="isApprove" class="example-margin">Approve</mat-checkbox>
@@ -28,18 +28,21 @@
         </div>
 
 
-        <div class="flex flex-row pt-3">
-            <!-- <div class="w-full md:w-1/4 mt-6 md:mb-0"> -->
-            <button (click)="save()" class="bg-primary-500 large w-1/4 hover:bg-primary-700 text-white py-2 px-8 rounded-md">
+    </form>
+    <div class="flex flex-row pl-9 pt-5">
+        <ng-container>
+            <button (click)="save()" class="rounded-md bg-primary-600 text-white" mat-flat-button>
                 Save
             </button>
-            <button (click)="close()"
-                class="bg-gray-400 large w-1/4 hover:bg-gray-600 text-white py-2 px-8 rounded-md ml-2">
+        </ng-container>
+
+        <ng-container>
+            <button (click)="close()" class="rounded-md ml-2" mat-stroked-button>
                 Close
             </button>
-            <!-- </div> -->
-        </div>
+        </ng-container>
 
-    </form>
+    </div>
+
 
 </div>
