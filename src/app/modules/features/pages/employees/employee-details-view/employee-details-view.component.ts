@@ -16,7 +16,6 @@ export class EmployeeDetailsViewComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        console.log('details data', this.data);
         this.employeeData = this.data.data;
     }
 
