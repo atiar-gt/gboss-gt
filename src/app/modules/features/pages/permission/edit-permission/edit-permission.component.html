@@ -1,0 +1,45 @@
+<div class="w-full flex flex-col">
+    <div class="pl-9 pt-5">
+        <span class="font-semibold text-lg mb-3">Edit Permission for {{permissionData.menuName}}</span>
+        <mat-divider class="mt-4"></mat-divider>
+    </div>
+    <form [formGroup]="form" class="pl-9 pt-5">
+
+        <div class="flex flex-col space">
+            <div class="w-full md:w-1/4 pb-3 mb-2 md:mb-0">
+
+                <mat-checkbox formControlName="isAdd" class="example-margin">Create</mat-checkbox>
+            </div>
+            
+            <div class="w-full md:w-1/4 py-3 mb-2 md:mb-0">
+
+                <mat-checkbox formControlName="isEdit" class="example-margin">Edit</mat-checkbox>
+            </div>
+            
+            <div class="w-full md:w-1/4 py-3 mb-2 md:mb-0">
+
+                <mat-checkbox formControlName="isApprove" class="example-margin">Approve</mat-checkbox>
+            </div>
+
+            <div class="w-full md:w-1/4 py-3 mb-2 md:mb-0">
+                <mat-checkbox formControlName="isDelete" class="example-margin">Delete</mat-checkbox>
+            </div>
+
+        </div>
+
+
+        <div class="flex flex-row pt-3">
+            <!-- <div class="w-full md:w-1/4 mt-6 md:mb-0"> -->
+            <button (click)="save()" class="bg-primary-500 large w-1/4 hover:bg-primary-700 text-white py-2 px-8 rounded-md">
+                Save
+            </button>
+            <button (click)="close()"
+                class="bg-gray-400 large w-1/4 hover:bg-gray-600 text-white py-2 px-8 rounded-md ml-2">
+                Close
+            </button>
+            <!-- </div> -->
+        </div>
+
+    </form>
+
+</div>

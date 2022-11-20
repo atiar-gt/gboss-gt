@@ -5,10 +5,17 @@ import {
     FormGroup,
     Validators,
 } from '@angular/forms';
+import {
+    MatDialog,
+    MatDialogConfig,
+    MatDialogRef,
+} from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { SnackbarComponent } from 'app/shared/components/snackbar/snackbar.component';
 import { PaginatorService } from 'app/shared/services/paginator/paginator.service';
 import { Subject, takeUntil } from 'rxjs';
 import { MenuPermissionService } from '../../services/menu-permission/menu-permission.service';
+import { EditPermissionComponent } from './edit-permission/edit-permission.component';
 
 @Component({
     selector: 'app-permission',
@@ -28,6 +35,8 @@ export class PermissionComponent implements OnInit {
         private _fb: FormBuilder,
         private _route: ActivatedRoute,
         private _paginatorService: PaginatorService,
+        public _dialog: MatDialog,
+        private _snackbar: SnackbarComponent,
         private _menuPermissionService: MenuPermissionService
     ) {}
 
@@ -121,6 +130,35 @@ export class PermissionComponent implements OnInit {
         // }
         // this.form.patchValue(this.permissionData);
     }
+
+    onEdit(item): void {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.data = { permissionData: item };
+        dialogConfig.width = '600px';
+
+        const dialogRef = this._dialog.open(
+            EditPermissionComponent,
+            dialogConfig
+        );
+
+        // this.updateData(dialogRef);
+
+        dialogRef.afterClosed().subscribe((data) => {
+            if (data) {
+                this._menuPermissionService
+                    .update(data, item.id)
+                    .subscribe((res) => {
+                        console.log('res', res);
+                        if (res.success) {
+                            this._snackbar.openSnackBar(res.message);
+                            this.getData();
+                        }
+                    });
+            }
+        });
+    }
+
+    updateData(dialogRef: MatDialogRef<EditPermissionComponent, any>): void {}
 
     ngOnDestroy(): void {
         this._unsubscribeAll.next(null);

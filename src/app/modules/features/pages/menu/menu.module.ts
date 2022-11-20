@@ -12,12 +12,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatChipsModule } from '@angular/material/chips';
 import { MatSelectModule } from '@angular/material/select';
 import { UserModule } from 'app/layout/common/user/user.module';
 import { AddEditMenuComponent } from './add-edit-menu/add-edit-menu.component';
 import { PaginatorModule } from 'app/shared/components/paginator/paginator.module';
 import { AssignRoleToMenuComponent } from './assign-role-to-menu/assign-role-to-menu.component';
 import { PermissionComponent } from '../permission/permission.component';
+import { EditPermissionComponent } from '../permission/edit-permission/edit-permission.component';
 
 const menuRoutes: Route[] = [
     {
@@ -26,20 +28,26 @@ const menuRoutes: Route[] = [
     },
     {
         path: 'add-new',
-        component: AddEditMenuComponent
-      },
-      {
+        component: AddEditMenuComponent,
+    },
+    {
         path: 'edit/:id',
-        component: AddEditMenuComponent
-      },
-      {
+        component: AddEditMenuComponent,
+    },
+    {
         path: 'permission/:id',
-        component: PermissionComponent
-      }
+        component: PermissionComponent,
+    },
 ];
 
 @NgModule({
-    declarations: [MenuComponent, AddEditMenuComponent, AssignRoleToMenuComponent, PermissionComponent],
+    declarations: [
+        MenuComponent,
+        AddEditMenuComponent,
+        AssignRoleToMenuComponent,
+        PermissionComponent,
+        EditPermissionComponent
+    ],
     imports: [
         CommonModule,
         RouterModule.forChild(menuRoutes),
@@ -52,11 +60,12 @@ const menuRoutes: Route[] = [
         MatButtonModule,
         MatCheckboxModule,
         MatFormFieldModule,
+        MatChipsModule,
         MatInputModule,
         MatDatepickerModule,
         MatNativeDateModule,
         MatSelectModule,
-        PaginatorModule
+        PaginatorModule,
     ],
 })
 export class MenuModule {}
