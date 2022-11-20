@@ -27,6 +27,7 @@ export class PermissionComponent implements OnInit {
     form: FormGroup;
     userId: number;
     permissionData;
+    selected;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
     paginator;
     menuId;
@@ -63,6 +64,7 @@ export class PermissionComponent implements OnInit {
                     .pipe(takeUntil(this._unsubscribeAll))
                     .subscribe((res) => {
                         this.permissionData = res.data;
+                        this.selected = res.data[0].roleId;
                         this.paginator = res.pagination;
                         this._paginatorService._onTableDataChange.next(
                             res.pagination.dataCount
@@ -83,7 +85,6 @@ export class PermissionComponent implements OnInit {
     }
 
     onRole(roleId): void {
-        console.log('roleId', roleId);
         this._paginatorService.tableChangeEvent.subscribe(
             (reloadEvent) => {
                 this._menuPermissionService
