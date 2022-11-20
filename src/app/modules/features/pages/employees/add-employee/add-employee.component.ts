@@ -53,6 +53,8 @@ export class AddEmployeeComponent implements OnInit {
         });
     }
 
+    
+
     handleFileInputChange(l: FileList): void {
         this.file_store = l;
         if (l.length) {

@@ -1,14 +1,14 @@
-<div style="background-image: url('../../../../assets/images/logo/login-bg.svg'); background-repeat: no-repeat; background-size: cover;" class="flex flex-row flex-auto items-center sm:justify-evenly min-w-0 ">
+<div style="background-image: url('../../../../assets/images/logo/login-bg.svg'); background-repeat: no-repeat; background-size: cover;"
+    class="flex flex-row flex-auto items-center sm:justify-evenly min-w-0 ">
     <div class="hidden md:block leading-snug">
-        <p class="text-4xl font-semibold">We are dedicated to become a <br />forerunner in presenting</p>
-        <p class="text-[80px] font-bold">Bangladeshi</p>
-        <p class="text-[80px] font-bold">Technologies</p>
-        <p class="text-3xl font-semibold">to the world market</p>
+        <!-- <p class="text-4xl font-semibold">We are dedicated to become a <br />forerunner in presenting</p> -->
+        <!-- <p class="text-[80px] font-bold">A Global Company </p>
+        <p class="text-[80px] font-bold">from Bangladesh!</p> -->
+        <!-- <p class="text-3xl font-semibold">to the world market</p> -->
+        <img class="w-200" src="assets/images/logo/login-text.svg" alt="">
     </div>
 
-    <div
-        class="w-full sm:w-auto py-8 px-6 sm:p-12 sm:rounded-2xl sm:shadow sm:bg-card"
-    >
+    <div class="w-full sm:w-auto py-8 px-6 sm:p-12 sm:rounded-2xl sm:shadow sm:bg-card">
         <div class="w-full max-w-90 sm:w-80 mx-auto sm:mx-0">
             <!-- Logo -->
             <div class="w-full">
@@ -34,14 +34,8 @@
             </div> -->
 
             <!-- Alert -->
-            <fuse-alert
-                class="mt-8 -mb-4"
-                *ngIf="showAlert"
-                [appearance]="'outline'"
-                [showIcon]="false"
-                [type]="alert.type"
-                [@shake]="alert.type === 'error'"
-            >
+            <fuse-alert class="mt-8 -mb-4" *ngIf="showAlert" [appearance]="'outline'" [showIcon]="false"
+                [type]="alert.type" [@shake]="alert.type === 'error'">
                 {{ alert.message }}
             </fuse-alert>
 
@@ -51,14 +45,10 @@
                 <mat-form-field class="w-full">
                     <mat-label>Email</mat-label>
                     <input id="email" matInput [formControlName]="'email'" />
-                    <mat-error
-                        *ngIf="signInForm.get('email').hasError('required')"
-                    >
+                    <mat-error *ngIf="signInForm.get('email').hasError('required')">
                         Email address is required
                     </mat-error>
-                    <mat-error
-                        *ngIf="signInForm.get('email').hasError('email')"
-                    >
+                    <mat-error *ngIf="signInForm.get('email').hasError('email')">
                         Please enter a valid email address
                     </mat-error>
                 </mat-form-field>
@@ -66,33 +56,16 @@
                 <!-- Password field -->
                 <mat-form-field class="w-full">
                     <mat-label>Password</mat-label>
-                    <input
-                        id="password"
-                        matInput
-                        type="password"
-                        [formControlName]="'password'"
-                        #passwordField
-                    />
-                    <button
-                        mat-icon-button
-                        type="button"
-                        (click)="
+                    <input id="password" matInput type="password" [formControlName]="'password'" #passwordField />
+                    <button mat-icon-button type="button" (click)="
                             passwordField.type === 'password'
                                 ? (passwordField.type = 'text')
                                 : (passwordField.type = 'password')
-                        "
-                        matSuffix
-                    >
-                        <mat-icon
-                            class="icon-size-5"
-                            *ngIf="passwordField.type === 'password'"
-                            [svgIcon]="'heroicons_solid:eye'"
-                        ></mat-icon>
-                        <mat-icon
-                            class="icon-size-5"
-                            *ngIf="passwordField.type === 'text'"
-                            [svgIcon]="'heroicons_solid:eye-off'"
-                        ></mat-icon>
+                        " matSuffix>
+                        <mat-icon class="icon-size-5" *ngIf="passwordField.type === 'password'"
+                            [svgIcon]="'heroicons_solid:eye'"></mat-icon>
+                        <mat-icon class="icon-size-5" *ngIf="passwordField.type === 'text'"
+                            [svgIcon]="'heroicons_solid:eye-off'"></mat-icon>
                     </button>
                     <mat-error> Password is required </mat-error>
                 </mat-form-field>
@@ -111,18 +84,11 @@
                 </div> -->
 
                 <!-- Submit button -->
-                <button
-                    class="fuse-mat-button-large w-full mt-6 rounded-md"
-                    mat-flat-button
-                    [color]="'primary'"
-                    (click)="signIn()"
-                >
+                <button class="fuse-mat-button-large w-full mt-6 rounded-md" mat-flat-button [color]="'primary'"
+                    (click)="signIn()">
                     <span *ngIf="!isLoading">Login</span>
-                    <mat-progress-spinner
-                        *ngIf="isLoading"
-                        [diameter]="24"
-                        [mode]="'indeterminate'"
-                    ></mat-progress-spinner>
+                    <mat-progress-spinner *ngIf="isLoading" [diameter]="24" [mode]="'indeterminate'">
+                    </mat-progress-spinner>
                 </button>
 
                 <!-- Separator -->
