@@ -37,8 +37,6 @@ export class MenuComponent implements OnInit {
     }
 
     addRoleToMenu(data) {
-        console.log('menu data', data);
-
         const dialogConfig = new MatDialogConfig();
         dialogConfig.data = { roleId: data.id };
         dialogConfig.width = '600px';
@@ -50,9 +48,6 @@ export class MenuComponent implements OnInit {
     }
 
     assignPermission(menu): void {
-        console.log(menu);
-
-        console.log('go to assign permission page');
         this._router.navigateByUrl(`menu-management/permission/${menu.id}`);
     }
 

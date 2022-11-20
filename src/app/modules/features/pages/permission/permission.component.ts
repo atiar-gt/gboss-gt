@@ -23,9 +23,7 @@ import { EditPermissionComponent } from './edit-permission/edit-permission.compo
     styleUrls: ['./permission.component.scss'],
 })
 export class PermissionComponent implements OnInit {
-    toppings = new FormControl('');
     form: FormGroup;
-    toppingList: string[] = ['Create', 'Edit', 'Approve', 'Delete'];
     userId: number;
     permissionData;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
@@ -62,7 +60,6 @@ export class PermissionComponent implements OnInit {
                     .subscribe((res) => {
                         this.permissionData = res.data;
                         this.paginator = res.pagination;
-                        this.setFormData();
                         this._paginatorService._onTableDataChange.next(
                             res.pagination.dataCount
                         );
@@ -72,16 +69,6 @@ export class PermissionComponent implements OnInit {
         );
     }
 
-    setFormData(): void {
-        console.log('setFormData', this.permissionData);
-        // if (this.permissionData.isAdd) {
-        //     this.form.get('isAdd').setValue(true);
-        // }
-        // else {
-        //     this.form.get('isAdd').setValue(false);
-        // }
-        // this.form.patchValue(this.permissionData);
-    }
 
     onEdit(item): void {
         const dialogConfig = new MatDialogConfig();

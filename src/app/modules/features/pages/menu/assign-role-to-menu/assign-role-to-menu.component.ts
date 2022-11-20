@@ -13,7 +13,6 @@ export class AssignRoleToMenuComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data, private _service: RoleService) { }
 
   ngOnInit(): void {
-    console.log('role data', this.data);
     this.roleId = this.data.roleId;
   }
 

@@ -51,10 +51,7 @@ export class AddEditMenuComponent implements OnInit {
     };
 
     onSubmit(): void {
-        console.log('form value', this.form.value);
         if (this.form.valid) {
-            console.log('isValid', this.form.valid);
-
             if (this.userId) {
                 this.updateEmployee();
             } else {
@@ -66,7 +63,6 @@ export class AddEditMenuComponent implements OnInit {
     getMenus() {
         this._menuService.getParentMenus().subscribe((res) => {
             this.menus = res.data;
-            console.log('Menus', this.menus);
         });
     }
 
@@ -91,9 +87,6 @@ export class AddEditMenuComponent implements OnInit {
     }
 
     onMenuType(event) {
-        console.log('on menu');
-
-        console.log('event', event.type);
         if (event.type === 0) {
             this.isChild = true;
             this.form.get('parentId').setValidators(Validators.required);
@@ -112,7 +105,6 @@ export class AddEditMenuComponent implements OnInit {
             .getById(+this.userId)
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((res) => {
-                console.log('p value', res.data);
                 if (res.data.type === 1) {
                     this.isChild = false;
                     this.form.get('parentId').clearAsyncValidators();
