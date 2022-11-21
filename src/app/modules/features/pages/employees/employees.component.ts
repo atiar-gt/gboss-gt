@@ -7,6 +7,7 @@ import { PaginatorService } from 'app/shared/services/paginator/paginator.servic
 import { debounceTime, Subject, takeUntil } from 'rxjs';
 import { Employee } from '../../models/employee.model';
 import { EmployeesService } from '../../services/employees/employees.service';
+import { AssignRoleComponent } from './assign-role/assign-role.component';
 import { EmployeeDetailsViewComponent } from './employee-details-view/employee-details-view.component';
 
 @Component({
@@ -56,6 +57,16 @@ export class EmployeesComponent implements OnInit {
 
     onEdit(employee: Employee) {
         this._router.navigateByUrl(`employee/edit/${employee.id}`);
+    }
+
+    onAssign(employee: Employee): void {
+        console.log('emp', employee);
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.data = { data: employee };
+        dialogConfig.width = '500px';
+
+        const dialogRef = this.dialog.open(AssignRoleComponent, dialogConfig);
+        
     }
 
     onView(data): void {

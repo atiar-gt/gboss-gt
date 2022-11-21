@@ -4,7 +4,6 @@
     <div class="flex flex-row justify-between py-4">
         <div class="text-[#8D8D8D]">All Employees</div>
         <div>
-            <!-- <button class="bg-primary-500">Add Employee</button> -->
             <button (click)="onEmployee()" class="bg-primary-500 hover:bg-primary-700 text-white py-2 px-8 rounded-md">
                 Add Employee
             </button>
@@ -72,7 +71,7 @@
                                     Phone
                                 </div>
                                 <div [mat-sort-header]="'assign'">
-                                    Assign
+                                    Assign Role
                                 </div>
                                 <div [mat-sort-header]="'stock'">
                                     Actions
@@ -114,9 +113,9 @@
                                         </div>
 
                                         <div>
-                                            <div class="min-w-4 text-center"><button
-                                                    class="bg-transparent hover:bg-green-500 font-semibold hover:text-white py-2 px-8 border border-green-500 hover:border-transparent rounded-md">
-                                                    Assign
+                                            <div class="min-w-4 text-center">
+                                                <button (click)="onAssign(employee)" class="bg-transparent hover:bg-green-500 font-semibold hover:text-white py-2 px-8 border border-green-500 hover:border-transparent rounded-md">
+                                                    Assign Role
                                                 </button></div>
                                         </div>
                                         <div>

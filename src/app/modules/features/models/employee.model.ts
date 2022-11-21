@@ -14,4 +14,5 @@ export interface Employee {
     officeName: string;
     officeAddress: string;
     sittingLocation: string;
+    roles: [];
 }

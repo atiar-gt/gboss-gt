@@ -18,6 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { UserModule } from 'app/layout/common/user/user.module';
 import { PaginatorModule } from 'app/shared/components/paginator/paginator.module';
 import { EmployeeDetailsViewComponent } from './employee-details-view/employee-details-view.component';
+import { AssignRoleComponent } from './assign-role/assign-role.component';
 
 const employeeRoutes: Route[] = [
     {
@@ -35,7 +36,7 @@ const employeeRoutes: Route[] = [
 ];
 
 @NgModule({
-    declarations: [EmployeesComponent, AddEmployeeComponent, EmployeeDetailsViewComponent],
+    declarations: [EmployeesComponent, AddEmployeeComponent, EmployeeDetailsViewComponent, AssignRoleComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(employeeRoutes),
