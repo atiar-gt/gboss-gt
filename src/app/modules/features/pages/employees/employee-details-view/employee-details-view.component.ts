@@ -18,13 +18,11 @@ export class EmployeeDetailsViewComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        console.log('emplo id', this.data);
         this.getData();
     }
 
     getData(): void {
         this._employeeService.getById(this.data.data).subscribe((res) => {
-            console.log('G', res.data);
             this.employeeData = res.data;
         });
     }
