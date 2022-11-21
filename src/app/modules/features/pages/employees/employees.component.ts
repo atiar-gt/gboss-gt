@@ -77,7 +77,7 @@ export class EmployeesComponent implements OnInit {
 
     onView(data): void {
         const dialogConfig = new MatDialogConfig();
-        dialogConfig.data = { data: data };
+        dialogConfig.data = { data: data.id };
         dialogConfig.width = '600px';
 
         const dialogRef = this.dialog.open(

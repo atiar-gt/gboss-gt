@@ -23,6 +23,11 @@
                             <p><b>Payroll Designation: &nbsp;&nbsp;</b>{{employeeData.payrollDesignation ?
                                 employeeData.payrollDesignation : 'N/A' }}</p>
                             <p><b>Sitting Location: &nbsp;&nbsp;</b>{{employeeData.sittingLocation}}</p>
+                            <p><b>Roles: &nbsp;&nbsp;</b><span *ngFor="let role of employeeData.roles; let i= index">
+                                {{i+1}}.&nbsp;{{role.name}}&nbsp;&nbsp;
+                            </span>
+                        </p>
+                        
                         </div>
                     </div>
                     <!--                     

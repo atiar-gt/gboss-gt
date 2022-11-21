@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Employee } from 'app/modules/features/models/employee.model';
+import { EmployeesService } from 'app/modules/features/services/employees/employees.service';
 
 @Component({
     selector: 'app-employee-details-view',
@@ -12,11 +13,20 @@ export class EmployeeDetailsViewComponent implements OnInit {
 
     constructor(
         private _dialogRef: MatDialogRef<EmployeeDetailsViewComponent>,
+        private _employeeService: EmployeesService,
         @Inject(MAT_DIALOG_DATA) public data
     ) {}
 
     ngOnInit(): void {
-        this.employeeData = this.data.data;
+        console.log('emplo id', this.data);
+        this.getData();
+    }
+
+    getData(): void {
+        this._employeeService.getById(this.data.data).subscribe((res) => {
+            console.log('G', res.data);
+            this.employeeData = res.data;
+        });
     }
 
     close(): void {
