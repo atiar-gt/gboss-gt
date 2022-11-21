@@ -1,7 +1,7 @@
 <div class="flex flex-col m-6 w-full">
     <div class="flex flex-col">
         <div><span class="font-semibold text-lg mb-3">Menu Permission</span></div>
-        <div class="w-full md:w-1/2 mt-3 mb-6 md:mb-0">
+        <!-- <div class="w-full md:w-1/2 mt-3 mb-6 md:mb-0">
 
             <mat-form-field class="w-44">
                 <mat-label>Filter by Role</mat-label>
@@ -11,8 +11,32 @@
                     </mat-option>
                 </mat-select>
             </mat-form-field>
+        </div> -->
+    </div>
+
+
+    <div class="flex flex-row justify-between py-4">
+        <div>
+            <mat-form-field class="w-44">
+                <mat-label>Filter by Role</mat-label>
+                <mat-select [(value)]="selected">
+                    <mat-option (click)="onRole(role.id)" *ngFor="let role of roles" [value]="role.id">
+                        {{role.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="space-x-1">
+            <button (click)="assignPermission()" class="bg-primary-500 hover:bg-primary-700 text-white py-2 px-8 rounded-md">
+                Assign Role to Menu
+            </button>
+            <!-- <button (click)="addNew()" class="bg-primary-500 hover:bg-primary-700 text-white py-2 px-8 rounded-md">
+                Add New Menu
+            </button> -->
         </div>
     </div>
+
     <mat-divider></mat-divider>
 
     <div>
@@ -50,10 +74,10 @@
                                         </div>
                                         <div class="w-full">
                                             <mat-chip-list class="flex flex-row justify-center">
-                                                    <mat-chip *ngIf="item.isAdd" color="primary">Create</mat-chip>
-                                                    <mat-chip *ngIf="item.isEdit" color="primary">Edit</mat-chip>
-                                                    <mat-chip *ngIf="item.isApprove" color="primary">Approve</mat-chip>
-                                                    <mat-chip *ngIf="item.isDelete" color="primary">Delete</mat-chip>
+                                                <mat-chip *ngIf="item.isAdd" color="primary">Create</mat-chip>
+                                                <mat-chip *ngIf="item.isEdit" color="primary">Edit</mat-chip>
+                                                <mat-chip *ngIf="item.isApprove" color="primary">Approve</mat-chip>
+                                                <mat-chip *ngIf="item.isDelete" color="primary">Delete</mat-chip>
                                             </mat-chip-list>
                                         </div>
 
@@ -69,11 +93,11 @@
                                                             <img class="h-6 w-6 mr-4" src="assets/icons/edit-icon.svg">
                                                             <span>Edit Permission</span>
                                                         </button>
-                                                        <!-- <button (click)="onDelete(item)" mat-menu-item>
+                                                        <button (click)="onDelete(item)" mat-menu-item>
                                                             <img class="h-6 w-6 mr-4"
                                                                 src="assets/icons/delete-icon.svg">
                                                             <span>Delete</span>
-                                                        </button> -->
+                                                        </button>
                                                     </mat-menu>
 
                                                 </div>

@@ -48,7 +48,7 @@ export class AssignRoleComponent implements OnInit {
         this._employeeService.getById(+this.data.data.id).subscribe((res) => {
             this.employeeData = res.data;
             this.form.get('employeeId').patchValue(this.employeeData.id);
-            this.form.get('roles').patchValue(this.employeeData.roles);
+            // this.form.get('roles').patchValue(this.employeeData.roles);
         });
     }
 
@@ -62,8 +62,9 @@ export class AssignRoleComponent implements OnInit {
     }
 
     save(): void {
-        this._dialogRef.close();
-        console.log('submitted', this.form.value);
+        if (this.form.valid) {
+            this._dialogRef.close();
+        }
     }
 
     close(): void {

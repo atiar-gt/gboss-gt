@@ -2,7 +2,10 @@
     <div class="flex flex- justify-between py-4">
         <div><span class="font-semibold text-lg mb-3">Menu Management</span></div>
 
-        <div>
+        <div class="flex flex-row space-x-1">
+            <button (click)="assignPermission()" class="bg-primary-500 hover:bg-primary-700 text-white py-2 px-8 rounded-md">
+                Assign Permission
+            </button>
             <button (click)="addNew()" class="bg-primary-500 hover:bg-primary-700 text-white py-2 px-8 rounded-md">
                 Add New Menu
             </button>
@@ -57,14 +60,14 @@
                                                             <span>View</span>
                                                         </button> -->
                                                         
-                                                        <button (click)="assignPermission(role)" mat-menu-item>
+                                                        <!-- <button (click)="assignPermission(role)" mat-menu-item>
                                                             <img class="h-6 w-6 mr-4" src="assets/icons/edit-icon.svg">
                                                             <span>Assign Permission</span>
                                                         </button>
                                                         <button (click)="addRoleToMenu(role)" mat-menu-item>
                                                             <img class="h-6 w-6 mr-4" src="assets/icons/edit-icon.svg">
                                                             <span>Assign Role to Menu</span>
-                                                        </button>
+                                                        </button> -->
                                                         <button (click)="onEdit(role)" mat-menu-item>
                                                             <img class="h-6 w-6 mr-4" src="assets/icons/edit-icon.svg">
                                                             <span>Edit</span>

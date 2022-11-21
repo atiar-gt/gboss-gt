@@ -5,17 +5,14 @@ import {
     FormGroup,
     Validators,
 } from '@angular/forms';
-import {
-    MatDialog,
-    MatDialogConfig,
-    MatDialogRef,
-} from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { FuseConfirmationService } from '@fuse/services/confirmation';
 import { SnackbarComponent } from 'app/shared/components/snackbar/snackbar.component';
 import { PaginatorService } from 'app/shared/services/paginator/paginator.service';
 import { Subject, takeUntil } from 'rxjs';
 import { MenuPermissionService } from '../../services/menu-permission/menu-permission.service';
 import { RoleService } from '../../services/role/role.service';
+import { AssignRoleToMenuComponent } from '../menu/assign-role-to-menu/assign-role-to-menu.component';
 import { EditPermissionComponent } from './edit-permission/edit-permission.component';
 
 @Component({
@@ -24,7 +21,6 @@ import { EditPermissionComponent } from './edit-permission/edit-permission.compo
     styleUrls: ['./permission.component.scss'],
 })
 export class PermissionComponent implements OnInit {
-    form: FormGroup;
     userId: number;
     permissionData;
     selected;
@@ -34,25 +30,17 @@ export class PermissionComponent implements OnInit {
     roles: [] = [];
     constructor(
         private _fb: FormBuilder,
-        private _route: ActivatedRoute,
+        // private _route: ActivatedRoute,
         private _paginatorService: PaginatorService,
         private _roleService: RoleService,
         public _dialog: MatDialog,
+        private _confirmationService: FuseConfirmationService,
         private _snackbar: SnackbarComponent,
         private _menuPermissionService: MenuPermissionService
     ) {}
 
     ngOnInit(): void {
-        this.form = this._fb.group({
-            isAdd: [false],
-            isEdit: [false],
-            isApprove: [false],
-            isDelete: [false],
-        });
-        this.userId = +this._route.snapshot.paramMap.get('id');
-        if (this.userId) {
-            this.getData();
-        }
+        this.getData();
         this.getRoles();
     }
 
@@ -60,7 +48,7 @@ export class PermissionComponent implements OnInit {
         this._paginatorService.tableChangeEvent.subscribe(
             (reloadEvent) => {
                 this._menuPermissionService
-                    .getPermissionByMenuId(this.userId, reloadEvent)
+                    .getAll(reloadEvent)
                     .pipe(takeUntil(this._unsubscribeAll))
                     .subscribe((res) => {
                         this.permissionData = res.data;
@@ -88,7 +76,11 @@ export class PermissionComponent implements OnInit {
         this._paginatorService.tableChangeEvent.subscribe(
             (reloadEvent) => {
                 this._menuPermissionService
-                    .getPermissionByMenuIdAndRoleId(this.userId, roleId, reloadEvent)
+                    .getPermissionByMenuIdAndRoleId(
+                        this.userId,
+                        roleId,
+                        reloadEvent
+                    )
                     .pipe(takeUntil(this._unsubscribeAll))
                     .subscribe((res) => {
                         this.permissionData = res.data;
@@ -122,6 +114,50 @@ export class PermissionComponent implements OnInit {
                         }
                         this._snackbar.openSnackBar(res.message);
                     });
+            }
+        });
+    }
+
+    onDelete(role) {
+        this._confirmationService
+            .open()
+            .afterClosed()
+            .subscribe((result) => {
+                if (result === 'confirmed') {
+                    this.permissionData =
+                        this.permissionData.filter(
+                            (item: any) => item.id !== role.id
+                        );
+
+                    this._menuPermissionService.delete(role.id).subscribe((res) => {
+                        this._snackbar.openSnackBar(res.message);
+                    });
+                }
+            });
+    }
+
+    assignPermission(): void {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.data = { roleId: this.selected };
+        dialogConfig.width = '600px';
+
+        const dialogRef = this._dialog.open(
+            AssignRoleToMenuComponent,
+            dialogConfig
+        );
+
+        dialogRef.afterClosed().subscribe((data) => {
+            console.log('assigned', data);
+            if (data) {
+                this._menuPermissionService.create(data).subscribe((res) => {
+                    // console.log('RESS', res);
+                    this._snackbar.openSnackBar(res.message);
+                    if (res.success) {
+                        this.permissionData.unshift(res.data)
+                        
+                        // this.getData();
+                    }
+                });
             }
         });
     }

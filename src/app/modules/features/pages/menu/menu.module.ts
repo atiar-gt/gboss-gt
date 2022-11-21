@@ -20,6 +20,7 @@ import { PaginatorModule } from 'app/shared/components/paginator/paginator.modul
 import { AssignRoleToMenuComponent } from './assign-role-to-menu/assign-role-to-menu.component';
 import { PermissionComponent } from '../permission/permission.component';
 import { EditPermissionComponent } from '../permission/edit-permission/edit-permission.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const menuRoutes: Route[] = [
     {
@@ -35,7 +36,7 @@ const menuRoutes: Route[] = [
         component: AddEditMenuComponent,
     },
     {
-        path: 'permission/:id',
+        path: 'permission',
         component: PermissionComponent,
     },
 ];
@@ -62,6 +63,7 @@ const menuRoutes: Route[] = [
         MatFormFieldModule,
         MatChipsModule,
         MatInputModule,
+        MatDialogModule, 
         MatDatepickerModule,
         MatNativeDateModule,
         MatSelectModule,

@@ -1,1 +1,82 @@
-<p>assign-role-to-menu works!</p>
+<div class="w-full flex flex-col">
+    <div class="">
+        <span class="font-semibold text-lg mb-3">Assign Permission</span>
+        <mat-divider class="mt-4"></mat-divider>
+    </div>
+    <form [formGroup]="form" class="pt-5">
+
+        <div class="flex flex-col space">
+
+            <div class="w-full mb-6 md:mb-0">
+
+                <mat-form-field class="w-full">
+                    <mat-label>Role</mat-label>
+                    <mat-select formControlName="roleId">
+                        <mat-option *ngFor="let role of roles" [value]="role.id">
+                            {{role.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <!-- <mat-form-field class="">
+                    <mat-select formControlName="roleId">
+                        <mat-option *ngFor="let role of roles" [value]="role.id">
+                            {{role.name}}
+                        </mat-option>
+                    </mat-select>
+
+                    
+                </mat-form-field> -->
+            </div>
+
+            <div class="w-full mb-6 md:mb-0">
+                <mat-form-field class="w-full">
+                    <mat-label>Menu</mat-label>
+                    <mat-select formControlName="menuId">
+                        <mat-option *ngFor="let menu of menus" [value]="menu.id">
+                            {{menu.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="w-full md:w-1/4 pb-3 mb-2 md:mb-0">
+
+                <mat-checkbox formControlName="isAdd" class="example-margin">Create</mat-checkbox>
+            </div>
+
+            <div class="w-full md:w-1/4 py-3 mb-2 md:mb-0">
+
+                <mat-checkbox formControlName="isEdit" class="example-margin">Edit</mat-checkbox>
+            </div>
+
+            <div class="w-full md:w-1/4 py-3 mb-2 md:mb-0">
+
+                <mat-checkbox formControlName="isApprove" class="example-margin">Approve</mat-checkbox>
+            </div>
+
+            <div class="w-full md:w-1/4 py-3 mb-2 md:mb-0">
+                <mat-checkbox formControlName="isDelete" class="example-margin">Delete</mat-checkbox>
+            </div>
+
+        </div>
+
+
+    </form>
+    <div class="flex flex-row pt-5">
+        <ng-container>
+            <button (click)="save()" class="rounded-md bg-primary-600 text-white" mat-flat-button>
+                Save
+            </button>
+        </ng-container>
+
+        <ng-container>
+            <button (click)="close()" class="rounded-md ml-2" mat-stroked-button>
+                Close
+            </button>
+        </ng-container>
+
+    </div>
+
+
+</div>

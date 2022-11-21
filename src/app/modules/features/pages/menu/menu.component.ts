@@ -36,6 +36,7 @@ export class MenuComponent implements OnInit {
         this._router.navigateByUrl('menu-management/add-new');
     }
 
+
     addRoleToMenu(data) {
         const dialogConfig = new MatDialogConfig();
         dialogConfig.data = { roleId: data.id };
@@ -47,8 +48,8 @@ export class MenuComponent implements OnInit {
         );
     }
 
-    assignPermission(menu): void {
-        this._router.navigateByUrl(`menu-management/permission/${menu.id}`);
+    assignPermission(): void {
+        this._router.navigateByUrl(`menu-management/permission`);
     }
 
     getData(): void {
