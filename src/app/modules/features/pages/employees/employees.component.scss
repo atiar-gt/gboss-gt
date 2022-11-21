@@ -1,15 +1,5 @@
 .inventory-grid {
-    grid-template-columns: 48px auto 40px;
-
-    @screen sm {
-        grid-template-columns: 48px auto 112px 72px;
-    }
-
-    @screen md {
-        grid-template-columns: 48px 112px auto 112px 72px;
-    }
-
-    @screen lg {
-        grid-template-columns: 215px 459px auto 461px 70px;
-    }
+    grid-template-columns: 524px 71px auto 53px;
+    display: flex;
+    // justify-content: space-around;
 }
