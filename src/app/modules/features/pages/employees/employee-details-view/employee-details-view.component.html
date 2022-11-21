@@ -10,7 +10,7 @@
             <div style="display: block !important;">
                 <div fxLayout="row" fxFlex="100" fxLayoutGap="10px" class="fuse-card">
                     <div class="sidebar" fxFlex="50">
-                        <div class="m-12 leading-loose">
+                        <div class="m-6 leading-loose">
                             <p><b>Employee Name:&nbsp;&nbsp; </b>{{employeeData.name}}</p>
                             <p><b>Employee ID: &nbsp;&nbsp;</b>{{employeeData.employeeCode}}</p>
                             <p><b>Email: &nbsp;&nbsp;</b>{{employeeData ? employeeData.email : 'N/A'}}</p>
@@ -24,46 +24,24 @@
                                 employeeData.payrollDesignation : 'N/A' }}</p>
                             <p><b>Sitting Location: &nbsp;&nbsp;</b>{{employeeData.sittingLocation}}</p>
                             <p><b>Roles: &nbsp;&nbsp;</b><span *ngFor="let role of employeeData.roles; let i= index">
-                                {{i+1}}.&nbsp;{{role.name}}&nbsp;&nbsp;
-                            </span>
-                        </p>
-                        
-                        </div>
-                    </div>
-                    <!--                     
-                    <div class="sidebar" fxFlex="50">
-                        <div class="m-12">
+                                    {{i+1}}.&nbsp;{{role.name}}&nbsp;&nbsp;
+                                </span>
+                            </p>
 
                         </div>
-                    </div> -->
+                    </div>
                 </div>
 
             </div>
-            <!--            file show-->
-            <!-- <table>
-                <tr>
-                    <th>Item Name</th>
-                    <th>Item Amount</th>
-                </tr>
-                <tr *ngFor="let file of fileItems">
-                    <td>{{ file.receipt_description }}</td>
-                    <td> {{ file.requested_amount }} BDT </td>
-                </tr>
-            </table> -->
 
 
-            <!--              form start-->
-            <div class="hello">
-
+            <div>
                 <mat-dialog-actions>
                     <ng-container>
                         <button (click)="close()" class="rounded-md ml-2" mat-stroked-button>
                             Close
                         </button>
                     </ng-container>
-                    <!-- <button [disabled]="form.invalid" class="mat-raised-button mat-primary  " (click)="save()">Save
-                    </button> -->
-                    <!-- <button mat-dialog-close class="mat-raised-button" (click)="close()">Close</button> -->
                 </mat-dialog-actions>
             </div>
         </mat-dialog-content>

@@ -19,8 +19,9 @@ export class AddEmployeeComponent implements OnInit {
     userId: string;
     form: FormGroup;
     file_store: FileList;
+    bloodGroups:[] = [];
+    genders:[] = [];
     display: FormControl = new FormControl('', Validators.required);
-    bloodGroups = ['B+', 'B-', 'A+', 'A-', 'O+', 'O-', 'AB+', 'AB-'];
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     constructor(
@@ -46,13 +47,15 @@ export class AddEmployeeComponent implements OnInit {
             designation: ['', Validators.required],
             payrollDesignation: ['', Validators.required],
             bloodGroup: ['', Validators.required],
+            gender: ['', Validators.required],
             officeName: ['', Validators.required],
             officeAddress: ['', Validators.required],
             sittingLocation: ['', Validators.required],
         });
-    }
 
-    
+        this.getBloodGroups();
+        this.getGenders();
+    }
 
     handleFileInputChange(l: FileList): void {
         this.file_store = l;
@@ -68,6 +71,18 @@ export class AddEmployeeComponent implements OnInit {
     public checkError = (controlName: string, errorName: string) => {
         return this.form.controls[controlName].hasError(errorName);
     };
+
+    getGenders(): void {
+        this._employeeService.getMasterData('Gender').subscribe((res) => {
+            this.genders = res.data;
+        });
+    }
+
+    getBloodGroups(): void {
+        this._employeeService.getMasterData('BloodGroup').subscribe((res) => {
+            this.bloodGroups = res.data;
+        });
+    }
 
     onSubmit(): void {
         if (this.form.valid) {

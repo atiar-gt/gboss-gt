@@ -40,6 +40,10 @@ export class DataService {
         return this.http.get(`${this._baseUrl}?query=${value}`);
     }
 
+    getMasterData(item: string): Observable<any> {
+        return this.http.get(`${environment.baseUrl}/setup/${item}`);
+    }
+
     // menuPermission(url): Observable<any> {
     //     return this.http.get(`${environment.baseUrl}check-page-permission?link=${url}`);
     // }
