@@ -15,4 +15,8 @@ export class EmployeesService extends DataService {
     getBloodGroups(): Observable<any> {
         return this.http.get(`${environment.baseUrl}/setup/BloodGroup`);
     }
+
+    assignEmployee(resource: any): Observable<any> {
+        return this.http.post(`${environment.baseUrl}/employees/role`, resource);
+    }
 }

@@ -1,4 +1,10 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import {
+    AfterContentInit,
+    AfterViewInit,
+    Component,
+    Inject,
+    OnInit,
+} from '@angular/core';
 import {
     FormBuilder,
     FormControl,
@@ -23,7 +29,10 @@ export class AssignRoleComponent implements OnInit {
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     roles = new FormControl();
-    selectedToppings;
+    selectedToppings = [
+        { id: 5, name: 'EMPLOYEE_ADMIN', code: '300' },
+        { id: 1, name: 'EMPLOYEE', code: '600' },
+    ];
 
     constructor(
         private _fb: FormBuilder,
@@ -38,17 +47,20 @@ export class AssignRoleComponent implements OnInit {
     ngOnInit(): void {
         this.form = this._fb.group({
             employeeId: ['', Validators.required],
-            roles: ['', Validators.required],
+            roleId: ['', Validators.required],
         });
         this.getEmployeeData();
         this.getAllRoles();
     }
 
+
     getEmployeeData(): void {
         this._employeeService.getById(+this.data.data.id).subscribe((res) => {
             this.employeeData = res.data;
+            this.selectedToppings = this.employeeData.roles;
+            // this.form.get('roles').setValue(this.employeeData.roles);
+
             this.form.get('employeeId').patchValue(this.employeeData.id);
-            // this.form.get('roles').patchValue(this.employeeData.roles);
         });
     }
 
@@ -63,7 +75,7 @@ export class AssignRoleComponent implements OnInit {
 
     save(): void {
         if (this.form.valid) {
-            this._dialogRef.close();
+            this._dialogRef.close(this.form.value);
         }
     }
 

@@ -60,13 +60,19 @@ export class EmployeesComponent implements OnInit {
     }
 
     onAssign(employee: Employee): void {
-        console.log('emp', employee);
         const dialogConfig = new MatDialogConfig();
         dialogConfig.data = { data: employee };
         dialogConfig.width = '500px';
 
         const dialogRef = this.dialog.open(AssignRoleComponent, dialogConfig);
-        
+
+        dialogRef.afterClosed().subscribe((data) => {
+            if (data) {
+                this._employeeService.assignEmployee(data).subscribe(res=> {
+                    this._snackbar.openSnackBar(res.message);
+                })
+            }
+        });
     }
 
     onView(data): void {
@@ -74,7 +80,10 @@ export class EmployeesComponent implements OnInit {
         dialogConfig.data = { data: data };
         dialogConfig.width = '600px';
 
-        const dialogRef = this.dialog.open(EmployeeDetailsViewComponent, dialogConfig);
+        const dialogRef = this.dialog.open(
+            EmployeeDetailsViewComponent,
+            dialogConfig
+        );
     }
 
     applyFilter(value) {

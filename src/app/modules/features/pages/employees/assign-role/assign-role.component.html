@@ -34,7 +34,7 @@
 
                 <mat-form-field class="w-3/4">
                     <mat-label>Role</mat-label>
-                    <mat-select formControlName="roles" [(value)]="selectedToppings" multiple>
+                    <mat-select formControlName="roleId" [(value)]="selectedToppings" multiple >
                         <mat-option *ngFor="let role of allRoles" [value]="role.id">{{role.name}}</mat-option>
                     </mat-select>
                     <mat-error>
