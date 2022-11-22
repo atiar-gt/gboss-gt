@@ -26,13 +26,10 @@ export class AssignRoleComponent implements OnInit {
     form: FormGroup;
     employeeData: Employee;
     allRoles;
+    selectedToppings;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     roles = new FormControl();
-    selectedToppings = [
-        { id: 5, name: 'EMPLOYEE_ADMIN', code: '300' },
-        { id: 1, name: 'EMPLOYEE', code: '600' },
-    ];
 
     constructor(
         private _fb: FormBuilder,
@@ -49,17 +46,18 @@ export class AssignRoleComponent implements OnInit {
             employeeId: ['', Validators.required],
             roleId: ['', Validators.required],
         });
-        this.getEmployeeData();
         this.getAllRoles();
+        this.getEmployeeData();
     }
-
 
     getEmployeeData(): void {
         this._employeeService.getById(+this.data.data.id).subscribe((res) => {
             this.employeeData = res.data;
-            this.selectedToppings = this.employeeData.roles;
-            // this.form.get('roles').setValue(this.employeeData.roles);
-
+            let arr;
+            arr = this.employeeData.roles.map((item: any) => {
+                return item.id;
+            });
+            this.selectedToppings = arr;
             this.form.get('employeeId').patchValue(this.employeeData.id);
         });
     }
@@ -70,6 +68,7 @@ export class AssignRoleComponent implements OnInit {
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((res) => {
                 this.allRoles = res.data;
+                this.form.get('roleId').setValue([9, 5]);
             });
     }
 
