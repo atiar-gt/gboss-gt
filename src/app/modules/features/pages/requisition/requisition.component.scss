@@ -1,0 +1,22 @@
+@media screen and (min-width: 1650px) {
+    .inventory-grid {
+        grid-template-columns: 11rem 21rem auto 25rem 13rem;
+        // display: flex;
+        // justify-content: space-around;
+        margin-bottom: 4px;
+    }
+    // body {
+    //   background-color: lightgreen;
+    // }
+}
+
+@media screen and (max-width: 1650px) {
+    .inventory-grid {
+        grid-template-columns: 11rem 12rem auto 21rem 12rem;
+        // display: flex;
+        // justify-content: space-around;
+        margin-bottom: 4px;
+    }
+}
+
+

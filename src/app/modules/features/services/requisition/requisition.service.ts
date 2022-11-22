@@ -1,9 +1,12 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { DataService } from 'app/shared/services/data/data.service';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
-export class RequisitionService {
-
-  constructor() { }
+export class RequisitionService extends DataService {
+    constructor(http: HttpClient) {
+        super(http, '/requisition');
+    }
 }
