@@ -269,11 +269,6 @@ export class RequisitionComponent implements OnInit {
     onReject(data): void {
         let config2 = {
             title: 'Do you want to Reject?',
-            // actions: {
-            //     confirm: {
-            //         color: 'warn' as const,
-            //     },
-            // },
         };
 
         this._confirmationService
