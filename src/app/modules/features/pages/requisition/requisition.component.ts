@@ -220,7 +220,7 @@ export class RequisitionComponent implements OnInit {
             status: 'Pending',
         },
     ];
-    // pagination: { currentPage: 1, pageCount: 2, dataCount: 12 },
+    pagination: { currentPage: 1; pageCount: 2; dataCount: 12 };
     // success: true,
 
     constructor(private _confirmationService: FuseConfirmationService) {}
@@ -236,8 +236,6 @@ export class RequisitionComponent implements OnInit {
         let config = {
             title: 'Do you want to Accept?',
             icon: {
-                show: true,
-                name: 'heroicons_outline:exclamation',
                 color: 'success' as const,
             },
             actions: {
@@ -267,12 +265,12 @@ export class RequisitionComponent implements OnInit {
     }
 
     onReject(data): void {
-        let config2 = {
+        let config = {
             title: 'Do you want to Reject?',
         };
 
         this._confirmationService
-            .open(config2)
+            .open(config)
             .afterClosed()
             .subscribe((result) => {
                 if (result === 'confirmed') {
