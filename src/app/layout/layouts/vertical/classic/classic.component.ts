@@ -6,6 +6,8 @@ import { FuseNavigationService, FuseVerticalNavigationComponent } from '@fuse/co
 import { Navigation } from 'app/core/navigation/navigation.types';
 import { NavigationService } from 'app/core/navigation/navigation.service';
 import { AuthService } from 'app/core/auth/auth.service';
+import { Scheme } from 'app/core/config/app.config';
+import { FuseConfigService } from '@fuse/services/config';
 
 @Component({
     selector     : 'classic-layout',
@@ -31,6 +33,7 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy
         private _authService: AuthService,
         private _fuseMediaWatcherService: FuseMediaWatcherService,
         private _fuseNavigationService: FuseNavigationService,
+        private _fuseConfigService: FuseConfigService,
     )
     {
     }
@@ -111,6 +114,8 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy
     }
 
     signOut() {
+        let scheme: Scheme = 'light';
+        this._fuseConfigService.config = { scheme };
         this._authService.signOut();
     }
 }
