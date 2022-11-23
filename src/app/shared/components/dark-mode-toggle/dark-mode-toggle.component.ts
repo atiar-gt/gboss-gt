@@ -10,15 +10,18 @@ import { Scheme } from 'app/core/config/app.config';
 export class DarkModeToggleComponent implements OnInit {
     darkMode = false;
     scheme: Scheme = 'dark';
-
+    modeMessage = 'Change to Night Mode'
+    
     constructor(private _fuseConfigService: FuseConfigService) {}
-
+    
     ngOnInit(): void {}
-
+    
     setScheme(scheme: Scheme): void {
         if (scheme === 'light') {
             this.scheme = 'dark';
+            this.modeMessage = 'Change to Night Mode'
         } else {
+            this.modeMessage = 'Change to Day Mode'
             this.scheme = 'light';
         }
         this._fuseConfigService.config = { scheme };
