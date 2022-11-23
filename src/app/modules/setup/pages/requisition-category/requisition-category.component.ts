@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FuseConfirmationService } from '@fuse/services/confirmation';
 import { SnackbarComponent } from 'app/shared/components/snackbar/snackbar.component';
@@ -10,7 +10,7 @@ import { RequisitionCategoryService } from '../../services/requisition-category/
     templateUrl: './requisition-category.component.html',
     styleUrls: ['./requisition-category.component.scss'],
 })
-export class RequisitionCategoryComponent implements OnInit {
+export class RequisitionCategoryComponent implements OnInit, OnDestroy {
     private _unsubscribeAll: Subject<any> = new Subject<any>();
     paginator;
     requisitionCategoryData;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FuseConfirmationService } from '@fuse/services/confirmation';
 import { SnackbarComponent } from 'app/shared/components/snackbar/snackbar.component';
@@ -10,7 +10,7 @@ import { RoleService } from '../../services/role/role.service';
     templateUrl: './role.component.html',
     styleUrls: ['./role.component.scss'],
 })
-export class RoleComponent implements OnInit {
+export class RoleComponent implements OnInit, OnDestroy {
     private _unsubscribeAll: Subject<any> = new Subject<any>();
     paginator;
     roleData;

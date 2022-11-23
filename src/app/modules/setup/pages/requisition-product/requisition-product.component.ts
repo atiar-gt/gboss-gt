@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FuseConfirmationService } from '@fuse/services/confirmation';
 import { SnackbarComponent } from 'app/shared/components/snackbar/snackbar.component';
@@ -12,7 +12,7 @@ import { RequisitionProductService } from '../../services/requisition-product/re
   templateUrl: './requisition-product.component.html',
   styleUrls: ['./requisition-product.component.scss']
 })
-export class RequisitionProductComponent implements OnInit {
+export class RequisitionProductComponent implements OnInit, OnDestroy {
 
   private _unsubscribeAll: Subject<any> = new Subject<any>();
     paginator;

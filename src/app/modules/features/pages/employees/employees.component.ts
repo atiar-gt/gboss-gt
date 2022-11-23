@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { FuseConfirmationService } from '@fuse/services/confirmation';
@@ -15,7 +15,7 @@ import { EmployeeDetailsViewComponent } from './employee-details-view/employee-d
     templateUrl: './employees.component.html',
     styleUrls: ['./employees.component.scss'],
 })
-export class EmployeesComponent implements OnInit {
+export class EmployeesComponent implements OnInit, OnDestroy {
     private _unsubscribeAll: Subject<any> = new Subject<any>();
     employeeData: Employee[] = [];
     paginator;

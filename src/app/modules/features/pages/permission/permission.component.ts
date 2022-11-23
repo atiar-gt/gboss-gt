@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
     FormBuilder,
     FormControl,
@@ -20,7 +20,7 @@ import { EditPermissionComponent } from './edit-permission/edit-permission.compo
     templateUrl: './permission.component.html',
     styleUrls: ['./permission.component.scss'],
 })
-export class PermissionComponent implements OnInit {
+export class PermissionComponent implements OnInit, OnDestroy {
     userId: number;
     permissionData;
     selected;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FuseConfirmationService } from '@fuse/services/confirmation';
 import { SnackbarComponent } from 'app/shared/components/snackbar/snackbar.component';
@@ -6,8 +6,8 @@ import { Subject, takeUntil } from 'rxjs';
 import { RequisitionTypeService } from '../../services/requisition-type/requisition-type.service';
 
 export interface requisitionTypeData {
-    name: string,
-    code: number
+    name: string;
+    code: number;
 }
 
 @Component({
@@ -15,7 +15,7 @@ export interface requisitionTypeData {
     templateUrl: './requisition-type.component.html',
     styleUrls: ['./requisition-type.component.scss'],
 })
-export class RequisitionTypeComponent implements OnInit {
+export class RequisitionTypeComponent implements OnInit, OnDestroy {
     private _unsubscribeAll: Subject<any> = new Subject<any>();
     paginator;
     requisitionTypeData: requisitionTypeData[];
