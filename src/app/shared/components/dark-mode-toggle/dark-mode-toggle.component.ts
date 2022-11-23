@@ -36,9 +36,9 @@ export class DarkModeToggleComponent implements OnInit {
         if (this.config.scheme === 'light') {
             this.scheme = 'dark';
             this.darkMode = true;
-            this.modeMessage = 'Change to Night Mode'
-        } else {
             this.modeMessage = 'Change to Day Mode'
+        } else {
+            this.modeMessage = 'Change to Night Mode'
             this.darkMode = false;
             this.scheme = 'light';
         }
