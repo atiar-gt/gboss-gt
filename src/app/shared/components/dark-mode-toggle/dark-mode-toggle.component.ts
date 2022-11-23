@@ -10,8 +10,6 @@ import { Scheme } from 'app/core/config/app.config';
 export class DarkModeToggleComponent implements OnInit {
     darkMode = false;
     scheme: Scheme = 'dark';
-    // @Output()
-    // colorChange = new EventEmitter<string>();
 
     constructor(private _fuseConfigService: FuseConfigService) {}
 
