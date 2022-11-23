@@ -70,7 +70,7 @@ export class RequisitionComponent implements OnInit {
             officeAddress: 'Lotus Kamal Tower',
             sittingLocation: '6th Floor - Left Side',
             date: '08-11-2022',
-            status: 'Pending',
+            status: 'Accepted',
         },
         {
             id: 83,
@@ -112,7 +112,7 @@ export class RequisitionComponent implements OnInit {
             officeAddress: 'Lotus Kamal Tower',
             sittingLocation: '6th Floor - Left Side',
             date: '08-11-2022',
-            status: 'Pending',
+            status: 'Rejected',
         },
         {
             id: 83,
@@ -154,7 +154,7 @@ export class RequisitionComponent implements OnInit {
             officeAddress: 'Lotus Kamal Tower',
             sittingLocation: '6th Floor - Left Side',
             date: '08-11-2022',
-            status: 'Pending',
+            status: 'Accepted',
         },
         {
             id: 83,
@@ -196,7 +196,7 @@ export class RequisitionComponent implements OnInit {
             officeAddress: 'Lotus Kamal Tower',
             sittingLocation: '6th Floor - Left Side',
             date: '08-11-2022',
-            status: 'Pending',
+            status: 'Rejected',
         },
         {
             id: 83,
@@ -228,11 +228,6 @@ export class RequisitionComponent implements OnInit {
     ngOnInit(): void {}
 
     onAccept(data): void {
-        console.log('DATA', data);
-
-        if (data.status === 'Accepted') {
-        } else {
-        }
         let config = {
             title: 'Do you want to Accept?',
             icon: {
