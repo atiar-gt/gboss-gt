@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { FuseConfirmationService } from '@fuse/services/confirmation';
 import { SnackbarComponent } from 'app/shared/components/snackbar/snackbar.component';
 import { Subject, takeUntil } from 'rxjs';
-import { RequisitionCategoryService } from '../../services/requisition-category/requisition-category.service';
 import { RequisitionProductService } from '../../services/requisition-product/requisition-product.service';
 
 
