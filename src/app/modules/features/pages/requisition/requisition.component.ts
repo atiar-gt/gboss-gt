@@ -220,6 +220,8 @@ export class RequisitionComponent implements OnInit {
             status: 'Pending',
         },
     ];
+
+    types = ['Accepted', 'Rejected', 'Pending']
     pagination: { currentPage: 1; pageCount: 2; dataCount: 12 };
     // success: true,
 

@@ -15,10 +15,10 @@
     </div>
 
 
-    <div class="flex flex-row justify-between py-4">
+    <div class="flex flex-row justify-between py-2">
         <div>
             <mat-form-field class="w-44">
-                <mat-label>Filter by Role</mat-label>
+                <!-- <mat-label>Filter by Role</mat-label> -->
                 <mat-select [(value)]="selected">
                     <mat-option (click)="onRole(role.id)" *ngFor="let role of roles" [value]="role.id">
                         {{role.name}}

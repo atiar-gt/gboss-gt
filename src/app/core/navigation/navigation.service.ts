@@ -33,6 +33,10 @@ export class NavigationService {
         return this._navigation.asObservable();
     }
 
+    switchNavigation(resource: any): Observable<any> {
+        return this._httpClient.put(`${environment.baseUrl}/employee/roles`, resource);
+    }
+
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
@@ -48,17 +52,19 @@ export class NavigationService {
     //         })
     //     );
     // }
-    get(): Observable<Navigation> {
-        const userId: number = this._authService.authInfo.id;
-        return this._httpClient
-            .get<any>(`${environment.baseUrl}/employees/role/menu`)
-            .pipe(
+    getNavs(): Observable<Navigation> {
+        console.log('GET NAVIGATIONS');
+        
+        // const userId: number = this._authService.authInfo.id;
+        return this._httpClient.get<any>(`${environment.baseUrl}/employee/menus`)
+        .pipe(
                 tap((res) => {
-                    
-                    console.log('res success', res.success);
+                    console.log('res success', res);
                     if (res.success) {
                         //defautlNavigation
                         const defaultData = cloneDeep(res.data);
+                        console.log('defaultData', defaultData);
+                        
                         const _defaultNavigation = defaultData.map((item) => {
                             item.id = item.id.toString();
                             return item;

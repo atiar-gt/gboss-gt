@@ -5,6 +5,8 @@ import { RequisitionComponent } from './requisition.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { PaginatorModule } from 'app/shared/components/paginator/paginator.module';
 
 const requisitionRoutes: Route[] = [
@@ -22,7 +24,9 @@ const requisitionRoutes: Route[] = [
         MatIconModule,
         MatMenuModule,
         MatChipsModule,
-        PaginatorModule
+        MatFormFieldModule,
+        MatSelectModule,
+        PaginatorModule,
     ],
 })
 export class RequisitionModule {}
