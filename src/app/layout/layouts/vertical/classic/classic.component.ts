@@ -12,12 +12,14 @@ import { FuseConfigService } from '@fuse/services/config';
 @Component({
     selector     : 'classic-layout',
     templateUrl  : './classic.component.html',
+    styleUrls    : ['./classic.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
 export class ClassicLayoutComponent implements OnInit, OnDestroy
 {
     isNav = false;
     userInfo;
+    roles;
     menus = ['Employees', 'Admin']
     isScreenSmall: boolean;
     navigation: Navigation;
@@ -110,7 +112,10 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy
     }
 
     getUserInfo():void {
-        this.userInfo = this._authService.authInfo;        
+        this.userInfo = this._authService.authInfo;
+        // console.log('userInfo', this.userInfo.roles);
+        this.roles = this.userInfo.roles;
+           
     }
 
     signOut() {

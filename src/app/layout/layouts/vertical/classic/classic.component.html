@@ -32,12 +32,24 @@
         <!-- Components -->
         <div class="flex items-center pl-2 ml-auto space-x-0.5 sm:space-x-2">
             <!-- <languages></languages> -->
+            <div class=" my-5" style="font-size: 12px !important">
+
+                <mat-form-field class="w-[188px] py-4 mt-4">
+                    <mat-select>
+                        <mat-option *ngFor="let role of roles" [value]="role.id">
+                            {{role.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
             <app-dark-mode-toggle></app-dark-mode-toggle>
             <fuse-fullscreen class="hidden md:block"></fuse-fullscreen>
+            <notifications></notifications>
+
             <!-- <search [appearance]="'bar'"></search> -->
             <!-- <shortcuts></shortcuts> -->
             <!-- <messages></messages> -->
-            <notifications></notifications>
+
             <!-- <button
                 class="lg:hidden"
                 mat-icon-button
@@ -107,9 +119,8 @@
 
     <!-- Navigation -->
     <div class="flex flex-row max-h-36">
-        <fuse-vertical-navigation class="bg-white print:hidden rounded-md"
-            [mode]="isScreenSmall ? 'over' : 'side'" [name]="'mainNavigation'" [navigation]="navigation.default"
-            [opened]="!isScreenSmall">
+        <fuse-vertical-navigation class="bg-white print:hidden rounded-md" [mode]="isScreenSmall ? 'over' : 'side'"
+            [name]="'mainNavigation'" [navigation]="navigation.default" [opened]="!isScreenSmall">
             <ng-container fuseVerticalNavigationContentHeader>
                 <div class="mt-16"></div>
             </ng-container>

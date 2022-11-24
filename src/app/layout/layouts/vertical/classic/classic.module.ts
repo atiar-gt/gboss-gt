@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
 import { MatMenuModule } from '@angular/material/menu';
 import { FuseFullscreenModule } from '@fuse/components/fullscreen';
 import { FuseLoadingBarModule } from '@fuse/components/loading-bar';
@@ -19,16 +20,15 @@ import { SharedModule } from 'app/shared/shared.module';
 import { ClassicLayoutComponent } from 'app/layout/layouts/vertical/classic/classic.component';
 
 @NgModule({
-    declarations: [
-        ClassicLayoutComponent
-    ],
-    imports     : [
+    declarations: [ClassicLayoutComponent],
+    imports: [
         HttpClientModule,
         RouterModule,
         MatButtonModule,
         MatDividerModule,
         MatIconModule,
         MatMenuModule,
+        MatSelectModule,
         FuseFullscreenModule,
         FuseLoadingBarModule,
         FuseNavigationModule,
@@ -39,12 +39,8 @@ import { ClassicLayoutComponent } from 'app/layout/layouts/vertical/classic/clas
         SearchModule,
         ShortcutsModule,
         UserModule,
-        SharedModule
+        SharedModule,
     ],
-    exports     : [
-        ClassicLayoutComponent
-    ]
+    exports: [ClassicLayoutComponent],
 })
-export class ClassicLayoutModule
-{
-}
+export class ClassicLayoutModule {}
