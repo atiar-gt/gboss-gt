@@ -147,10 +147,8 @@ export class PermissionComponent implements OnInit, OnDestroy {
         );
 
         dialogRef.afterClosed().subscribe((data) => {
-            console.log('assigned', data);
             if (data) {
                 this._menuPermissionService.create(data).subscribe((res) => {
-                    // console.log('RESS', res);
                     this._snackbar.openSnackBar(res.message);
                     if (res.success) {
                         this.permissionData.unshift(res.data)

@@ -78,22 +78,16 @@ export class AuthSignInComponent implements OnInit {
                 if (res.body.success) {
                     let authToken = res.headers.get("authorization");
                     this._authService.setAuthInfoInLocalStorage(authToken, res);
-
-
                     // Set the redirect url.
                     // The '/signed-in-redirect' is a dummy url to catch the request and redirect the user
                     // to the correct page after a successful sign in. This way, that url can be set via
                     // routing file and we don't have to touch here.
 
                     // Navigate to the redirect url
-                    console.log('res', res);
                     const redirectURL = this._activatedRoute.snapshot.queryParamMap.get('redirectURL') || '/signed-in-redirect';
-                    console.log('redirectURL', redirectURL);
-
                     this._router.navigate(['/employee']);
                 }
                 else {
-                    console.log(res.body.message);
                     this.alert = {
                         type: 'error',
                         message: res.body.message

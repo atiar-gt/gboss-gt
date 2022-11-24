@@ -28,15 +28,11 @@ export class PaginatorService {
   }
 
   setTableData(totalCount): void {
-    console.log('total count', totalCount);
-    
     this._onTableDataChange.next(totalCount);
   }
 
 
   onPageChange($event: PageEvent): void {
-    console.log('event', $event);
-
     this._page = { pageNumber: $event.pageIndex, pageSize: $event.pageSize };
     const PageEventChange = {
       page: $event.pageIndex + 1

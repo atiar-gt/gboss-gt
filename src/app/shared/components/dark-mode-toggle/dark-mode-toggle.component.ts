@@ -18,7 +18,6 @@ export class DarkModeToggleComponent implements OnInit {
         this._fuseConfigService.config$.subscribe((config: AppConfig) => {
             // Store the config
             this.config = config;
-            console.log('CON222', this.config);
             if (this.config.scheme === 'light') {
                 this.darkMode = false;
                 this.modeMessage = 'Change to Night Mode';

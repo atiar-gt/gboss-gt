@@ -106,9 +106,7 @@ export class SettingsComponent implements OnInit, OnDestroy
      * @param scheme
      */
     setScheme(scheme: Scheme): void
-    {
-        console.log('schemeee', scheme);
-        
+    {        
         this._fuseConfigService.config = {scheme};
     }
 
