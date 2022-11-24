@@ -20,10 +20,10 @@ export class DarkModeToggleComponent implements OnInit {
             this.config = config;
             if (this.config.scheme === 'light') {
                 this.darkMode = false;
-                this.modeMessage = 'Change to Night Mode';
+                this.modeMessage = 'Switch to Night Mode';
             } else {
                 this.darkMode = true;
-                this.modeMessage = 'Change to Day Mode';
+                this.modeMessage = 'Switch to Day Mode';
             }
         });
     }
@@ -32,11 +32,11 @@ export class DarkModeToggleComponent implements OnInit {
         if (this.config.scheme === 'light') {
             this.scheme = 'dark';
             this.darkMode = true;
-            this.modeMessage = 'Change to Day Mode';
+            this.modeMessage = 'Switch to Day Mode';
         } else {
             this.darkMode = false;
             this.scheme = 'light';
-            this.modeMessage = 'Change to Night Mode';
+            this.modeMessage = 'Switch to Night Mode';
         }
         this._fuseConfigService.config = { scheme: this.scheme };
     }
