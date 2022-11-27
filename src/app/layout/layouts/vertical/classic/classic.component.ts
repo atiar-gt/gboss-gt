@@ -91,8 +91,8 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
         this._navigationService.navigation$
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((navigation: Navigation) => {
-                console.log('navigations', navigation.default[0].route);
                 this.redirectUrl = navigation.default[0].route;
+                console.log('navigations', this.redirectUrl);
 
                 this.navigation = navigation;
             });
@@ -158,10 +158,7 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
             // console.log('selectedRole2', this.selectedRole);
             // console.log('redirectUrl', this.redirectUrl);
             this._navigationService.switchNavigation(this.form.value).subscribe(res=> {
-                console.log('new role', role);
                 if (res.success) {
-                    console.log('SUCCESS', res);
-                    
                     this._navigationService.getNavs().subscribe(res=> {
                         console.log('RES', res);
                         // let newRoles this.roles.
