@@ -92,7 +92,7 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((navigation: Navigation) => {
                 this.redirectUrl = navigation.default[0].route;
-                console.log('navigations', this.redirectUrl);
+                console.log('redirectUrl', this.redirectUrl);
 
                 this.navigation = navigation;
             });

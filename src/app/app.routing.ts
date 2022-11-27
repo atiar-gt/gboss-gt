@@ -117,6 +117,25 @@ export const appRoutes: Route[] = [
         ],
     },
 
+    {
+        path: '',
+        canActivate: [AuthGuard],
+        // canActivateChild: [AuthGuard],
+        component: LayoutComponent,
+        resolve: {
+            initialData: InitialDataResolver,
+        },
+        children: [
+            {
+                path: 'dashboard',
+                loadChildren: () =>
+                    import(
+                        'app/modules/features/pages/dashboard/dashboard.module'
+                    ).then((m) => m.DashboardModule),
+            },
+        ],
+    },
+
     // Admin routes
     {
         path: '',
@@ -208,5 +227,5 @@ export const appRoutes: Route[] = [
             },
         ],
     },
-    { path: '**', redirectTo: 'employee', pathMatch: 'full' },
+    { path: '**', redirectTo: 'dashboard', pathMatch: 'full' },
 ];
