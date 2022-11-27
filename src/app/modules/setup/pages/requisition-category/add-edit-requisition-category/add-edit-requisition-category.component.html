@@ -21,7 +21,7 @@
 
                 <mat-form-field class="w-full">
                     <mat-label>Requisition Type</mat-label>
-                    <mat-select formControlName="typeId">
+                    <mat-select class="h-11" formControlName="typeId">
                         <mat-option *ngFor="let type of requisitionTypes" [value]="type.id">
                             {{type.name}}
                         </mat-option>

@@ -21,7 +21,7 @@
 
                 <mat-form-field class="w-full">
                     <mat-label>Requisition Category</mat-label>
-                    <mat-select formControlName="categoryId">
+                    <mat-select class="h-11" formControlName="categoryId">
                         <mat-option *ngFor="let category of requisitionCategories" [value]="category.id">
                             {{category.name}}
                         </mat-option>

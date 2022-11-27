@@ -11,7 +11,7 @@
 
                 <mat-form-field class="w-full">
                     <mat-label>Role</mat-label>
-                    <mat-select formControlName="roleId">
+                    <mat-select class="h-11" formControlName="roleId">
                         <mat-option *ngFor="let role of roles" [value]="role.id">
                             {{role.name}}
                         </mat-option>
@@ -32,7 +32,7 @@
             <div class="w-full mb-6 md:mb-0">
                 <mat-form-field class="w-full">
                     <mat-label>Menu</mat-label>
-                    <mat-select formControlName="menuId">
+                    <mat-select class="h-11" formControlName="menuId">
                         <mat-option *ngFor="let menu of menus" [value]="menu.id">
                             {{menu.name}}
                         </mat-option>

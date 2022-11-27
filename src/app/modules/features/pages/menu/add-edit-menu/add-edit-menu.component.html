@@ -31,7 +31,7 @@
 
                 <mat-form-field class="w-full">
                     <mat-label>Menu Type</mat-label>
-                    <mat-select formControlName="type">
+                    <mat-select class="h-11" formControlName="type">
                         <mat-option *ngFor="let type of types" [value]="type.type" (click)="onMenuType(type)">
                             {{type.name}}
                         </mat-option>
@@ -45,7 +45,7 @@
                 
                 <mat-form-field class="w-full">
                     <mat-label>Parent Menu</mat-label>
-                    <mat-select formControlName="parentId">
+                    <mat-select class="h-11" formControlName="parentId">
                         <mat-option *ngFor="let menu of menus" [value]="menu.id">
                             {{menu.name}}
                         </mat-option>
