@@ -36,7 +36,7 @@
 
                 <mat-form-field class="w-[188px] py-4 mt-4">
                     <mat-select formControlName="roleId">
-                        <mat-option (click)="onNav(role.id)" *ngFor="let role of roles" [value]="role.id">
+                        <mat-option (click)="onNav(role)" *ngFor="let role of roles" [value]="role.id">
                             {{role.label}}
                         </mat-option>
                     </mat-select>

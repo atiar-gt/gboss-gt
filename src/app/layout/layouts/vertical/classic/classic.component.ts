@@ -148,28 +148,39 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
             }
         });
         console.log('user rules', this.roles);
+        console.log('selectedRole1', this.selectedRole);
     }
 
-    onNav(id: number): void {
-        console.log('ID', id);
-        
-        console.log('selectedRole', this.selectedRole);
-        this._navigationService.switchNavigation(this.form.value).subscribe(res=> {
-            console.log('RES', res);
-            if (res.success) {
-                console.log('SUCCESS');
+    onNav(role): void {
+        // console.log('ID', id);
+        if (this.selectedRole !== role) {
+            this.selectedRole = role;
+            console.log('selectedRole2', this.selectedRole);
+            console.log('redirectUrl', this.redirectUrl);
+            this._navigationService.switchNavigation(this.form.value).subscribe(res=> {
+                // console.log('RES', res);
+                if (res.success) {
+                    console.log('SUCCESS');
+                    
+                    this._navigationService.getNavs().subscribe(res=> {
+                        console.log('RES', res);
+                        
+                    });
+                    // this.ngOnInit();
+                    // this.getUserInfo();
+                    // this._router.navigateByUrl('/');
+                    // this._router.navigate(['/requisition']).then(()=> {
+                    //     window.location.reload()
+                    // });
+                    // this.reloadComponent();
+                }
                 
-                // this._navigationService.getNavs();
-                // this.ngOnInit();
-                // this.getUserInfo();
-                // this._router.navigateByUrl('/');
-                this._router.navigate(['/requisition']).then(()=> {
-                    window.location.reload()
-                });
-                // this.reloadComponent();
-            }
+            })
+        }
+        else {
+            console.log('same value');
             
-        })
+        }
         
         // console.log('nav form value', this.form.value);
         // if (this.selectedRole.id !== this.form.value.roleId) {
@@ -182,19 +193,6 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
         // this.getNavigations();
         // this._navigationService.get();
     }
-
-
-    // reloadComponent(){
-    //     //skipLocationChange:true means dont update the url to / when navigating
-    //    console.log("Current route I am on:",this._router.url);
-    //    const url= '/test';
-    //    this._router.navigateByUrl('/',{skipLocationChange:true}).then(()=>{
-    //      this._router.navigate([`/${url}`]).then(()=>{
-    //        console.log(`After navigation I am on:${this._router.url}`)
-    //      })
-    //    })
-    //  }
-
 
 
     signOut() {
