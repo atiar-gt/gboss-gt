@@ -28,8 +28,8 @@ export class AssignRoleToMenuComponent implements OnInit {
     ngOnInit(): void {
         this.roleId = this.data.roleId;
         this.form = this._fb.group({
-            menuId: [Validators.required],
-            roleId: [Validators.required],
+            menuId: ['', Validators.required],
+            roleId: ['',Validators.required],
             isAdd: [],
             isEdit: [],
             isApprove: [],
@@ -57,7 +57,7 @@ export class AssignRoleToMenuComponent implements OnInit {
     }
 
     save(): void {
-        console.log('form v', this.form.value);
+        console.log('form v', this.form.valid);
         
         if (this.form.valid) {
             this._dialogRef.close(this.form.value);

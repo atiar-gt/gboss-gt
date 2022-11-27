@@ -147,23 +147,25 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
                 this.selectedRole = item;
             }
         });
-        console.log('user rules', this.roles);
-        console.log('selectedRole1', this.selectedRole);
+        // console.log('user rules', this.roles);
+        // console.log('selectedRole1', this.selectedRole);
     }
 
     onNav(role): void {
         // console.log('ID', id);
         if (this.selectedRole !== role) {
             this.selectedRole = role;
-            console.log('selectedRole2', this.selectedRole);
-            console.log('redirectUrl', this.redirectUrl);
+            // console.log('selectedRole2', this.selectedRole);
+            // console.log('redirectUrl', this.redirectUrl);
             this._navigationService.switchNavigation(this.form.value).subscribe(res=> {
-                // console.log('RES', res);
+                console.log('new role', role);
                 if (res.success) {
-                    console.log('SUCCESS');
+                    console.log('SUCCESS', res);
                     
                     this._navigationService.getNavs().subscribe(res=> {
                         console.log('RES', res);
+                        // let newRoles this.roles.
+                        this._router.navigateByUrl(this.redirectUrl)
                         
                     });
                     // this.ngOnInit();

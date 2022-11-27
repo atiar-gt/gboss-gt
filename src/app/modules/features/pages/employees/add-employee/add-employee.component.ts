@@ -21,6 +21,7 @@ export class AddEmployeeComponent implements OnInit {
     file_store: FileList;
     bloodGroups:[] = [];
     genders:[] = [];
+    requestTypes = ['Accepted', 'Rejected', 'Pending'];
     display: FormControl = new FormControl('', Validators.required);
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
