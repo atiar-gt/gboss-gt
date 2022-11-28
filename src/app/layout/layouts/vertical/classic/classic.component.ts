@@ -12,6 +12,7 @@ import { AuthService } from 'app/core/auth/auth.service';
 import { Scheme } from 'app/core/config/app.config';
 import { FuseConfigService } from '@fuse/services/config';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { EmployeesService } from 'app/modules/features/services/employees/employees.service';
 
 @Component({
     selector: 'classic-layout',
@@ -39,6 +40,7 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
         private _fb: FormBuilder,
         private _navigationService: NavigationService,
         private _authService: AuthService,
+        private _employeeService: EmployeesService,
         private _fuseMediaWatcherService: FuseMediaWatcherService,
         private _fuseNavigationService: FuseNavigationService,
         private _fuseConfigService: FuseConfigService
@@ -63,28 +65,20 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
      * On init
      */
     ngOnInit(): void {
+        this.getRoles();
         this.form = this._fb.group({
             roleId: [''],
         });
-        this.getUserInfo();
+        
 
         this.getNavigations();
-        // this.selectedValue = 1
-        // this.form.get('roleId').setValue(1);
-        // Subscribe to navigation data
-        // this._navigationService.navigation$
-        //     .pipe(takeUntil(this._unsubscribeAll))
-        //     .subscribe((navigation: Navigation) => {
-        //         this.navigation = navigation;
-        //     });
+    }
 
-        // // Subscribe to media changes
-        // this._fuseMediaWatcherService.onMediaChange$
-        //     .pipe(takeUntil(this._unsubscribeAll))
-        //     .subscribe(({ matchingAliases }) => {
-        //         // Check if the screen is small
-        //         this.isScreenSmall = !matchingAliases.includes('md');
-        //     });
+    getRoles(): void {
+        this._employeeService.getRoles().subscribe(res=> {
+            this.roles = res.data;
+            this.getUserInfo();
+        })
     }
 
     getNavigations(): void {
@@ -92,8 +86,6 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((navigation: Navigation) => {
                 this.redirectUrl = navigation.default[0].route;
-                console.log('redirectUrl', this.redirectUrl);
-
                 this.navigation = navigation;
             });
 
@@ -140,13 +132,14 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
 
     getUserInfo(): void {
         this.userInfo = this._authService.authInfo;
-        this.roles = this.userInfo.roles;
-        this.roles.forEach((item) => {
-            if (item.selected === true) {
-                this.form.get('roleId').setValue(item.id);
-                this.selectedRole = item;
-            }
-        });
+        if (this.roles) {
+            this.roles.forEach((item) => {
+                if (item.selected === true) {
+                    this.form.get('roleId').setValue(item.id);
+                    this.selectedRole = item;
+                }
+            });
+        }
     }
 
     onNav(role): void {
@@ -170,9 +163,7 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
                 
             })
         }
-        else {
-            console.log('same value');            
-        }
+        
 
     }
 

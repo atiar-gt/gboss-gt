@@ -12,11 +12,16 @@ export class EmployeesService extends DataService {
         super(http, '/employees');
     }
 
+    getRoles(): Observable<any> {
+        return this.http.get(`${environment.baseUrl}/employee/roles`);
+    }
+
     getBloodGroups(): Observable<any> {
         return this.http.get(`${environment.baseUrl}/setup/BloodGroup`);
     }
 
-    assignEmployee(resource: any): Observable<any> {
-        return this.http.post(`${environment.baseUrl}/employees/role`, resource);
+    assignEmployee(resource: any, id: number): Observable<any> {
+        return this.http.post(`${environment.baseUrl}/employee/roles`, resource);
     }
+
 }

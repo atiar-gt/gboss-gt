@@ -143,10 +143,11 @@ export class AuthService {
             id: data.id,
             name: data.name,
             email: data.email,
+            gender: data.gender,
             mobileNumber: data.mobileNumber,
             designation: data.designation,
             payrollDesignation: data.payrollDesignation,
-            roles: data.roles,
+            // roles: data.roles,
             loggedIn: res.success,
             // loggedIn: true
         }));
