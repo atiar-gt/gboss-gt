@@ -134,9 +134,6 @@ export class AuthService {
 
     setAuthInfoInLocalStorage(accessToken, res?): void {
         let data = res.body.data;
-        console.log('token', accessToken);
-        console.log('data', data);
-
         localStorage.clear();
         localStorage.setItem('auth', JSON.stringify({
             accessToken,

@@ -68,9 +68,11 @@ export class EmployeesComponent implements OnInit, OnDestroy {
 
         dialogRef.afterClosed().subscribe((data) => {
             if (data) {
-                this._employeeService.assignEmployee(data, employee.id).subscribe(res=> {
-                    this._snackbar.openSnackBar(res.message);
-                })
+                this._employeeService
+                    .assignEmployee(data, employee.id)
+                    .subscribe((res) => {
+                        this._snackbar.openSnackBar(res.message);
+                    });
             }
         });
     }
