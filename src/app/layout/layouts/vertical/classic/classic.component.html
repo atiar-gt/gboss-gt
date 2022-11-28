@@ -42,9 +42,9 @@
                     </mat-select>
                 </mat-form-field>
             </form>
-            <app-dark-mode-toggle></app-dark-mode-toggle>
+            <app-dark-mode-toggle class="hidden md:block"></app-dark-mode-toggle>
             <fuse-fullscreen class="hidden md:block"></fuse-fullscreen>
-            <notifications></notifications>
+            <notifications class="hidden md:block"></notifications>
 
             <!-- <search [appearance]="'bar'"></search> -->
             <!-- <shortcuts></shortcuts> -->
@@ -57,7 +57,7 @@
                 <mat-icon [svgIcon]="'heroicons_outline:chat-alt-2'"></mat-icon>
             </button> -->
             <!-- <user></user> -->
-            <button class="pl-4" [matMenuTriggerFor]="userActions">
+            <button class="pl-4 hidden md:block" [matMenuTriggerFor]="userActions">
                 <div class="flex flex-col text-start">
                     <div>
                         {{userInfo.name}}
@@ -93,6 +93,7 @@
                     <span>Sign out</span>
                 </button>
             </mat-menu>
+            
 
             <!-- <mat-menu class="user-status-menu" #userStatus="matMenu">
                 <button mat-menu-item (click)="updateUserStatus('online')">
@@ -136,7 +137,7 @@
         </fuse-vertical-navigation>
         <router-outlet *ngIf="true"></router-outlet>
     </div>
-    <div class="h-[100vh] item-center" *ngIf="!navigation">No Role assigned</div>
+    <div class="h-[100vh] item-center mt-12 text-xl font-extrabold" *ngIf="!navigation">No Role assigned</div>
 
     <!-- Footer -->
     <!-- <div class="relative flex flex-0 items-center justify-start w-full h-14 px-4 md:px-6 z-49 border-t bg-card dark:bg-transparent print:hidden">

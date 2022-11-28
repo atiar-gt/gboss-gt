@@ -10,6 +10,7 @@ import { FuseConfirmationService } from '@fuse/services/confirmation';
 import { SnackbarComponent } from 'app/shared/components/snackbar/snackbar.component';
 import { PaginatorService } from 'app/shared/services/paginator/paginator.service';
 import { Subject, takeUntil } from 'rxjs';
+import { Permission } from '../../models/permission.model';
 import { MenuPermissionService } from '../../services/menu-permission/menu-permission.service';
 import { RoleService } from '../../services/role/role.service';
 import { AssignRoleToMenuComponent } from '../menu/assign-role-to-menu/assign-role-to-menu.component';
@@ -22,7 +23,7 @@ import { EditPermissionComponent } from './edit-permission/edit-permission.compo
 })
 export class PermissionComponent implements OnInit, OnDestroy {
     userId: number;
-    permissionData;
+    permissionData: Permission[];
     selected;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
     paginator;
@@ -52,6 +53,8 @@ export class PermissionComponent implements OnInit, OnDestroy {
                     .pipe(takeUntil(this._unsubscribeAll))
                     .subscribe((res) => {
                         this.permissionData = res.data;
+                        console.log('permission data', this.permissionData);
+                        
                         this.selected = res.data[0].roleId;
                         this.paginator = res.pagination;
                         this._paginatorService._onTableDataChange.next(

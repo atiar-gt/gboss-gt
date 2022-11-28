@@ -147,20 +147,14 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
                 this.selectedRole = item;
             }
         });
-        // console.log('user rules', this.roles);
-        // console.log('selectedRole1', this.selectedRole);
     }
 
     onNav(role): void {
-        // console.log('ID', id);
         if (this.selectedRole !== role) {
             this.selectedRole = role;
-            // console.log('selectedRole2', this.selectedRole);
-            // console.log('redirectUrl', this.redirectUrl);
             this._navigationService.switchNavigation(this.form.value).subscribe(res=> {
                 if (res.success) {
                     this._navigationService.getNavs().subscribe(res=> {
-                        console.log('RES', res);
                         // let newRoles this.roles.
                         this._router.navigateByUrl(this.redirectUrl)
                         
@@ -177,20 +171,9 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
             })
         }
         else {
-            console.log('same value');
-            
+            console.log('same value');            
         }
-        
-        // console.log('nav form value', this.form.value);
-        // if (this.selectedRole.id !== this.form.value.roleId) {
-        //     console.log('SWITCH');
-        // }
-        // else {
-        //     console.log('Role doesnt change');
-        // }
 
-        // this.getNavigations();
-        // this._navigationService.get();
     }
 
 

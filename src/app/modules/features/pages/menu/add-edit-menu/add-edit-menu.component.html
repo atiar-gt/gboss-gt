@@ -6,7 +6,7 @@
     </div>
     <form [formGroup]="form" class="m-6">
 
-        <div class="flex flex-row">
+        <div class="flex flex-col sm:flex-row">
             <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
 
                 <mat-form-field class="w-full">
@@ -56,7 +56,7 @@
 
         </div>
 
-        <div class="flex flex-row">
+        <div class="flex flex-col sm:flex-row">
             <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
                 <mat-form-field class="w-full">
                     <mat-label>Route</mat-label>
@@ -74,7 +74,7 @@
             </div>
         </div>
 
-        <div class="flex flex-row">
+        <div class="flex flex-col sm:flex-row">
             <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
                 <button (click)="onSubmit()" class="bg-primary-500 large w-full hover:bg-primary-700 text-white py-2 px-8 rounded-md">
                     Save
