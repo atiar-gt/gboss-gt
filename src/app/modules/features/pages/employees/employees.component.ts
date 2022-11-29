@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { FuseConfirmationService } from '@fuse/services/confirmation';
+import { NavigationService } from 'app/core/navigation/navigation.service';
 import { SnackbarComponent } from 'app/shared/components/snackbar/snackbar.component';
 import { PaginatorService } from 'app/shared/services/paginator/paginator.service';
 import { debounceTime, Subject, takeUntil } from 'rxjs';
@@ -23,6 +24,7 @@ export class EmployeesComponent implements OnInit, OnDestroy {
     constructor(
         private _confirmationService: FuseConfirmationService,
         private _employeeService: EmployeesService,
+        private _navigationService: NavigationService,
         private _paginatorService: PaginatorService,
         private _router: Router,
         public dialog: MatDialog,
@@ -69,7 +71,7 @@ export class EmployeesComponent implements OnInit, OnDestroy {
         dialogRef.afterClosed().subscribe((data) => {
             if (data) {
                 this._employeeService
-                    .assignEmployee(data, employee.id)
+                    .assignEmployee(data)
                     .subscribe((res) => {
                         this._snackbar.openSnackBar(res.message);
                     });

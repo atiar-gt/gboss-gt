@@ -3,33 +3,7 @@
         <span class="font-semibold text-lg mb-3">Assign Role</span>
         <mat-divider class="mt-4"></mat-divider>
     </div>
-    <!-- <form [formGroup]="form" class=" pt-5">
-
-        <div class="flex flex-col space">
-            <div class="w-full md:w-full md:mb-0 flex flex-col pb-2">
-                <span class="font-xs"> Employee Name:</span>
-                <span class="text-lg font-semibold">
-                    {{employeeData?.name}}</span>
-            </div>
-
-            <div class="w-full md:w-full py-3 md:mb-0">
-                <mat-form-field class="w-3/4">
-                    <mat-label>Role</mat-label>
-                    <mat-select (selectionChange)="triggerEvent($event)" formControlName="roleId" [(value)]="selectedToppings" multiple >
-                        <mat-option *ngFor="let role of allRoles" [value]="role.id">{{role.name}}</mat-option>
-                    </mat-select>
-                    <mat-error>
-                        Role is required
-                    </mat-error>
-                </mat-form-field>
-
-            </div>
-
-
-        </div>
-
-
-    </form> -->
+   
     <form [formGroup]="form" class="pt-2">
 
         <div class="flex flex-col justify-evenly">
