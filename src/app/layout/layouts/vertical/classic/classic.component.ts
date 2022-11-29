@@ -13,6 +13,7 @@ import { Scheme } from 'app/core/config/app.config';
 import { FuseConfigService } from '@fuse/services/config';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { EmployeesService } from 'app/modules/features/services/employees/employees.service';
+import { DataService } from 'app/shared/services/data/data.service';
 
 @Component({
     selector: 'classic-layout',
@@ -21,6 +22,7 @@ import { EmployeesService } from 'app/modules/features/services/employees/employ
     encapsulation: ViewEncapsulation.None,
 })
 export class ClassicLayoutComponent implements OnInit, OnDestroy {
+    message:string;
     isNav = false;
     selectedRole;
     redirectUrl: string;
@@ -41,10 +43,13 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
         private _navigationService: NavigationService,
         private _authService: AuthService,
         private _employeeService: EmployeesService,
+        private _dataService: DataService,
         private _fuseMediaWatcherService: FuseMediaWatcherService,
         private _fuseNavigationService: FuseNavigationService,
         private _fuseConfigService: FuseConfigService
-    ) {}
+    ) {
+        this._dataService.currentMessage.subscribe(message => this.message = message);
+    }
 
     // -----------------------------------------------------------------------------------------------------
     // @ Accessors
@@ -72,6 +77,9 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
         
 
         this.getNavigations();
+        this._dataService.currentMessage.subscribe(message => this.message = message);
+        console.log('Message', this.message);
+        
     }
 
     getRoles(): void {
@@ -87,6 +95,8 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
             .subscribe((navigation: Navigation) => {
                 this.redirectUrl = navigation.default[0].route;
                 this.navigation = navigation;
+                console.log('navigations rolesrolesroles', this.roles);
+                
             });
 
         // Subscribe to media changes

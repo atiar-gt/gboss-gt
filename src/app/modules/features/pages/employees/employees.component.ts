@@ -73,6 +73,9 @@ export class EmployeesComponent implements OnInit, OnDestroy {
                 this._employeeService
                     .assignEmployee(data)
                     .subscribe((res) => {
+                        if (res.success) {
+                            
+                        }
                         this._snackbar.openSnackBar(res.message);
                     });
             }

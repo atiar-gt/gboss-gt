@@ -32,7 +32,7 @@
         <!-- Components -->
         <div class="flex items-center pl-2 ml-auto space-x-0.5 sm:space-x-2">
             <!-- <languages></languages> -->
-            <form [formGroup]="form" class=" my-5" style="font-size: 12px !important">
+            <form *ngIf="roles && roles.length > 1" [formGroup]="form" class=" my-5" style="font-size: 12px !important">
 
                 <mat-form-field class="w-[188px] py-4 mt-4 mr-3">
                     <mat-select formControlName="roleId">
