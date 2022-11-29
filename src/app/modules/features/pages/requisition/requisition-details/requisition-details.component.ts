@@ -21,8 +21,8 @@ export class RequisitionDetailsComponent implements OnInit {
 
     ngOnInit(): void {
         this.form = this._fb.group({
-            // employeeAdmin: [],
-            status: [],
+            options: [],
+            remark: [],
         });
         console.log('DATA', this.data);
         this.requisitionData = this.data.requisitionData;

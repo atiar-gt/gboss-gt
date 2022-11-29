@@ -29,13 +29,13 @@
                     </div>
                     <form [formGroup]="form" class="flex flex-col pl-2">
 
-                        <mat-radio-group class="mb-2" aria-label="Select an option">
+                        <mat-radio-group formControlName="options" class="mb-2" aria-label="Select an option">
                             <mat-radio-button class="mr-2" value="1">Accept</mat-radio-button>
                             <mat-radio-button value="2">Reject</mat-radio-button>
                         </mat-radio-group>
                         <mat-form-field appearance="outline">
                             <mat-label>Remarks</mat-label>
-                            <textarea formControlName="status" matInput placeholder="Write a remark"></textarea>
+                            <textarea formControlName="remark" matInput placeholder="Write a remark"></textarea>
                         </mat-form-field>
                     </form>
                     <button (click)="save()" class="rounded-md ml-2 bg-primary-500 text-white" mat-raised-button>
