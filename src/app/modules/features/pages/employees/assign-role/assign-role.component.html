@@ -1,7 +1,10 @@
 <div class="w-full flex flex-col">
-    <div class="">
-        <span class="font-semibold text-lg mb-3">Assign Role</span>
-        <mat-divider class="mt-4"></mat-divider>
+    <div class="flex justify-between border-b">
+        <span class="font-semibold text-lg text-primary-500 mb-3">Assign Role</span>
+        <button (click)="close()" mat-icon-button class="close-button bottom-2" [mat-dialog-close]="true">
+            <mat-icon class="close-icon" color="warn">close</mat-icon>
+        </button>
+        <!-- <mat-divider class="mt-4"></mat-divider> -->
     </div>
    
     <form [formGroup]="form" class="pt-2">
@@ -38,12 +41,6 @@
         <ng-container>
             <button (click)="save()" class="rounded-md bg-primary-600 text-white" mat-flat-button>
                 Save
-            </button>
-        </ng-container>
-
-        <ng-container>
-            <button (click)="close()" class="rounded-md ml-2" mat-stroked-button>
-                Close
             </button>
         </ng-container>
 
