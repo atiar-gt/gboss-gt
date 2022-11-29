@@ -166,32 +166,37 @@
                             </div> -->
                             <!-- Rows -->
                             <ng-container *ngIf="requisitionData">
-                                <ng-container *ngFor="let employee of requisitionData;">
+                                <ng-container *ngFor="let requisition of requisitions;">
                                     <div
                                         class="inventory-grid grid items-center gap-4 py-4 px-4 md:px-8 bg-white dark:bg-[#1e293b] rounded-md border border-b-1">
 
 
 
                                         <div class="hidden md:block">
-                                            {{employee.name}}
+                                            {{requisition.employeeName}}
+                                        </div>
+
+
+                                        <div class="hidden md:block">
+                                            {{requisition.categoryName}}
                                         </div>
 
                                         <div class="">
-                                            {{employee.requisitionProduct}}
+                                            {{requisition.productName}}
                                         </div>
 
-                                        <div>
-                                            {{employee.date}}
-                                        </div>
+                                        <!-- <div>
+                                            {{requisition.productName}}
+                                        </div> -->
 
                                         <div>
                                             <mat-chip-list class="flex flex-row justify-center">
-                                                <mat-chip *ngIf="employee.status === 'Accepted'" class="bg-green-200 dark:bg-green-400"
-                                                    color="primary">{{employee.status}}</mat-chip>
-                                                <mat-chip *ngIf="employee.status === 'Rejected'" class="bg-red-200 dark:bg-red-400"
-                                                    color="primary">{{employee.status}}</mat-chip>
-                                                <mat-chip *ngIf="employee.status === 'Pending'" color="primary">
-                                                    {{employee.status}}</mat-chip>
+                                                <mat-chip *ngIf="requisition.status === 'Accepted'" class="bg-green-200 dark:bg-green-400"
+                                                    color="primary">{{requisition.status}}</mat-chip>
+                                                <mat-chip *ngIf="requisition.status === 'Rejected'" class="bg-red-200 dark:bg-red-400"
+                                                    color="primary">{{requisition.status}}</mat-chip>
+                                                <mat-chip *ngIf="requisition.status === 'Pending'" color="primary">
+                                                    {{requisition.status}}</mat-chip>
                                                 <!-- <mat-chip *ngIf="item.isEdit" color="primary">Edit</mat-chip>
                                                 <mat-chip *ngIf="item.isApprove" color="primary">Approve</mat-chip>
                                                 <mat-chip *ngIf="item.isDelete" color="primary">Delete</mat-chip> -->
@@ -200,15 +205,19 @@
 
 
                                         <div class="flex flex-row">
-                                            <button [disabled]="employee.status !=='Pending'"
-                                                (click)="onAccept(employee)"
+                                            <!-- <button [disabled]="requisition.status !=='Pending'"
+                                                (click)="onAccept(requisition)"
                                                 class="bg-transparent mr-2 hover:bg-green-500 disabled:hover:bg-gray-400 disabled:text-white disabled:bg-gray-400 disabled:cursor-not-allowed font-medium hover:text-white py-1 px-4 border disabled:border-none border-green-500 hover:border-transparent rounded">
                                                 Accept
                                             </button>
-                                            <button [disabled]="employee.status !=='Pending'" (click)="onReject(employee)"
+                                            <button [disabled]="requisition.status !=='Pending'" (click)="onReject(requisition)"
                                                 class="bg-transparent hover:bg-red-500 font-medium hover:text-white py-1 px-4 border border-red-500 hover:border-transparent rounded disabled:hover:bg-gray-400 disabled:text-white disabled:bg-gray-400 disabled:cursor-not-allowed disabled:border-none">
                                                 Reject
-                                            </button>
+                                            </button> -->
+
+                                            <!-- <button > -->
+                                                <mat-icon class="cursor-pointer" matTooltip="Click here for details view" (click)="onView(requisition)" >visibility</mat-icon>
+                                              <!-- </button> -->
 
                                         </div>
 
@@ -217,7 +226,7 @@
 
                                 </ng-container>
                             </ng-container>
-                            <app-paginator class="relative bottom-5"></app-paginator>
+                            <!-- <app-paginator class="relative bottom-5"></app-paginator> -->
                         </div>
                     </div>
                 </ng-container>

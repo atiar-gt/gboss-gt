@@ -1,0 +1,55 @@
+<div style="display: block !important;">
+    <div class="dialog">
+        <div
+            class="relative flex flex-col justify-between sm:flex-row flex-0  py-2 pl-2 border-b ">
+
+            <div class="text-xl text-primary-500 font-extrabold tracking-tight">Requisition Details</div>
+            <button (click)="close()" mat-icon-button class="close-button" [mat-dialog-close]="true">
+                <mat-icon class="close-icon" color="warn">close</mat-icon>
+              </button>
+        
+        </div>
+        <mat-dialog-content class="content">
+            <!-- <h2 class="ml-12 pt-8"><b>Employee Details</b></h2> -->
+            <div style="display: block !important;">
+                <div fxLayout="row" fxFlex="100" fxLayoutGap="10px" class="fuse-card">
+                    <div class="sidebar" fxFlex="50">
+                        <div class="m-2 leading-8">
+                            <p><b>Employee Name:&nbsp;&nbsp; </b>{{requisitionData.employeeName}}</p>
+                            <p><b>Requisition Type: &nbsp;&nbsp;</b>{{requisitionData.typeName}}</p>
+                            <p><b>Requisition Category: &nbsp;&nbsp;</b>{{requisitionData ? requisitionData.categoryName
+                                : 'N/A'}}</p>
+                            <p><b>Requisition Product: &nbsp;&nbsp;</b>{{requisitionData ? requisitionData.productName :
+                                'N/A'}}</p>
+                            <p><b>Quantity: &nbsp;&nbsp;</b>{{requisitionData ? requisitionData.quantity : 'N/A'}}</p>
+                            <p><b>Remarks: &nbsp;&nbsp;</b>{{requisitionData ? requisitionData.remarks : 'N/A'}}</p>
+                            <p><b>Status: &nbsp;&nbsp;</b>{{requisitionData ? requisitionData.status : 'N/A'}}</p>
+
+                        </div>
+
+                    </div>
+                    <form [formGroup]="form" class="flex flex-col pl-2">
+
+                        <mat-radio-group class="mb-2" aria-label="Select an option">
+                            <mat-radio-button class="mr-2" value="1">Accept</mat-radio-button>
+                            <mat-radio-button value="2">Reject</mat-radio-button>
+                        </mat-radio-group>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Remarks</mat-label>
+                            <textarea formControlName="status" matInput placeholder="Write a remark"></textarea>
+                        </mat-form-field>
+                    </form>
+                    <button (click)="save()" class="rounded-md ml-2 bg-primary-500 text-white" mat-raised-button>
+                        Submit
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- <div class="pl-2">
+            </div> -->
+        </mat-dialog-content>
+    </div>
+
+</div>

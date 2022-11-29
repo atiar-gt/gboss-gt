@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { FuseConfirmationService } from '@fuse/services/confirmation';
 import { config } from 'rxjs';
+import { Requisition } from '../../models/requisition.model';
+import { RequisitionService } from '../../services/requisition/requisition.service';
+import { RequisitionDetailsComponent } from './requisition-details/requisition-details.component';
 
 @Component({
     selector: 'app-requisition',
@@ -220,14 +224,59 @@ export class RequisitionComponent implements OnInit {
             status: 'Pending',
         },
     ];
+    requisitions: Requisition[];
     btnName = 'Request Type';
     types = ['Accepted', 'Rejected', 'Pending'];
     pagination: { currentPage: 1; pageCount: 2; dataCount: 12 };
     // success: true,
 
-    constructor(private _confirmationService: FuseConfirmationService) {}
+    constructor(
+        public _dialog: MatDialog,
+        private _requisitionService: RequisitionService,
+        private _confirmationService: FuseConfirmationService
+    ) {}
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        this.getRequisitions();
+    }
+
+    getRequisitions(): void {
+        this._requisitionService.getAll().subscribe((res) => {
+            if (res.success) {
+                this.requisitions = res.data;
+                console.log('requisitionData', this.requisitionData);
+                
+            }
+        });
+    }
+
+    onView(requisition: Requisition): void {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.data = { requisitionData: requisition };
+        dialogConfig.width = '700px';
+        dialogConfig.autoFocus = false
+        // dialogConfig.height = '400px';
+
+        const dialogRef = this._dialog.open(
+            RequisitionDetailsComponent,
+            dialogConfig
+        );
+
+        dialogRef.afterClosed().subscribe((data) => {
+            if (data) {
+                console.log('data to save', data);
+                
+                // this._menuPermissionService
+                //     .update(data, item.id)
+                //     .subscribe((res) => {
+                //         if (res.success) {
+                //             this.getData();
+                //         }
+                //         this._snackbar.openSnackBar(res.message);
+                //     });
+            }
+        });
+    }
 
     onAccept(data): void {
         let config = {
