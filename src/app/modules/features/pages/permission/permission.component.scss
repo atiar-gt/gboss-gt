@@ -1,5 +1,26 @@
-.inventory-grid {
-    grid-template-columns: 524px 71px auto 70px;
-    display: flex;
-    // justify-content: space-around;
+// .inventory-grid {
+//     grid-template-columns: 524px 71px auto 70px;
+//     display: flex;
+// }
+// 13rem 18rem auto 4rem
+
+@media screen and (min-width: 1650px) {
+    .inventory-grid {
+        grid-template-columns: 13rem 31rem auto 4rem;;
+        // display: flex;
+        // justify-content: space-around;
+        margin-bottom: 4px;
+    }
+    // body {
+    //   background-color: lightgreen;
+    // }
+}
+
+@media screen and (max-width: 1650px) {
+    .inventory-grid {
+        grid-template-columns: 13rem 18rem auto 4rem;
+        // display: flex;
+        // justify-content: space-around;
+        margin-bottom: 4px;
+    }
 }

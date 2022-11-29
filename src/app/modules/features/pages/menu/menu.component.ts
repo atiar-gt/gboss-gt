@@ -48,9 +48,9 @@ export class MenuComponent implements OnInit, OnDestroy {
         );
     }
 
-    assignPermission(): void {
-        this._router.navigateByUrl(`menu-management/permission`);
-    }
+    // assignPermission(): void {
+    //     this._router.navigateByUrl(`menu-management/permission`);
+    // }
 
     getData(): void {
         this._paginatorService.tableChangeEvent.subscribe(

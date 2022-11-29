@@ -12,6 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSelectModule } from '@angular/material/select';
 import { UserModule } from 'app/layout/common/user/user.module';
@@ -47,7 +48,7 @@ const menuRoutes: Route[] = [
         AddEditMenuComponent,
         AssignRoleToMenuComponent,
         PermissionComponent,
-        EditPermissionComponent
+        EditPermissionComponent,
     ],
     imports: [
         CommonModule,
@@ -62,8 +63,9 @@ const menuRoutes: Route[] = [
         MatCheckboxModule,
         MatFormFieldModule,
         MatChipsModule,
+        MatTabsModule,
         MatInputModule,
-        MatDialogModule, 
+        MatDialogModule,
         MatDatepickerModule,
         MatNativeDateModule,
         MatSelectModule,
