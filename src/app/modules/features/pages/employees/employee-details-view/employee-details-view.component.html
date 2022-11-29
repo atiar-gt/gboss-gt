@@ -1,16 +1,18 @@
 <div style="display: block !important;">
     <div class="dialog">
-        <div
-            class="relative bg-primary-300 flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between py-4 px-6 md:px-8 border-b">
+        <div class="relative flex flex-col justify-between sm:flex-row flex-0 py-2 pl-2 border-b ">
 
-            <div class="text-3xl font-extrabold tracking-tight">Employee Details</div>
+            <div class="text-xl text-primary-500 font-extrabold tracking-tight">Employee Details</div>
+            <button (click)="close()" mat-icon-button class="close-button" [mat-dialog-close]="true">
+                <mat-icon class="close-icon" color="warn">close</mat-icon>
+            </button>
+
         </div>
-        <mat-dialog-content>
-            <!-- <h2 class="ml-12 pt-8"><b>Employee Details</b></h2> -->
+        <mat-dialog-content class="content">
             <div style="display: block !important;">
-                <div fxLayout="row" fxFlex="100" fxLayoutGap="10px" class="fuse-card">
+                <div class="fuse-card">
                     <div class="sidebar" fxFlex="50">
-                        <div class="m-6 leading-loose">
+                        <div class="m-2 leading-8">
                             <p><b>Employee Name:&nbsp;&nbsp; </b>{{employeeData.name}}</p>
                             <p><b>Employee ID: &nbsp;&nbsp;</b>{{employeeData.employeeCode}}</p>
                             <p><b>Email: &nbsp;&nbsp;</b>{{employeeData ? employeeData.email : 'N/A'}}</p>
@@ -35,7 +37,7 @@
             </div>
 
 
-            <div>
+            <!-- <div>
                 <mat-dialog-actions>
                     <ng-container>
                         <button (click)="close()" class="rounded-md ml-2" mat-stroked-button>
@@ -43,7 +45,7 @@
                         </button>
                     </ng-container>
                 </mat-dialog-actions>
-            </div>
+            </div> -->
         </mat-dialog-content>
     </div>
 
