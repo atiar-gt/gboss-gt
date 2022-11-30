@@ -55,10 +55,12 @@ export class AssignRoleComponent implements OnInit {
     }
 
     getEmployeeData(): void {
-        this._employeeService.getRoles().subscribe((res) => {
-            this.employeeRoles = res.data;
+        this._employeeService.getSingleEmployee(this.data.data.id).subscribe((res) => {
+            this.employeeRoles = res.data.roles;
             this.checkRoles(this.employeeRoles);
         });
+        // console.log('data', this.data);
+        
     }
 
     checkRoles(roles): void {

@@ -245,7 +245,6 @@ export class RequisitionComponent implements OnInit {
             if (res.success) {
                 this.requisitions = res.data;
                 console.log('requisitionData', this.requisitionData);
-                
             }
         });
     }
@@ -254,7 +253,7 @@ export class RequisitionComponent implements OnInit {
         const dialogConfig = new MatDialogConfig();
         dialogConfig.data = { requisitionData: requisition };
         dialogConfig.width = '700px';
-        dialogConfig.autoFocus = false
+        dialogConfig.autoFocus = false;
         // dialogConfig.height = '400px';
 
         const dialogRef = this._dialog.open(
@@ -266,20 +265,13 @@ export class RequisitionComponent implements OnInit {
             if (data) {
                 console.log('data to save', data);
                 console.log('req', requisition.id);
-                this._requisitionService.requisitionSubmit(data, requisition.id).subscribe(res=> {
-                    // this.s
-                    console.log('Res', res);
-                    
-                })
-                
-                // this._menuPermissionService
-                //     .update(data, item.id)
-                //     .subscribe((res) => {
-                //         if (res.success) {
-                //             this.getData();
-                //         }
-                //         this._snackbar.openSnackBar(res.message);
-                //     });
+                this._requisitionService
+                    .requisitionSubmit(data, requisition.id)
+                    .subscribe((res) => {
+                        if (res.success) {
+                            this.getRequisitions();
+                        }
+                    });
             }
         });
     }

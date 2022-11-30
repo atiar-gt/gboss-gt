@@ -20,6 +20,7 @@
                             <p><b>Requisition Product: &nbsp;&nbsp;</b>{{requisitionData ? requisitionData.productName :
                                 'N/A'}}</p>
                             <p><b>Quantity: &nbsp;&nbsp;</b>{{requisitionData ? requisitionData.quantity : 'N/A'}}</p>
+                            <p><b>Date: &nbsp;&nbsp;</b>{{requisitionData?.date | date}}</p>
                             <p><b>Remarks: &nbsp;&nbsp;</b>{{requisitionData ? requisitionData.remarks : 'N/A'}}</p>
                             <p><b>Status: &nbsp;&nbsp;</b>{{requisitionData ? requisitionData.status : 'N/A'}}</p>
 
@@ -33,7 +34,7 @@
                             <mat-radio-button value=2>Reject</mat-radio-button>
                         </mat-radio-group> -->
                         <mat-form-field class="w-full">
-                            <mat-label>Remarks</mat-label>
+                            <mat-label class="text-bold">Remarks</mat-label>
                             <textarea matInput placeholder="Write a remark"></textarea>
                         </mat-form-field>
                     </form>

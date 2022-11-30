@@ -1,16 +1,16 @@
 <div class="w-full flex flex-col">
-    <div class="flex flex-wrap items-center font-medium m-9">
-        <a class="whitespace-nowrap text-primary-500">Setup</a>
+    <div class="flex flex-wrap items-center font-medium m-9 text-black">
+        <a class="whitespace-nowrap">Setup</a>
         <div class="flex items-center ml-1 whitespace-nowrap">
             <mat-icon
                 class="icon-size-5 text-secondary"
                 [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
-            <a class="ml-1 text-primary-500">Requisition Type</a>
+            <a class="ml-1">Requisition Type</a>
             <mat-icon
                 class="icon-size-5 text-secondary"
                 [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
-            <a *ngIf="!userId" class="ml-1 text-primary-500">Add New Requisition Type</a>
-            <a *ngIf="userId" class="ml-1 text-primary-500">Edit Requisition Type</a>
+            <a *ngIf="!userId" class="ml-1">Add New Requisition Type</a>
+            <a *ngIf="userId" class="ml-1">Edit Requisition Type</a>
         </div>
     </div>
     <!-- <div class="pl-9 pt-5">

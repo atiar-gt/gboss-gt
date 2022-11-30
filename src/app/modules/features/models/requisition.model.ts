@@ -6,6 +6,7 @@ export interface Requisition {
     productName: string;
     categoryName: string;
     typeName: string;
+    date: string;
     status: string;
     employeeName: string;
 }

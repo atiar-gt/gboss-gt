@@ -15,6 +15,10 @@ export class EmployeesService extends DataService {
     getRoles(): Observable<any> {
         return this.http.get(`${environment.baseUrl}/employee/roles`);
     }
+    
+    getSingleEmployee(id): Observable<any> {
+        return this.http.get(`${environment.baseUrl}/employees/${id}`);
+    }
 
     getBloodGroups(): Observable<any> {
         return this.http.get(`${environment.baseUrl}/setup/BloodGroup`);

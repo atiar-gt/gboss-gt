@@ -29,7 +29,7 @@ export class RequisitionDetailsComponent implements OnInit {
     }
 
     onSubmit(status): void {
-        // this.form.get('status').setValue(+status);
+        this.form.get('status').setValue(+status);
         this._dialogRef.close(this.form.value);
     }
 
