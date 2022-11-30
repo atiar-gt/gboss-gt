@@ -1,9 +1,23 @@
 <div class="w-full flex flex-col">
-    <div class="pl-9 pt-5">
+    <div class="flex flex-wrap items-center font-medium m-9">
+        <a class="whitespace-nowrap text-primary-500">Setup</a>
+        <div class="flex items-center ml-1 whitespace-nowrap">
+            <mat-icon
+                class="icon-size-5 text-secondary"
+                [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
+            <a class="ml-1 text-primary-500">Requisition Product</a>
+            <mat-icon
+                class="icon-size-5 text-secondary"
+                [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
+            <a *ngIf="!userId" class="ml-1 text-primary-500">Add New Requisition Product</a>
+            <a *ngIf="userId" class="ml-1 text-primary-500">Edit Requisition Product</a>
+        </div>
+    </div>
+    <!-- <div class="pl-9 pt-5">
         <span *ngIf="userId"class="font-semibold text-lg mb-3">Edit Requisition Product</span>
         <span *ngIf="!userId" class="font-semibold text-lg mb-3">Add Requisition Product</span>
         <mat-divider class="mt-4"></mat-divider>
-    </div>
+    </div> -->
     <form [formGroup]="form" class="m-6">
 
         <div class="flex flex-row">

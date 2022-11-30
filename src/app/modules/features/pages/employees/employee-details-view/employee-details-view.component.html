@@ -13,19 +13,19 @@
                 <div class="fuse-card">
                     <div class="sidebar" fxFlex="50">
                         <div class="m-2 leading-8">
-                            <p><b>Employee Name:&nbsp;&nbsp; </b>{{employeeData.name}}</p>
-                            <p><b>Employee ID: &nbsp;&nbsp;</b>{{employeeData.employeeCode}}</p>
+                            <p><b>Employee Name:&nbsp;&nbsp; </b>{{employeeData?.name}}</p>
+                            <p><b>Employee ID: &nbsp;&nbsp;</b>{{employeeData?.employeeCode}}</p>
                             <p><b>Email: &nbsp;&nbsp;</b>{{employeeData ? employeeData.email : 'N/A'}}</p>
                             <p><b>Phone: &nbsp;&nbsp;</b>{{employeeData ? employeeData.mobileNumber : 'N/A'}}</p>
                             <p><b>Gender: &nbsp;&nbsp;</b>{{employeeData ? employeeData.gender : 'N/A'}}</p>
-                            <p><b>Designation: &nbsp;&nbsp;</b>{{employeeData.designation ? employeeData.designation :
+                            <p><b>Designation: &nbsp;&nbsp;</b>{{employeeData ? employeeData.designation :
                                 'N/A'}}</p>
-                            <p><b>Office Name: &nbsp;&nbsp;</b>{{employeeData.officeName ? employeeData.officeName :
+                            <p><b>Office Name: &nbsp;&nbsp;</b>{{employeeData ? employeeData.officeName :
                                 'N/A'}}</p>
-                            <p><b>Payroll Designation: &nbsp;&nbsp;</b>{{employeeData.payrollDesignation ?
+                            <p><b>Payroll Designation: &nbsp;&nbsp;</b>{{employeeData ?
                                 employeeData.payrollDesignation : 'N/A' }}</p>
-                            <p><b>Sitting Location: &nbsp;&nbsp;</b>{{employeeData.sittingLocation}}</p>
-                            <p><b>Roles: &nbsp;&nbsp;</b><span *ngFor="let role of employeeData.roles; let i= index">
+                            <p><b>Sitting Location: &nbsp;&nbsp;</b>{{employeeData?.sittingLocation}}</p>
+                            <p><b>Roles: &nbsp;&nbsp;</b><span *ngFor="let role of employeeData?.roles; let i= index">
                                     {{i+1}}.&nbsp;{{role.name}}&nbsp;&nbsp;
                                 </span>
                             </p>

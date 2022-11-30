@@ -21,17 +21,21 @@ export class RequisitionDetailsComponent implements OnInit {
 
     ngOnInit(): void {
         this.form = this._fb.group({
-            options: [],
-            remark: [],
+            status: [],
+            // remark: [],
         });
         console.log('DATA', this.data);
         this.requisitionData = this.data.requisitionData;
     }
 
-    save(): void {
-        console.log('submitted', this.form.value);
+    onSubmit(status): void {
+        // this.form.get('status').setValue(+status);
+        this._dialogRef.close(this.form.value);
+    }
 
-        // this._dialogRef.close();
+    save(): void {
+        // console.log('submitted', this.form.value);
+
     }
 
     close(): void {

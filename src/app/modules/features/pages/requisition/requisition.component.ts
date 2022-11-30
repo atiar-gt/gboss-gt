@@ -265,6 +265,12 @@ export class RequisitionComponent implements OnInit {
         dialogRef.afterClosed().subscribe((data) => {
             if (data) {
                 console.log('data to save', data);
+                console.log('req', requisition.id);
+                this._requisitionService.requisitionSubmit(data, requisition.id).subscribe(res=> {
+                    // this.s
+                    console.log('Res', res);
+                    
+                })
                 
                 // this._menuPermissionService
                 //     .update(data, item.id)

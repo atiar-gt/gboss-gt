@@ -1,13 +1,12 @@
 <div style="display: block !important;">
     <div class="dialog">
-        <div
-            class="relative flex flex-col justify-between sm:flex-row flex-0  py-2 pl-2 border-b ">
+        <div class="relative flex flex-col justify-between sm:flex-row flex-0  py-1 pl-2 border-b ">
 
             <div class="text-xl text-primary-500 font-extrabold tracking-tight">Requisition Details</div>
             <button (click)="close()" mat-icon-button class="close-button" [mat-dialog-close]="true">
                 <mat-icon class="close-icon" color="warn">close</mat-icon>
-              </button>
-        
+            </button>
+
         </div>
         <mat-dialog-content class="content">
             <div style="display: block !important;">
@@ -29,17 +28,25 @@
                     </div>
                     <form [formGroup]="form" class="flex flex-col pl-2">
 
-                        <mat-radio-group formControlName="options" class="mb-2" aria-label="Select an option">
-                            <mat-radio-button class="mr-2" value="1">Accept</mat-radio-button>
-                            <mat-radio-button value="2">Reject</mat-radio-button>
-                        </mat-radio-group>
-                        <mat-form-field appearance="outline">
+                        <!-- <mat-radio-group formControlName="status" class="mb-2" aria-label="Select an option">
+                            <mat-radio-button class="mr-2" value=1>Accept</mat-radio-button>
+                            <mat-radio-button value=2>Reject</mat-radio-button>
+                        </mat-radio-group> -->
+                        <mat-form-field class="w-full">
                             <mat-label>Remarks</mat-label>
-                            <textarea formControlName="remark" matInput placeholder="Write a remark"></textarea>
+                            <textarea matInput placeholder="Write a remark"></textarea>
                         </mat-form-field>
                     </form>
-                    <button (click)="save()" class="rounded-md ml-2 bg-primary-500 text-white" mat-raised-button>
+                    <!-- <button (click)="save()" class="rounded-md ml-2 bg-primary-500 text-white" mat-raised-button>
                         Submit
+                    </button> -->
+                    <button (click)="onSubmit(1)"
+                        class="bg-transparent mr-2 ml-2 hover:bg-green-500 disabled:hover:bg-gray-400 disabled:text-white disabled:bg-gray-400 disabled:cursor-not-allowed font-medium hover:text-white py-1 px-4 border disabled:border-none border-green-500 hover:border-transparent rounded">
+                        Accept
+                    </button>
+                    <button (click)="onSubmit(2)"
+                        class="bg-transparent hover:bg-red-500 ml-2 font-medium hover:text-white py-1 px-4 border border-red-500 hover:border-transparent rounded disabled:hover:bg-gray-400 disabled:text-white disabled:bg-gray-400 disabled:cursor-not-allowed disabled:border-none">
+                        Reject
                     </button>
                 </div>
 
