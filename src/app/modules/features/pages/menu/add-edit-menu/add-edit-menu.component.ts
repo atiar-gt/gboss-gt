@@ -66,11 +66,15 @@ export class AddEditMenuComponent implements OnInit {
         });
     }
 
+    navigate(): void {
+        this._router.navigateByUrl('menu-management');
+    }
+
     addEmployee(): void {
         this._menuService.create(this.form.value).subscribe((res) => {
             this._snackbar.openSnackBar(res.message);
             if (res.success) {
-                this._router.navigateByUrl('menu-management');
+                this.navigate();
             }
         });
     }
@@ -81,7 +85,7 @@ export class AddEditMenuComponent implements OnInit {
             .subscribe((res) => {
                 this._snackbar.openSnackBar(res.message);
                 if (res.success) {
-                    this._router.navigateByUrl('menu-management');
+                    this.navigate();
                 }
             });
     }
@@ -111,7 +115,7 @@ export class AddEditMenuComponent implements OnInit {
                     this.form.get('parentId').updateValueAndValidity();
                 } else {
                     this.isChild = true;
-                    this.form.get('parentId').setValue(res.data.id)
+                    this.form.get('parentId').setValue(res.data.id);
                     this.form
                         .get('parentId')
                         .setValidators(Validators.required);

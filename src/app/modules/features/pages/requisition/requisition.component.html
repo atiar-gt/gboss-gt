@@ -1,18 +1,15 @@
 <div class="flex flex-col m-8 w-full">
     <!-- Breadcrumb -->
-    <div class="flex flex-wrap items-center font-medium mb-4">
+    <div class="flex flex-wrap items-center font-medium mb-4 px-4">
         <a class="whitespace-nowrap text-black">Requisition</a>
         <div class="flex items-center ml-1 whitespace-nowrap">
-            <mat-icon
-                class="icon-size-5 text-secondary"
-                [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
+            <mat-icon class="icon-size-5 text-secondary" [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
             <a class="ml-1 text-black">All Requisitions</a>
         </div>
     </div>
 
-    <div class="flex flex-row justify-center w-full h-60">
+    <!-- <div class="flex flex-row justify-center w-full h-60 px-4">
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 w-full min-w-0 h-50">
-            <!-- Summary -->
             <div class="flex flex-col flex-auto p-6 bg-card shadow rounded-2xl overflow-hidden">
                 <div class="flex items-start justify-between">
                     <div class="text-lg font-medium tracking-tight leading-6 truncate">Total Requests</div>
@@ -20,101 +17,48 @@
                     </div>
                 </div>
                 <div class="flex flex-col items-center mt-8">
-                    <div class="text-7xl sm:text-8xl font-bold tracking-tight leading-none text-blue-500">21</div>
+                    <div class="text-7xl sm:text-7xl font-bold tracking-tight leading-none text-blue-500">21</div>
                 </div>
             </div>
 
 
-
-            <!-- Overdue -->
             <div class="flex flex-col flex-auto p-6 bg-card shadow rounded-2xl overflow-hidden">
                 <div class="flex items-start justify-between">
                     <div class="text-lg font-medium tracking-tight leading-6 truncate">Rejected</div>
                     <div class="ml-2 -mt-2 -mr-3">
-                        <!-- <button
-                            mat-icon-button
-                            [matMenuTriggerFor]="overdueMenu">
-                            <mat-icon
-                                class="icon-size-5"
-                                [svgIcon]="'heroicons_solid:dots-vertical'"></mat-icon>
-                        </button>
-                        <mat-menu #overdueMenu="matMenu">
-                            <button mat-menu-item>Yesterday</button>
-                            <button mat-menu-item>2 days ago</button>
-                            <button mat-menu-item>3 days ago</button>
-                        </mat-menu> -->
                     </div>
                 </div>
                 <div class="flex flex-col items-center mt-8">
-                    <div class="text-7xl sm:text-8xl font-bold tracking-tight leading-none text-red-500">17</div>
-                    <!-- <div class="text-lg font-medium text-red-600 dark:text-red-500">Tasks</div>
-                    <div class="flex items-baseline justify-center w-full mt-5 text-secondary">
-                        <div class="text-md font-medium truncate">From yesterday:</div>
-                        <div class="ml-1.5 text-lg font-semibold">9</div>
-                    </div> -->
+                    <div class="text-7xl font-bold tracking-tight leading-none text-red-500">17</div>
                 </div>
             </div>
-            <!-- Issues -->
+
             <div class="flex flex-col flex-auto p-6 bg-card shadow rounded-2xl overflow-hidden">
                 <div class="flex items-start justify-between">
                     <div class="text-lg font-medium tracking-tight leading-6 truncate">Pending</div>
                     <div class="ml-2 -mt-2 -mr-3">
-                        <!-- <button
-                            mat-icon-button
-                            [matMenuTriggerFor]="issuesMenu">
-                            <mat-icon
-                                class="icon-size-5"
-                                [svgIcon]="'heroicons_solid:dots-vertical'"></mat-icon>
-                        </button>
-                        <mat-menu #issuesMenu="matMenu">
-                            <button mat-menu-item>Yesterday</button>
-                            <button mat-menu-item>2 days ago</button>
-                            <button mat-menu-item>3 days ago</button>
-                        </mat-menu> -->
                     </div>
                 </div>
                 <div class="flex flex-col items-center mt-6">
-                    <div class="text-7xl sm:text-8xl font-bold tracking-tight leading-none text-amber-500">24</div>
-                    <!-- <div class="text-lg font-medium text-amber-600 dark:text-amber-500">Open</div>
-                    <div class="flex items-baseline justify-center w-full mt-5 text-secondary">
-                        <div class="text-md font-medium truncate">Closed today:</div>
-                        <div class="ml-1.5 text-lg font-semibold">19</div>
-                    </div> -->
+                    <div class="text-7xl font-bold tracking-tight leading-none text-amber-500">24</div>
                 </div>
             </div>
-            <!-- Features -->
+
             <div class="flex flex-col flex-auto p-6 bg-card shadow rounded-2xl overflow-hidden">
                 <div class="flex items-start justify-between">
                     <div class="text-lg font-medium tracking-tight leading-6 truncate">Accepted</div>
-                    <div class="ml-2 -mt-2 -mr-3">
-                        <!-- <button
-                            mat-icon-button
-                            [matMenuTriggerFor]="featuresMenu">
-                            <mat-icon
-                                class="icon-size-5"
-                                [svgIcon]="'heroicons_solid:dots-vertical'"></mat-icon>
-                        </button>
-                        <mat-menu #featuresMenu="matMenu">
-                            <button mat-menu-item>Yesterday</button>
-                            <button mat-menu-item>2 days ago</button>
-                            <button mat-menu-item>3 days ago</button>
-                        </mat-menu> -->
+                    <div class="">
                     </div>
                 </div>
                 <div class="flex flex-col items-center mt-6">
-                    <div class="text-7xl sm:text-8xl font-bold tracking-tight leading-none text-green-500">38</div>
-                    <!-- <div class="text-lg font-medium text-green-600 dark:text-green-500">Proposals</div>
-                    <div class="flex items-baseline justify-center w-full mt-5 text-secondary">
-                        <div class="text-md font-medium truncate">Implemented:</div>
-                        <div class="ml-1.5 text-lg font-semibold">16</div>
-                    </div> -->
+                    <div class="text-7xl font-bold tracking-tight leading-none text-green-500">38</div>
                 </div>
             </div>
 
         </div>
-    </div>
+    </div> -->
 
-    <div class="flex flex-row justify-between py-2 pt-4">
+    <!-- <div class="flex flex-row justify-between py-2 pt-4">
         <div class="bg-white dark:bg-[#1e293b] relative flex self-start pt-2 pb-1 pl-5 pr-4 cursor-pointer overflow-hidden rounded-md border border-b-0"
             matRipple [matMenuTriggerFor]="projectsMenu">
             <div class="flex items-center justify-between w-30">
@@ -135,34 +79,22 @@
             </mat-menu>
         </div>
         <div>
-            <!-- <button class="bg-primary-500">Add Employee</button> -->
-            <!-- <div class="relative w-full">
-                <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none rounded-md">
-                    <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
-                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                </div>
-                <input type="text" id="simple-search" (keyup)="applyFilter($event.target.value)"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                    placeholder="Search by Name or Email" required>
-            </div> -->
         </div>
-    </div>
+    </div> -->
 
+    <mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event)" [@.disabled]="true" class=" mt-4">
+        <mat-tab label="Ongoing">
 
-    <div>
-        <div class="flex flex-row overflow-hidden">
+            <div>
+                <div class="flex flex-row overflow-hidden">
 
-            <!-- Products list -->
-            <div class="flex flex-col flex-auto overflow-hidden sm:overflow-y-auto">
-                <ng-container *ngIf="requisitionData">
-                    <div *ngIf="requisitionData.length > 0; else noProducts">
-                        <div class="grid text-start ">
-                            <!-- Header -->
-                            <!-- <div class="inventory-grid items-center z-10 sticky top-0 grid gap-4 py-4 px-6 md:px-8 shadow text-md font-semibold text-secondary bg-gray-50 dark:bg-black dark:bg-opacity-5"
+                    <!-- Products list -->
+                    <div class="flex flex-col flex-auto overflow-hidden sm:overflow-y-auto">
+                        <ng-container *ngIf="requisitionData">
+                            <div *ngIf="requisitionData.length > 0; else noProducts">
+                                <div class="grid text-start ">
+                                    <!-- Header -->
+                                    <!-- <div class="inventory-grid items-center z-10 sticky top-0 grid gap-4 py-4 px-6 md:px-8 shadow text-md font-semibold text-secondary bg-gray-50 dark:bg-black dark:bg-opacity-5"
                                 matSort matSortDisableClear>
                                 <div class="text-center">Name</div>
                                 <div class="text-center">
@@ -175,48 +107,51 @@
                                     Actions
                                 </div>
                             </div> -->
-                            <!-- Rows -->
-                            <ng-container *ngIf="requisitionData">
-                                <ng-container *ngFor="let requisition of requisitions;">
-                                    <div
-                                        class="inventory-grid grid items-start gap-4 py-2 px-4 md:px-8 bg-white dark:bg-[#1e293b] rounded-md border border-b-1">
+                                    <!-- Rows -->
+                                    <ng-container *ngIf="requisitionData">
+                                        <ng-container *ngFor="let requisition of requisitions;">
+                                            <div
+                                                class="inventory-grid grid items-start gap-4 py-2 px-4 md:px-8 bg-white dark:bg-[#1e293b] rounded-md border border-b-1">
 
 
 
-                                        <div class="mt-2">
-                                            {{requisition.employeeName}}
-                                        </div>
+                                                <div class="mt-2">
+                                                    {{requisition.employeeName}}
+                                                </div>
 
 
-                                        <div class="mt-2">
-                                            {{requisition.categoryName}}
-                                        </div>
+                                                <div class="mt-2">
+                                                    {{requisition.categoryName}}
+                                                </div>
 
-                                        <div class="mt-2">
-                                            {{requisition.productName}}
-                                        </div>
+                                                <div class="mt-2">
+                                                    {{requisition.productName}}
+                                                </div>
 
-                                        <!-- <div>
+                                                <!-- <div>
                                             {{requisition.productName}}
                                         </div> -->
 
-                                        <div class="mt-1">
-                                            <mat-chip-list class="flex flex-row justify-center">
-                                                <mat-chip *ngIf="requisition.status === 'Accepted'" class="bg-green-200 dark:bg-green-400"
-                                                    color="primary">{{requisition.status}}</mat-chip>
-                                                <mat-chip *ngIf="requisition.status === 'Rejected'" class="bg-red-200 dark:bg-red-400"
-                                                    color="primary">{{requisition.status}}</mat-chip>
-                                                <mat-chip *ngIf="requisition.status === 'Pending'" color="primary">
-                                                    {{requisition.status}}</mat-chip>
-                                                <!-- <mat-chip *ngIf="item.isEdit" color="primary">Edit</mat-chip>
+                                                <div class="mt-1">
+                                                    <mat-chip-list class="flex flex-row justify-center">
+                                                        <mat-chip *ngIf="requisition.status === 'Accepted'"
+                                                            class="bg-green-200 dark:bg-green-400" color="primary">
+                                                            {{requisition.status}}</mat-chip>
+                                                        <mat-chip *ngIf="requisition.status === 'Rejected'"
+                                                            class="bg-red-200 dark:bg-red-400" color="primary">
+                                                            {{requisition.status}}</mat-chip>
+                                                        <mat-chip *ngIf="requisition.status === 'Pending'"
+                                                            color="primary">
+                                                            {{requisition.status}}</mat-chip>
+                                                        <!-- <mat-chip *ngIf="item.isEdit" color="primary">Edit</mat-chip>
                                                 <mat-chip *ngIf="item.isApprove" color="primary">Approve</mat-chip>
                                                 <mat-chip *ngIf="item.isDelete" color="primary">Delete</mat-chip> -->
-                                            </mat-chip-list>
-                                        </div>
+                                                    </mat-chip-list>
+                                                </div>
 
 
-                                        <div class="flex flex-row">
-                                            <!-- <button [disabled]="requisition.status !=='Pending'"
+                                                <div class="flex flex-row">
+                                                    <!-- <button [disabled]="requisition.status !=='Pending'"
                                                 (click)="onAccept(requisition)"
                                                 class="bg-transparent mr-2 hover:bg-green-500 disabled:hover:bg-gray-400 disabled:text-white disabled:bg-gray-400 disabled:cursor-not-allowed font-medium hover:text-white py-1 px-4 border disabled:border-none border-green-500 hover:border-transparent rounded">
                                                 Accept
@@ -226,32 +161,153 @@
                                                 Reject
                                             </button> -->
 
-                                            <!-- <button > -->
-                                                <!-- <mat-icon class="cursor-pointer" matTooltip="Click here for details view" (click)="onView(requisition)" >visibility</mat-icon> -->
-                                              <!-- </button> -->
-                                              <button [disabled]="requisition.status !== 'Pending'" class="rounded-sm" (click)="onView(requisition)" mat-raised-button>View</button>
+                                                    <!-- <button > -->
+                                                    <!-- <mat-icon class="cursor-pointer" matTooltip="Click here for details view" (click)="onView(requisition)" >visibility</mat-icon> -->
+                                                    <!-- </button> -->
+                                                    <!-- <button [disabled]="requisition.status !== 'Pending'"
+                                                        class="rounded-sm dark:bg-primary-600 disabled:dark:bg-gray-500 disabled:cursor-not-allowed"
+                                                        (click)="onView(requisition)" mat-raised-button>View</button> -->
 
-                                        </div>
+                                                    <button 
+                                                        (click)="onView(requisition)"
+                                                        class="bg-transparent mr-2 mt-1 hover:bg-primary-500 disabled:hover:bg-gray-400 disabled:text-white disabled:bg-gray-400 disabled:cursor-not-allowed font-medium hover:text-white py-1 px-4 border disabled:border-none border-primary-500 hover:border-transparent rounded">
+                                                        View
+                                                    </button>
+
+                                                </div>
 
 
-                                    </div>
+                                            </div>
 
-                                </ng-container>
-                            </ng-container>
-                            <!-- <app-paginator class="relative bottom-5"></app-paginator> -->
-                        </div>
+                                        </ng-container>
+                                    </ng-container>
+                                    <!-- <app-paginator class="relative bottom-5"></app-paginator> -->
+                                </div>
+                            </div>
+                        </ng-container>
+
+
+                        <ng-template #noProducts>
+                            <div class="p-8 sm:p-16 border-t text-4xl font-semibold tracking-tight text-center">There
+                                are no
+                                Requests!</div>
+                        </ng-template>
+
                     </div>
-                </ng-container>
 
-
-                <ng-template #noProducts>
-                    <div class="p-8 sm:p-16 border-t text-4xl font-semibold tracking-tight text-center">There are no
-                        Employees!</div>
-                </ng-template>
-
+                </div>
             </div>
+        </mat-tab>
+        <mat-tab label="History">
+            <div>
+                <div class="flex flex-row overflow-hidden">
 
-        </div>
-    </div>
+                    <!-- Products list -->
+                    <div class="flex flex-col flex-auto overflow-hidden sm:overflow-y-auto">
+                        <ng-container *ngIf="requisitionData">
+                            <div *ngIf="requisitionData.length > 0; else noProducts">
+                                <div class="grid text-start ">
+                                    <!-- Header -->
+                                    <!-- <div class="inventory-grid items-center z-10 sticky top-0 grid gap-4 py-4 px-6 md:px-8 shadow text-md font-semibold text-secondary bg-gray-50 dark:bg-black dark:bg-opacity-5"
+                                matSort matSortDisableClear>
+                                <div class="text-center">Name</div>
+                                <div class="text-center">
+                                    Email
+                                </div>
+                                <div>
+                                    Phone
+                                </div>
+                                <div>
+                                    Actions
+                                </div>
+                            </div> -->
+                                    <!-- Rows -->
+                                    <ng-container *ngIf="requisitionData">
+                                        <ng-container *ngFor="let requisition of requisitions;">
+                                            <div
+                                                class="inventory-grid grid items-start gap-4 py-2 px-4 md:px-8 bg-white dark:bg-[#1e293b] rounded-md border border-b-1">
+
+
+
+                                                <div class="mt-2">
+                                                    {{requisition.employeeName}}
+                                                </div>
+
+
+                                                <div class="mt-2">
+                                                    {{requisition.categoryName}}
+                                                </div>
+
+                                                <div class="mt-2">
+                                                    {{requisition.productName}}
+                                                </div>
+
+                                                <!-- <div>
+                                            {{requisition.productName}}
+                                        </div> -->
+
+                                                <div class="mt-1">
+                                                    <mat-chip-list class="flex flex-row justify-center">
+                                                        <mat-chip *ngIf="requisition.status === 'Accepted'"
+                                                            class="bg-green-200 dark:bg-green-400" color="primary">
+                                                            {{requisition.status}}</mat-chip>
+                                                        <mat-chip *ngIf="requisition.status === 'Rejected'"
+                                                            class="bg-red-200 dark:bg-red-400" color="primary">
+                                                            {{requisition.status}}</mat-chip>
+                                                        <mat-chip *ngIf="requisition.status === 'Pending'"
+                                                            color="primary">
+                                                            {{requisition.status}}</mat-chip>
+                                                        <!-- <mat-chip *ngIf="item.isEdit" color="primary">Edit</mat-chip>
+                                                <mat-chip *ngIf="item.isApprove" color="primary">Approve</mat-chip>
+                                                <mat-chip *ngIf="item.isDelete" color="primary">Delete</mat-chip> -->
+                                                    </mat-chip-list>
+                                                </div>
+
+
+                                                <div class="flex flex-row">
+                                                    <!-- <button [disabled]="requisition.status !=='Pending'"
+                                                (click)="onAccept(requisition)"
+                                                class="bg-transparent mr-2 hover:bg-green-500 disabled:hover:bg-gray-400 disabled:text-white disabled:bg-gray-400 disabled:cursor-not-allowed font-medium hover:text-white py-1 px-4 border disabled:border-none border-green-500 hover:border-transparent rounded">
+                                                Accept
+                                            </button>
+                                            <button [disabled]="requisition.status !=='Pending'" (click)="onReject(requisition)"
+                                                class="bg-transparent hover:bg-red-500 font-medium hover:text-white py-1 px-4 border border-red-500 hover:border-transparent rounded disabled:hover:bg-gray-400 disabled:text-white disabled:bg-gray-400 disabled:cursor-not-allowed disabled:border-none">
+                                                Reject
+                                            </button> -->
+
+                                                    <!-- <button > -->
+                                                    <!-- <mat-icon class="cursor-pointer" matTooltip="Click here for details view" (click)="onView(requisition)" >visibility</mat-icon> -->
+                                                    <!-- </button> -->
+                                                    <button [disabled]="requisition.status !== 'Pending'"
+                                                        class="rounded-sm" (click)="onView(requisition)"
+                                                        mat-raised-button>View</button>
+
+                                                </div>
+
+
+                                            </div>
+
+                                        </ng-container>
+                                    </ng-container>
+                                    <!-- <app-paginator class="relative bottom-5"></app-paginator> -->
+                                </div>
+                            </div>
+                        </ng-container>
+
+
+                        <ng-template #noProducts>
+                            <div class="p-8 sm:p-16 border-t text-4xl font-semibold tracking-tight text-center">There
+                                are no
+                                Employees!</div>
+                        </ng-template>
+
+                    </div>
+
+                </div>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+
+
 
 </div>

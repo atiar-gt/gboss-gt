@@ -114,6 +114,10 @@ export class AddEmployeeComponent implements OnInit {
             });
     }
 
+    onMenu(): void {
+        this._router.navigateByUrl('employee');
+    }
+
     setFormData(): void {
         this._employeeService
             .getById(+this.userId)

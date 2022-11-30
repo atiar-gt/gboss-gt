@@ -1,4 +1,12 @@
 <div class="w-full flex flex-col">
+    <div class="flex flex-wrap items-center font-medium m-6 text-black">
+        <div class="flex items-center ml-1 whitespace-nowrap">
+            <span (click)="onMenu()" class="ml-1 cursor-pointer">Employee</span>
+            <mat-icon class="icon-size-5 text-secondary" [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
+            <a *ngIf="!userId">Add New Employee</a>
+            <a *ngIf="userId">Edit Employee</a>
+        </div>
+    </div>
     <div class="pl-9 pt-5">
         <span *ngIf="userId" class="font-semibold text-lg mb-3">Edit Employee</span>
         <span *ngIf="!userId" class="font-semibold text-lg mb-3">Add Employee</span>

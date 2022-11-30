@@ -5,7 +5,7 @@
             <mat-icon
                 class="icon-size-5 text-secondary"
                 [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
-            <a class="ml-1">Requisition Product</a>
+            <div (click)="navigate()" class="cursor-pointer">Requisition Product</div>
             <mat-icon
                 class="icon-size-5 text-secondary"
                 [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
@@ -13,11 +13,11 @@
             <a *ngIf="userId" class="ml-1">Edit Requisition Product</a>
         </div>
     </div>
-    <!-- <div class="pl-9 pt-5">
+    <div class="pl-9 pt-5">
         <span *ngIf="userId"class="font-semibold text-lg mb-3">Edit Requisition Product</span>
         <span *ngIf="!userId" class="font-semibold text-lg mb-3">Add Requisition Product</span>
-        <mat-divider class="mt-4"></mat-divider>
-    </div> -->
+        <mat-divider class="mt-4 w-3/4"></mat-divider>
+    </div>
     <form [formGroup]="form" class="m-6">
 
         <div class="flex flex-row">

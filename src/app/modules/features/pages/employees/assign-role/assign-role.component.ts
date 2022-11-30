@@ -59,7 +59,6 @@ export class AssignRoleComponent implements OnInit {
             this.employeeRoles = res.data.roles;
             this.checkRoles(this.employeeRoles);
         });
-        // console.log('data', this.data);
         
     }
 

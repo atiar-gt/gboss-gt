@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 import { Router } from '@angular/router';
 import { FuseConfirmationService } from '@fuse/services/confirmation';
 import { SnackbarComponent } from 'app/shared/components/snackbar/snackbar.component';
@@ -52,6 +53,8 @@ export class MenuComponent implements OnInit, OnDestroy {
     //     this._router.navigateByUrl(`menu-management/permission`);
     // }
 
+    
+    
     getData(): void {
         this._paginatorService.tableChangeEvent.subscribe(
             (reloadEvent) => {

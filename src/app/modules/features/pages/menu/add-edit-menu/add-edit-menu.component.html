@@ -1,4 +1,18 @@
 <div class="w-full flex flex-col">
+    <div class="flex flex-wrap items-center font-medium m-9 text-black">
+        <!-- <a class="whitespace-nowrap">Setup</a> -->
+        <div class="flex items-center ml-1 whitespace-nowrap">
+            <!-- <mat-icon
+                class="icon-size-5 text-secondary"
+                [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon> -->
+            <a class="ml-1">Menu Management</a>
+            <mat-icon
+                class="icon-size-5 text-secondary"
+                [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
+            <a *ngIf="!userId" class="ml-1">Add New Menu</a>
+            <a *ngIf="userId" class="ml-1">Edit Menu</a>
+        </div>
+    </div>
     <div class="pl-9 pt-5">
         <span *ngIf="userId"class="font-semibold text-lg mb-3">Edit Menu</span>
         <span *ngIf="!userId" class="font-semibold text-lg mb-3">Add Menu</span>

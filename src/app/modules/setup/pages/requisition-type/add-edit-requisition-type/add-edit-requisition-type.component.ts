@@ -46,24 +46,26 @@ export class AddEditRequisitionTypeComponent implements OnInit {
         }
     }
 
+    navigate(): void {
+        this._router.navigateByUrl('setup/requisition-type');
+    }
+
     add(): void {
         this._service.create(this.form.value).subscribe((res) => {
             this._snackbar.openSnackBar(res.message);
             if (res.success) {
-                this._router.navigateByUrl('setup/requisition-type');
+                this.navigate();
             }
         });
     }
 
     update(): void {
-        this._service
-            .update(this.form.value, +this.userId)
-            .subscribe((res) => {
-                this._snackbar.openSnackBar(res.message);
-                if (res.success) {
-                    this._router.navigateByUrl('setup/requisition-type');
-                }
-            });
+        this._service.update(this.form.value, +this.userId).subscribe((res) => {
+            this._snackbar.openSnackBar(res.message);
+            if (res.success) {
+                this._router.navigateByUrl('setup/requisition-type');
+            }
+        });
     }
 
     setFormData(): void {

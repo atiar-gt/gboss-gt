@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 import { FuseConfirmationService } from '@fuse/services/confirmation';
 import { config } from 'rxjs';
 import { Requisition } from '../../models/requisition.model';
@@ -335,4 +336,10 @@ export class RequisitionComponent implements OnInit {
     onFilter(name: string): void {
         this.btnName = name;
     }
+
+    tabChanged = (tabChangeEvent: MatTabChangeEvent): void => {
+        console.log('tabChangeEvent => ', tabChangeEvent); 
+        console.log('index => ', tabChangeEvent.index); 
+    }
+    
 }

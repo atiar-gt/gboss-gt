@@ -82,6 +82,10 @@ export class AddEditRequisitionProductComponent implements OnInit {
             });
     }
 
+    navigate(): void {
+        this._router.navigateByUrl('setup/requisition-product')
+    }
+
     ngOnDestroy(): void {
         this._unsubscribeAll.next(null);
         this._unsubscribeAll.complete();

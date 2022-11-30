@@ -1,11 +1,11 @@
 <div class="w-full flex flex-col">
-    <div class="flex flex-wrap items-center font-medium m-6 text-black">
+    <div class="flex flex-wrap items-center font-medium m-9 text-black">
         <a class="whitespace-nowrap">Setup</a>
         <div class="flex items-center ml-1 whitespace-nowrap">
             <mat-icon
                 class="icon-size-5 text-secondary"
                 [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
-            <a class="ml-1">Requisition Category</a>
+            <span (click)="navigate()" class="cursor-pointer">Requisition Category</span>
             <mat-icon
                 class="icon-size-5 text-secondary"
                 [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
@@ -13,11 +13,11 @@
             <a *ngIf="userId" class="ml-1">Edit Requisition Category</a>
         </div>
     </div>
-    <!-- <div class="pl-9 pt-5"> -->
-        <!-- <span *ngIf="userId"class="font-semibold text-lg mb-3">Edit Requisition Category</span>
-        <span *ngIf="!userId" class="font-semibold text-lg mb-3">Add Requisition Category</span> -->
-        <!-- <mat-divider class="mt-4"></mat-divider> -->
-    <!-- </div> -->
+    <div class="pl-9 pt-5">
+        <span *ngIf="userId"class="font-semibold text-lg mb-3">Edit Requisition Category</span>
+        <span *ngIf="!userId" class="font-semibold text-lg mb-3">Add Requisition Category</span>
+        <mat-divider class="mt-4 w-3/4"></mat-divider>
+    </div>
     <form [formGroup]="form" class="m-6">
 
         <div class="flex flex-row">

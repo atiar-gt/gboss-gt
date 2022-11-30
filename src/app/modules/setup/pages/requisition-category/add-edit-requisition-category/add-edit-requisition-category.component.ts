@@ -72,6 +72,10 @@ export class AddEditRequisitionCategoryComponent implements OnInit {
             }
         });
     }
+    
+    navigate(): void {
+        this._router.navigateByUrl('setup/requisition-category');
+    }
 
     setFormData(): void {
         this._service
