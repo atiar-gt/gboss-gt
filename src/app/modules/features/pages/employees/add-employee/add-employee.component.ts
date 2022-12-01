@@ -98,7 +98,7 @@ export class AddEmployeeComponent implements OnInit {
         this._employeeService.create(this.form.value).subscribe((res) => {
             this._snackbar.openSnackBar(res.message);
             if (res.success) {
-                this._router.navigateByUrl('employees');
+                this._router.navigateByUrl('employee');
             }
         });
     }
@@ -109,7 +109,7 @@ export class AddEmployeeComponent implements OnInit {
             .subscribe((res) => {
                 this._snackbar.openSnackBar(res.message);
                 if (res.success) {
-                    this._router.navigateByUrl('employees');
+                    this._router.navigateByUrl('employee');
                 }
             });
     }
