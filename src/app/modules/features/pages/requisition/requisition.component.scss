@@ -1,18 +1,17 @@
+// for desktop
 @media screen and (min-width: 1650px) {
     .inventory-grid {
-        grid-template-columns: 20rem 23rem auto 30rem 6rem;
+        grid-template-columns: 23rem 21rem auto 29rem 8rem;
         // display: flex;
         // justify-content: space-around;
         margin-bottom: 4px;
     }
-    // body {
-    //   background-color: lightgreen;
-    // }
 }
 
+// for laptop
 @media screen and (max-width: 1650px) {
     .inventory-grid {
-        grid-template-columns: 11rem 12rem auto 21rem 12rem;
+        grid-template-columns: 17rem 16rem auto 17rem 5rem;
         // display: flex;
         // justify-content: space-around;
         margin-bottom: 4px;

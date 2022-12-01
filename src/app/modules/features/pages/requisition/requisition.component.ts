@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { FuseConfirmationService } from '@fuse/services/confirmation';
+import { SnackbarComponent } from 'app/shared/components/snackbar/snackbar.component';
 import { config } from 'rxjs';
 import { Requisition } from '../../models/requisition.model';
 import { RequisitionService } from '../../services/requisition/requisition.service';
@@ -13,218 +14,7 @@ import { RequisitionDetailsComponent } from './requisition-details/requisition-d
     styleUrls: ['./requisition.component.scss'],
 })
 export class RequisitionComponent implements OnInit {
-    requisitionData = [
-        {
-            id: 81,
-            employeeCode: '0076',
-            email: 'afratul.taohid@gigatechltd.com',
-            emailPersonal: null,
-            gender: null,
-            name: 'MD Afratul Kaoser Taohid',
-            mobileNumber: '01673260344',
-            designation: 'Mobile Application Developer',
-            payrollDesignation: 'Assistant Manager',
-            supervisorId: null,
-            bloodGroup: 'A+',
-            dob: null,
-            extension: null,
-            requisitionProduct: 'Keyboard',
-            officeName: 'Gigatech - Main Office',
-            officeAddress: 'Lotus Kamal Tower',
-            sittingLocation: '6th Floor - Left Side',
-            date: '16-11-2022',
-            status: 'Accepted',
-        },
-        {
-            id: 83,
-            employeeCode: '0070',
-            email: 'hr@gigatechltd.com',
-            emailPersonal: null,
-            gender: null,
-            requisitionProduct: 'Mouse',
-            name: 'Gigatech HR User',
-            mobileNumber: '01673260344',
-            designation: 'HR',
-            payrollDesignation: 'Assistant Manager',
-            supervisorId: null,
-            bloodGroup: 'A+',
-            dob: null,
-            extension: null,
-            officeName: 'Gigatech - Main Office',
-            officeAddress: 'Lotus Kamal Tower',
-            sittingLocation: '6th Floor - Left Side',
-            date: '08-11-2022',
-            status: 'Pending',
-        },
-        {
-            id: 83,
-            employeeCode: '0070',
-            email: 'hr@gigatechltd.com',
-            emailPersonal: null,
-            gender: null,
-            requisitionProduct: 'Monitor',
-            name: 'Gigatech HR User',
-            mobileNumber: '01673260344',
-            designation: 'HR',
-            payrollDesignation: 'Assistant Manager',
-            supervisorId: null,
-            bloodGroup: 'A+',
-            dob: null,
-            extension: null,
-            officeName: 'Gigatech - Main Office',
-            officeAddress: 'Lotus Kamal Tower',
-            sittingLocation: '6th Floor - Left Side',
-            date: '08-11-2022',
-            status: 'Accepted',
-        },
-        {
-            id: 83,
-            employeeCode: '0070',
-            email: 'hr@gigatechltd.com',
-            emailPersonal: null,
-            gender: null,
-            requisitionProduct: 'Mouse',
-            name: 'Navid Al Hassan',
-            mobileNumber: '01673260344',
-            designation: 'HR',
-            payrollDesignation: 'Assistant Manager',
-            supervisorId: null,
-            bloodGroup: 'A+',
-            dob: null,
-            extension: null,
-            officeName: 'Gigatech - Main Office',
-            officeAddress: 'Lotus Kamal Tower',
-            sittingLocation: '6th Floor - Left Side',
-            date: '26-08-2022',
-            status: 'Rejected',
-        },
-        {
-            id: 83,
-            employeeCode: '0070',
-            email: 'hr@gigatechltd.com',
-            emailPersonal: null,
-            gender: null,
-            requisitionProduct: 'Tissue Box',
-            name: 'Gigatech HR User',
-            mobileNumber: '01673260344',
-            designation: 'HR',
-            payrollDesignation: 'Assistant Manager',
-            supervisorId: null,
-            bloodGroup: 'A+',
-            dob: null,
-            extension: null,
-            officeName: 'Gigatech - Main Office',
-            officeAddress: 'Lotus Kamal Tower',
-            sittingLocation: '6th Floor - Left Side',
-            date: '08-11-2022',
-            status: 'Rejected',
-        },
-        {
-            id: 83,
-            employeeCode: '0070',
-            email: 'hr@gigatechltd.com',
-            emailPersonal: null,
-            gender: null,
-            requisitionProduct: 'Mouse',
-            name: 'Gigatech HR User',
-            mobileNumber: '01673260344',
-            designation: 'HR',
-            payrollDesignation: 'Assistant Manager',
-            supervisorId: null,
-            bloodGroup: 'A+',
-            dob: null,
-            extension: null,
-            officeName: 'Gigatech - Main Office',
-            officeAddress: 'Lotus Kamal Tower',
-            sittingLocation: '6th Floor - Left Side',
-            date: '04-10-2022',
-            status: 'Pending',
-        },
-        {
-            id: 83,
-            employeeCode: '0070',
-            email: 'hr@gigatechltd.com',
-            emailPersonal: null,
-            gender: null,
-            requisitionProduct: 'Mouse',
-            name: 'Gigatech HR User',
-            mobileNumber: '01673260344',
-            designation: 'HR',
-            payrollDesignation: 'Assistant Manager',
-            supervisorId: null,
-            bloodGroup: 'A+',
-            dob: null,
-            extension: null,
-            officeName: 'Gigatech - Main Office',
-            officeAddress: 'Lotus Kamal Tower',
-            sittingLocation: '6th Floor - Left Side',
-            date: '08-11-2022',
-            status: 'Accepted',
-        },
-        {
-            id: 83,
-            employeeCode: '0070',
-            email: 'hr@gigatechltd.com',
-            emailPersonal: null,
-            gender: null,
-            requisitionProduct: 'Pen',
-            name: 'Gigatech HR User',
-            mobileNumber: '01673260344',
-            designation: 'HR',
-            payrollDesignation: 'Assistant Manager',
-            supervisorId: null,
-            bloodGroup: 'A+',
-            dob: null,
-            extension: null,
-            officeName: 'Gigatech - Main Office',
-            officeAddress: 'Lotus Kamal Tower',
-            sittingLocation: '6th Floor - Left Side',
-            date: '08-11-2022',
-            status: 'Pending',
-        },
-        {
-            id: 83,
-            employeeCode: '0070',
-            email: 'hr@gigatechltd.com',
-            emailPersonal: null,
-            gender: null,
-            requisitionProduct: 'Mouse',
-            name: 'Sourav Aich',
-            mobileNumber: '01673260344',
-            designation: 'HR',
-            payrollDesignation: 'Assistant Manager',
-            supervisorId: null,
-            bloodGroup: 'A+',
-            dob: null,
-            extension: null,
-            officeName: 'Gigatech - Main Office',
-            officeAddress: 'Lotus Kamal Tower',
-            sittingLocation: '6th Floor - Left Side',
-            date: '08-11-2022',
-            status: 'Rejected',
-        },
-        {
-            id: 83,
-            employeeCode: '0070',
-            email: 'hr@gigatechltd.com',
-            emailPersonal: null,
-            gender: null,
-            requisitionProduct: 'Locker',
-            name: 'Gigatech HR User',
-            mobileNumber: '01673260344',
-            designation: 'HR',
-            payrollDesignation: 'Assistant Manager',
-            supervisorId: null,
-            bloodGroup: 'A+',
-            dob: null,
-            extension: null,
-            officeName: 'Gigatech - Main Office',
-            officeAddress: 'Lotus Kamal Tower',
-            sittingLocation: '6th Floor - Left Side',
-            date: '08-11-2022',
-            status: 'Pending',
-        },
-    ];
+    // requisitionData = [];
     requisitions: Requisition[];
     btnName = 'Request Type';
     types = ['Accepted', 'Rejected', 'Pending'];
@@ -234,18 +24,28 @@ export class RequisitionComponent implements OnInit {
     constructor(
         public _dialog: MatDialog,
         private _requisitionService: RequisitionService,
+        private _snackbar: SnackbarComponent,
         private _confirmationService: FuseConfirmationService
     ) {}
 
     ngOnInit(): void {
-        this.getRequisitions();
+        this.getPendingRequisitions();
     }
 
-    getRequisitions(): void {
+    getPendingRequisitions(): void {
+        this._requisitionService.getPendingRequisitions().subscribe((res) => {
+            if (res.success) {
+                this.requisitions = res.data;
+                console.log('pending requisitionData', this.requisitions);
+            }
+        });
+    }
+
+    getAllRequisitions(): void {
         this._requisitionService.getAll().subscribe((res) => {
             if (res.success) {
                 this.requisitions = res.data;
-                console.log('requisitionData', this.requisitionData);
+                console.log('all requisitionData', this.requisitions);
             }
         });
     }
@@ -269,69 +69,70 @@ export class RequisitionComponent implements OnInit {
                 this._requisitionService
                     .requisitionSubmit(data, requisition.id)
                     .subscribe((res) => {
+                        this._snackbar.openSnackBar(res.message);
                         if (res.success) {
-                            this.getRequisitions();
+                            this.getPendingRequisitions();
                         }
                     });
             }
         });
     }
 
-    onAccept(data): void {
-        let config = {
-            title: 'Do you want to Accept?',
-            icon: {
-                color: 'success' as const,
-            },
-            actions: {
-                confirm: {
-                    color: 'primary' as const,
-                },
-            },
-        };
+    // onAccept(data): void {
+    //     let config = {
+    //         title: 'Do you want to Accept?',
+    //         icon: {
+    //             color: 'success' as const,
+    //         },
+    //         actions: {
+    //             confirm: {
+    //                 color: 'primary' as const,
+    //             },
+    //         },
+    //     };
 
-        this._confirmationService
-            .open(config)
-            .afterClosed()
-            .subscribe((result) => {
-                if (result === 'confirmed') {
-                    console.log('confirmed');
+    //     this._confirmationService
+    //         .open(config)
+    //         .afterClosed()
+    //         .subscribe((result) => {
+    //             if (result === 'confirmed') {
+    //                 console.log('confirmed');
 
-                    // this.permissionData =
-                    //     this.permissionData.filter(
-                    //         (item: any) => item.id !== role.id
-                    //     );
+    //                 // this.permissionData =
+    //                 //     this.permissionData.filter(
+    //                 //         (item: any) => item.id !== role.id
+    //                 //     );
 
-                    // this._menuPermissionService.delete(role.id).subscribe((res) => {
-                    //     this._snackbar.openSnackBar(res.message);
-                    // });
-                }
-            });
-    }
+    //                 // this._menuPermissionService.delete(role.id).subscribe((res) => {
+    //                 //     this._snackbar.openSnackBar(res.message);
+    //                 // });
+    //             }
+    //         });
+    // }
 
-    onReject(data): void {
-        let config = {
-            title: 'Do you want to Reject?',
-        };
+    // onReject(data): void {
+    //     let config = {
+    //         title: 'Do you want to Reject?',
+    //     };
 
-        this._confirmationService
-            .open(config)
-            .afterClosed()
-            .subscribe((result) => {
-                if (result === 'confirmed') {
-                    console.log('confirmed');
+    //     this._confirmationService
+    //         .open(config)
+    //         .afterClosed()
+    //         .subscribe((result) => {
+    //             if (result === 'confirmed') {
+    //                 console.log('confirmed');
 
-                    // this.permissionData =
-                    //     this.permissionData.filter(
-                    //         (item: any) => item.id !== role.id
-                    //     );
+    //                 // this.permissionData =
+    //                 //     this.permissionData.filter(
+    //                 //         (item: any) => item.id !== role.id
+    //                 //     );
 
-                    // this._menuPermissionService.delete(role.id).subscribe((res) => {
-                    //     this._snackbar.openSnackBar(res.message);
-                    // });
-                }
-            });
-    }
+    //                 // this._menuPermissionService.delete(role.id).subscribe((res) => {
+    //                 //     this._snackbar.openSnackBar(res.message);
+    //                 // });
+    //             }
+    //         });
+    // }
 
     onFilter(name: string): void {
         this.btnName = name;
@@ -340,6 +141,12 @@ export class RequisitionComponent implements OnInit {
     tabChanged = (tabChangeEvent: MatTabChangeEvent): void => {
         console.log('tabChangeEvent => ', tabChangeEvent); 
         console.log('index => ', tabChangeEvent.index); 
+        if (tabChangeEvent.index === 0) {
+            this.getPendingRequisitions();
+        }
+        else if (tabChangeEvent.index === 1) {
+            this.getAllRequisitions();
+        }
     }
     
 }

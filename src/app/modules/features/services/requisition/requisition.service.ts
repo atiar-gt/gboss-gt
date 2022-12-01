@@ -13,6 +13,15 @@ export class RequisitionService extends DataService {
     }
 
     requisitionSubmit(resource: any, id: number): Observable<any> {
-        return this.http.put(`${environment.baseUrl}/requisitions/approval/${id}`, resource);
+        return this.http.put(
+            `${environment.baseUrl}/requisitions/approval/${id}`,
+            resource
+        );
+    }
+
+    getPendingRequisitions(urlParameters?): Observable<any> {
+        return this.http.get(`${environment.baseUrl}/requisitions?statusCode=0`, {
+            params: urlParameters ? urlParameters : null,
+        });
     }
 }
