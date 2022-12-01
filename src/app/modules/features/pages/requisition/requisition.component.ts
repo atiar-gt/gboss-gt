@@ -16,6 +16,7 @@ import { RequisitionDetailsComponent } from './requisition-details/requisition-d
 export class RequisitionComponent implements OnInit {
     // requisitionData = [];
     requisitions: Requisition[];
+    currentState = 'Ongoing';
     btnName = 'Request Type';
     types = ['Accepted', 'Rejected', 'Pending'];
     pagination: { currentPage: 1; pageCount: 2; dataCount: 12 };
@@ -36,7 +37,6 @@ export class RequisitionComponent implements OnInit {
         this._requisitionService.getPendingRequisitions().subscribe((res) => {
             if (res.success) {
                 this.requisitions = res.data;
-                console.log('pending requisitionData', this.requisitions);
             }
         });
     }
@@ -139,14 +139,14 @@ export class RequisitionComponent implements OnInit {
     }
 
     tabChanged = (tabChangeEvent: MatTabChangeEvent): void => {
-        console.log('tabChangeEvent => ', tabChangeEvent); 
-        console.log('index => ', tabChangeEvent.index); 
+        console.log('tabChangeEvent => ', tabChangeEvent);
+        console.log('index => ', tabChangeEvent.index);
         if (tabChangeEvent.index === 0) {
             this.getPendingRequisitions();
-        }
-        else if (tabChangeEvent.index === 1) {
+            this.currentState = 'Ongoing';
+        } else if (tabChangeEvent.index === 1) {
             this.getAllRequisitions();
+            this.currentState = 'History';
         }
-    }
-    
+    };
 }

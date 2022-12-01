@@ -2,8 +2,6 @@
 @media screen and (min-width: 1650px) {
     .inventory-grid {
         grid-template-columns: 23rem 21rem auto 29rem 8rem;
-        // display: flex;
-        // justify-content: space-around;
         margin-bottom: 4px;
     }
 }
@@ -11,11 +9,7 @@
 // for laptop
 @media screen and (max-width: 1650px) {
     .inventory-grid {
-        grid-template-columns: 17rem 16rem auto 17rem 5rem;
-        // display: flex;
-        // justify-content: space-around;
+        grid-template-columns: 17rem 16rem auto 17rem 7rem;
         margin-bottom: 4px;
     }
 }
-
-
