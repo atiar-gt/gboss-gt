@@ -22,7 +22,7 @@ import { DataService } from 'app/shared/services/data/data.service';
     encapsulation: ViewEncapsulation.None,
 })
 export class ClassicLayoutComponent implements OnInit, OnDestroy {
-    message:string;
+    message: string;
     isNav = false;
     selectedRole;
     redirectUrl: string;
@@ -48,7 +48,9 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
         private _fuseNavigationService: FuseNavigationService,
         private _fuseConfigService: FuseConfigService
     ) {
-        this._dataService.currentMessage.subscribe(message => this.message = message);
+        this._dataService.currentMessage.subscribe(
+            (message) => (this.message = message)
+        );
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -74,19 +76,19 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
         this.form = this._fb.group({
             roleId: [''],
         });
-        
 
         this.getNavigations();
-        this._dataService.currentMessage.subscribe(message => this.message = message);
+        this._dataService.currentMessage.subscribe(
+            (message) => (this.message = message)
+        );
         console.log('Message', this.message);
-        
     }
 
     getRoles(): void {
-        this._employeeService.getRoles().subscribe(res=> {
+        this._employeeService.getRoles().subscribe((res) => {
             this.roles = res.data;
             this.getUserInfo();
-        })
+        });
     }
 
     getNavigations(): void {
@@ -96,7 +98,6 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
                 this.redirectUrl = navigation.default[0].route;
                 this.navigation = navigation;
                 console.log('navigations rolesrolesroles', this.roles);
-                
             });
 
         // Subscribe to media changes
@@ -106,6 +107,10 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
                 // Check if the screen is small
                 this.isScreenSmall = !matchingAliases.includes('md');
             });
+    }
+
+    onLogo(): void {
+        this._router.navigate(['/dashboard']);
     }
 
     /**
@@ -155,28 +160,25 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
     onNav(role): void {
         if (this.selectedRole !== role) {
             this.selectedRole = role;
-            this._navigationService.switchNavigation(this.form.value).subscribe(res=> {
-                if (res.success) {
-                    this._navigationService.getNavs().subscribe(res=> {
-                        // let newRoles this.roles.
-                        this._router.navigateByUrl(this.redirectUrl)
-                        
-                    });
-                    // this.ngOnInit();
-                    // this.getUserInfo();
-                    // this._router.navigateByUrl('/');
-                    // this._router.navigate(['/requisition']).then(()=> {
-                    //     window.location.reload()
-                    // });
-                    // this.reloadComponent();
-                }
-                
-            })
+            this._navigationService
+                .switchNavigation(this.form.value)
+                .subscribe((res) => {
+                    if (res.success) {
+                        this._navigationService.getNavs().subscribe((res) => {
+                            // let newRoles this.roles.
+                            this._router.navigateByUrl(this.redirectUrl);
+                        });
+                        // this.ngOnInit();
+                        // this.getUserInfo();
+                        // this._router.navigateByUrl('/');
+                        // this._router.navigate(['/requisition']).then(()=> {
+                        //     window.location.reload()
+                        // });
+                        // this.reloadComponent();
+                    }
+                });
         }
-        
-
     }
-
 
     signOut() {
         let scheme: Scheme = 'light';
