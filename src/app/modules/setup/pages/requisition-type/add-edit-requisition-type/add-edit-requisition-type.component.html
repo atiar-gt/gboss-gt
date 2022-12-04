@@ -1,16 +1,16 @@
 <div class="w-full flex flex-col">
-    <div class="flex flex-wrap items-center text-sm font-medium m-9 text-black dark:text-white">
+    <div class="flex flex-wrap items-center text-sm font-medium m-9 text-black dark:text-white cursor-pointer">
         <a class="whitespace-nowrap">Setup</a>
         <div class="flex items-center ml-1 whitespace-nowrap">
             <mat-icon
                 class="icon-size-5 text-secondary"
                 [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
-            <span (click)="navigate()" class="cursor-pointer">Requisition Type</span>
+            <span (click)="navigate()" class="hover:text-primary-700">Requisition Type</span>
             <mat-icon
                 class="icon-size-5 text-secondary"
                 [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
-            <a *ngIf="!userId" class="ml-1">Add New Requisition Type</a>
-            <a *ngIf="userId" class="ml-1">Edit Requisition Type</a>
+            <a *ngIf="!userId" class="ml-1 hover:text-primary-700">Add New Requisition Type</a>
+            <a *ngIf="userId" class="ml-1 hover:text-primary-700">Edit Requisition Type</a>
         </div>
     </div>
     <div class="pl-9 pt-5">
