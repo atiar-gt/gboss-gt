@@ -1,16 +1,16 @@
 <div class="w-full flex flex-col">
-    <div class="flex flex-wrap items-center text-sm font-medium m-9 text-black dark:text-white">
+    <div class="flex flex-wrap items-center text-sm font-medium m-9 text-black dark:text-white cursor-pointer">
         <a class="whitespace-nowrap">Setup</a>
         <div class="flex items-center ml-1 whitespace-nowrap">
             <mat-icon
                 class="icon-size-5 text-secondary"
                 [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
-            <div (click)="navigate()" class="cursor-pointer">Requisition Product</div>
+            <div (click)="navigate()" class="cursor-pointer hover:text-primary-600">Requisition Product</div>
             <mat-icon
                 class="icon-size-5 text-secondary"
                 [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
-            <a *ngIf="!userId" class="ml-1">Add New Requisition Product</a>
-            <a *ngIf="userId" class="ml-1">Edit Requisition Product</a>
+            <a *ngIf="!userId" class="ml-1 hover:text-primary-600">Add New Requisition Product</a>
+            <a *ngIf="userId" class="ml-1 hover:text-primary-600">Edit Requisition Product</a>
         </div>
     </div>
     <div class="pl-9 pt-5">
