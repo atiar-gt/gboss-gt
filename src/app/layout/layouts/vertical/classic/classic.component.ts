@@ -81,7 +81,6 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
         this._dataService.currentMessage.subscribe(
             (message) => (this.message = message)
         );
-        console.log('Message', this.message);
     }
 
     getRoles(): void {
