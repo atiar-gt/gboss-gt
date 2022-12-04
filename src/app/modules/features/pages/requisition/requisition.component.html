@@ -44,14 +44,16 @@
 
                                                 <div class="mt-1">
                                                     <mat-chip-list class="flex flex-row justify-center">
-                                                        <mat-chip *ngIf="requisition.status === 'Approved'"
+                                                        <mat-chip *ngIf="requisition.statusCode === 1"
                                                             class="bg-green-200 dark:bg-green-400" color="primary">
                                                             {{requisition.status}}</mat-chip>
-                                                        <mat-chip *ngIf="requisition.status === 'Rejected'"
+                                                        <mat-chip *ngIf="requisition.statusCode === 2"
                                                             class="bg-red-200 dark:bg-red-400" color="primary">
                                                             {{requisition.status}}</mat-chip>
-                                                        <mat-chip *ngIf="requisition.status === 'Pending'" color="primary">
+                                                        <mat-chip *ngIf="requisition.statusCode === 0" color="primary">
                                                             {{requisition.status}}</mat-chip>
+                                                        <!-- <mat-chip *ngIf="requisition.statusCode === 'Admin Approval'" color="primary">
+                                                            {{requisition.status}}</mat-chip> -->
                                                     </mat-chip-list>
                                                 </div>
 
@@ -112,14 +114,16 @@
 
                                                 <div class="mt-1">
                                                     <mat-chip-list class="flex flex-row justify-center">
-                                                        <mat-chip *ngIf="requisition.status === 'Approved'"
+                                                        <mat-chip *ngIf="requisition.statusCode === 1"
                                                             class="bg-green-200 dark:bg-green-400" color="primary">
                                                             {{requisition.status}}</mat-chip>
-                                                        <mat-chip *ngIf="requisition.status === 'Rejected'"
+                                                        <mat-chip *ngIf="requisition.statusCode === 2"
                                                             class="bg-red-200 dark:bg-red-400" color="primary">
                                                             {{requisition.status}}</mat-chip>
-                                                        <mat-chip *ngIf="requisition.status === 'Pending'" color="primary">
+                                                        <mat-chip *ngIf="requisition.statusCode === 0" color="primary">
                                                             {{requisition.status}}</mat-chip>
+                                                        <!-- <mat-chip *ngIf="requisition.statusCode === 'Admin Approval'" color="primary">
+                                                            {{requisition.status}}</mat-chip> -->
                                                     </mat-chip-list>
                                                 </div>
 

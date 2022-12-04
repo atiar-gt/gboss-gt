@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
 import { Route, RouterModule } from '@angular/router';
+import { MatDividerModule } from '@angular/material/divider';
 
 const dashboardRoute: Route[] = [
     {
@@ -12,6 +13,10 @@ const dashboardRoute: Route[] = [
 
 @NgModule({
     declarations: [DashboardComponent],
-    imports: [CommonModule, RouterModule.forChild(dashboardRoute)],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(dashboardRoute),
+        MatDividerModule,
+    ],
 })
 export class DashboardModule {}
