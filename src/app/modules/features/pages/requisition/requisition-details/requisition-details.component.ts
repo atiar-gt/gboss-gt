@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FuseConfirmationService } from '@fuse/services/confirmation';
 import { Requisition } from 'app/modules/features/models/requisition.model';
 
 @Component({
@@ -14,6 +15,7 @@ export class RequisitionDetailsComponent implements OnInit {
     constructor(
         private _fb: FormBuilder,
         private _dialogRef: MatDialogRef<RequisitionDetailsComponent>,
+        private _confirmationService: FuseConfirmationService,
         @Inject(MAT_DIALOG_DATA) public data
     ) {
         _dialogRef.disableClose = true;
@@ -29,13 +31,53 @@ export class RequisitionDetailsComponent implements OnInit {
     }
 
     onSubmit(status): void {
-        this.form.get('statusCode').setValue(+status);
-        this._dialogRef.close(this.form.value);
+        console.log('submitted', status);
+        let config1 = {
+            title: 'Do you want to Accept?',
+            icon: {
+                color: 'success' as const,
+            },
+            actions: {
+                confirm: {
+                    color: 'primary' as const,
+                },
+            },
+        };
+
+        let config2 = {
+            title: 'Do you want to Reject?',
+        };
+
+        if (status === 1) {
+            this._confirmationService
+                .open(config1)
+                .afterClosed()
+                .subscribe((result) => {
+                    console.log('result', result);
+                    if (result === 'confirmed') {
+                        this.form.get('statusCode').setValue(+status);
+                        this._dialogRef.close(this.form.value);
+                    }
+                });
+        } else if (status === 2) {
+            this._confirmationService
+                .open(config2)
+                .afterClosed()
+                .subscribe((result) => {
+                    console.log('result', result);
+                    if (result === 'confirmed') {
+                        this.form.get('statusCode').setValue(+status);
+                        this._dialogRef.close(this.form.value);
+                    }
+                });
+        }
+
+        // this.form.get('statusCode').setValue(+status);
+        // this._dialogRef.close(this.form.value);
     }
 
     save(): void {
         // console.log('submitted', this.form.value);
-
     }
 
     close(): void {
