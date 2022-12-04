@@ -85,7 +85,7 @@ export class AuthSignInComponent implements OnInit {
 
                     // Navigate to the redirect url
                     const redirectURL = this._activatedRoute.snapshot.queryParamMap.get('redirectURL') || '/signed-in-redirect';
-                    this._router.navigate(['/employee']);
+                    this._router.navigate(['/dashboard']);
                 }
                 else {
                     this.alert = {
@@ -110,11 +110,12 @@ export class AuthSignInComponent implements OnInit {
                 // Set the alert
                 this.alert = {
                     type: 'error',
-                    message: 'Wrong email or password'
+                    message: 'Something went wrong!'
                 };
 
                 // Show the alert
                 this.showAlert = true;
+                this.isLoading = false;
             }
         );
 

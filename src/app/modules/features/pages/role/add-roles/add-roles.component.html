@@ -1,16 +1,16 @@
 <div class="w-full flex flex-col">
 
-    <div class="flex flex-wrap items-center text-sm font-medium m-8 text-black">
-        <a class="whitespace-nowrap">Role Management</a>
+    <div class="flex flex-wrap items-center text-sm font-medium m-8 text-black cursor-pointer">
+        <div (click)="navigate()" class="whitespace-nowrap cursor-pointer hover:text-primary-700">Role Management</div>
         <div class="flex items-center ml-1 whitespace-nowrap">
             <mat-icon 
                 class="icon-size-5 text-secondary"
                 [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
-            <a *ngIf="!userId" class="ml-1">Add New Role</a>
+            <a *ngIf="!userId" class="ml-1 hover:text-primary-700">Add New Role</a>
             <!-- <mat-icon 
                 class="icon-size-5 text-secondary"
                 [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon> -->
-            <a *ngIf="userId" class="ml-1">Edit Role</a>
+            <a *ngIf="userId" class="ml-1 hover:text-primary-700">Edit Role</a>
         </div>
     </div>
 

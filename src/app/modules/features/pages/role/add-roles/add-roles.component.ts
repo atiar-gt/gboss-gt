@@ -53,6 +53,10 @@ export class AddRolesComponent implements OnInit {
             }
         });
     }
+    
+    navigate(): void {
+        this._router.navigateByUrl('role');
+    }
 
     updateEmployee(): void {
         this._roleService
