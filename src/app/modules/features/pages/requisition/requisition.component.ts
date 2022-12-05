@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTabChangeEvent } from '@angular/material/tabs';
-import { FuseConfirmationService } from '@fuse/services/confirmation';
 import { SnackbarComponent } from 'app/shared/components/snackbar/snackbar.component';
-import { config } from 'rxjs';
 import { Requisition } from '../../models/requisition.model';
 import { RequisitionService } from '../../services/requisition/requisition.service';
 import { RequisitionDetailsComponent } from './requisition-details/requisition-details.component';
@@ -17,16 +15,15 @@ export class RequisitionComponent implements OnInit {
     // requisitionData = [];
     requisitions: Requisition[];
     currentState = 'Ongoing';
-    btnName = 'Request Type';
-    types = ['Accepted', 'Rejected', 'Pending'];
+    // btnName = 'Request Type';
+    // types = ['Accepted', 'Rejected', 'Pending'];
     pagination: { currentPage: 1; pageCount: 2; dataCount: 12 };
     // success: true,
 
     constructor(
         public _dialog: MatDialog,
         private _requisitionService: RequisitionService,
-        private _snackbar: SnackbarComponent,
-        private _confirmationService: FuseConfirmationService
+        private _snackbar: SnackbarComponent
     ) {}
 
     ngOnInit(): void {
@@ -132,9 +129,9 @@ export class RequisitionComponent implements OnInit {
     //         });
     // }
 
-    onFilter(name: string): void {
-        this.btnName = name;
-    }
+    // onFilter(name: string): void {
+    //     this.btnName = name;
+    // }
 
     tabChanged = (tabChangeEvent: MatTabChangeEvent): void => {
         console.log('tabChangeEvent => ', tabChangeEvent);
