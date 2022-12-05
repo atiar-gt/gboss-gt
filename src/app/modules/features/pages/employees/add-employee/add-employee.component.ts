@@ -43,7 +43,7 @@ export class AddEmployeeComponent implements OnInit {
             employeeCode: ['', Validators.required],
             email: ['', [Validators.required, Validators.email]],
             name: ['', Validators.required],
-            mobileNumber: ['', Validators.required],
+            mobileNumber: ['', [Validators.required, Validators.pattern('(?:(?:\\+|00)88|01)?\\d{11}')]],
             designation: ['', Validators.required],
             payrollDesignation: ['', Validators.required],
             bloodGroup: ['', Validators.required],
@@ -69,6 +69,9 @@ export class AddEmployeeComponent implements OnInit {
     }
 
     public checkError = (controlName: string, errorName: string) => {
+        console.log('C name', controlName);
+        console.log('E name', errorName);
+        
         return this.form.controls[controlName].hasError(errorName);
     };
 

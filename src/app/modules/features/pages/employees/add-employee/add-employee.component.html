@@ -44,14 +44,16 @@
                     <mat-error *ngIf="checkError('email', 'email')">Please enter a valid email address!</mat-error>
                 </mat-form-field>
             </div>
-
+            
             <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
                 <mat-form-field class="w-full">
-                    <mat-label>Mobile Number</mat-label>
-                    <input type="number" formControlName="mobileNumber" matInput>
-                    <mat-error>
+                    <mat-label>Phone</mat-label>
+                    <input type="tel" formControlName="mobileNumber" matInput>
+                    <mat-error *ngIf="checkError('mobileNumber', 'required')">Phone Number is required</mat-error>
+                    <mat-error *ngIf="checkError('mobileNumber', 'pattern')">Please enter a valid Phone number!</mat-error>
+                    <!-- <mat-error>
                         Mobile Number is required
-                    </mat-error>
+                    </mat-error> -->
                 </mat-form-field>
             </div>
 
