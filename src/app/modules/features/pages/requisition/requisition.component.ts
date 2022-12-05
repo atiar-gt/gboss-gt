@@ -42,7 +42,6 @@ export class RequisitionComponent implements OnInit {
         this._requisitionService.getAll().subscribe((res) => {
             if (res.success) {
                 this.requisitions = res.data;
-                console.log('all requisitionData', this.requisitions);
             }
         });
     }
@@ -73,65 +72,6 @@ export class RequisitionComponent implements OnInit {
         });
     }
 
-    // onAccept(data): void {
-    //     let config = {
-    //         title: 'Do you want to Accept?',
-    //         icon: {
-    //             color: 'success' as const,
-    //         },
-    //         actions: {
-    //             confirm: {
-    //                 color: 'primary' as const,
-    //             },
-    //         },
-    //     };
-
-    //     this._confirmationService
-    //         .open(config)
-    //         .afterClosed()
-    //         .subscribe((result) => {
-    //             if (result === 'confirmed') {
-    //                 console.log('confirmed');
-
-    //                 // this.permissionData =
-    //                 //     this.permissionData.filter(
-    //                 //         (item: any) => item.id !== role.id
-    //                 //     );
-
-    //                 // this._menuPermissionService.delete(role.id).subscribe((res) => {
-    //                 //     this._snackbar.openSnackBar(res.message);
-    //                 // });
-    //             }
-    //         });
-    // }
-
-    // onReject(data): void {
-    //     let config = {
-    //         title: 'Do you want to Reject?',
-    //     };
-
-    //     this._confirmationService
-    //         .open(config)
-    //         .afterClosed()
-    //         .subscribe((result) => {
-    //             if (result === 'confirmed') {
-    //                 console.log('confirmed');
-
-    //                 // this.permissionData =
-    //                 //     this.permissionData.filter(
-    //                 //         (item: any) => item.id !== role.id
-    //                 //     );
-
-    //                 // this._menuPermissionService.delete(role.id).subscribe((res) => {
-    //                 //     this._snackbar.openSnackBar(res.message);
-    //                 // });
-    //             }
-    //         });
-    // }
-
-    // onFilter(name: string): void {
-    //     this.btnName = name;
-    // }
 
     tabChanged = (tabChangeEvent: MatTabChangeEvent): void => {
         console.log('tabChangeEvent => ', tabChangeEvent);
