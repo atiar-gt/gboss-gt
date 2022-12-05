@@ -81,14 +81,12 @@ export class RequisitionComponent implements OnInit {
     }
 
     tabChanged = (tabChangeEvent: MatTabChangeEvent): void => {
-        console.log('tabChangeEvent => ', tabChangeEvent);
-        console.log('index => ', tabChangeEvent.index);
         if (tabChangeEvent.index === 0) {
-            this.getPendingRequisitions();
             this.currentState = 'Ongoing';
+            this.getPendingRequisitions();
         } else if (tabChangeEvent.index === 1) {
-            this.getAllRequisitions();
             this.currentState = 'History';
+            this.getAllRequisitions();
         }
     };
 

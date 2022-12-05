@@ -26,12 +26,10 @@ export class RequisitionDetailsComponent implements OnInit {
             statusCode: [],
             // remark: [],
         });
-        console.log('DATA', this.data);
         this.requisitionData = this.data.requisitionData;
     }
 
     onSubmit(status): void {
-        console.log('submitted', status);
         let config1 = {
             title: 'Do you want to Accept?',
             icon: {
@@ -53,7 +51,6 @@ export class RequisitionDetailsComponent implements OnInit {
                 .open(config1)
                 .afterClosed()
                 .subscribe((result) => {
-                    console.log('result', result);
                     if (result === 'confirmed') {
                         this.form.get('statusCode').setValue(+status);
                         this._dialogRef.close(this.form.value);
@@ -64,7 +61,6 @@ export class RequisitionDetailsComponent implements OnInit {
                 .open(config2)
                 .afterClosed()
                 .subscribe((result) => {
-                    console.log('result', result);
                     if (result === 'confirmed') {
                         this.form.get('statusCode').setValue(+status);
                         this._dialogRef.close(this.form.value);
@@ -74,10 +70,6 @@ export class RequisitionDetailsComponent implements OnInit {
 
         // this.form.get('statusCode').setValue(+status);
         // this._dialogRef.close(this.form.value);
-    }
-
-    save(): void {
-        // console.log('submitted', this.form.value);
     }
 
     close(): void {

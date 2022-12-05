@@ -57,8 +57,6 @@ export class AssignRoleToMenuComponent implements OnInit {
     }
 
     save(): void {
-        console.log('form v', this.form.valid);
-        
         if (this.form.valid) {
             this._dialogRef.close(this.form.value);
         }
