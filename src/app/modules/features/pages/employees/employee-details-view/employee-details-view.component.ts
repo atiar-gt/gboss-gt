@@ -24,6 +24,8 @@ export class EmployeeDetailsViewComponent implements OnInit {
     getData(): void {
         this._employeeService.getById(this.data.data).subscribe((res) => {
             this.employeeData = res.data;
+            console.log('E Data', this.employeeData);
+            
         });
     }
 

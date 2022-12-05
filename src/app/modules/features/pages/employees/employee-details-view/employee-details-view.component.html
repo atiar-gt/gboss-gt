@@ -17,7 +17,6 @@
                             <p><b>Employee ID: &nbsp;&nbsp;</b>{{employeeData?.employeeCode}}</p>
                             <p><b>Email: &nbsp;&nbsp;</b>{{employeeData ? employeeData.email : 'N/A'}}</p>
                             <p><b>Phone: &nbsp;&nbsp;</b>{{employeeData ? employeeData.mobileNumber : 'N/A'}}</p>
-                            <p><b>Gender: &nbsp;&nbsp;</b>{{employeeData ? employeeData.gender : 'N/A'}}</p>
                             <p><b>Designation: &nbsp;&nbsp;</b>{{employeeData ? employeeData.designation :
                                 'N/A'}}</p>
                             <p><b>Office Name: &nbsp;&nbsp;</b>{{employeeData ? employeeData.officeName :
@@ -25,8 +24,10 @@
                             <p><b>Payroll Designation: &nbsp;&nbsp;</b>{{employeeData ?
                                 employeeData.payrollDesignation : 'N/A' }}</p>
                             <p><b>Sitting Location: &nbsp;&nbsp;</b>{{employeeData?.sittingLocation}}</p>
+                            <p><b>Gender: &nbsp;&nbsp;</b>{{employeeData ? employeeData.gender : 'N/A'}}</p>
+                            <p><b>Blood Group: &nbsp;&nbsp;</b>{{employeeData ? employeeData.bloodGroup : 'N/A'}}</p>
                             <p><b>Roles: &nbsp;&nbsp;</b><span *ngFor="let role of employeeData?.roles; let i= index">
-                                    {{i+1}}.&nbsp;{{role.name}}&nbsp;&nbsp;
+                                    <span *ngIf="employeeData.roles.length > 1">{{i+1}}.&nbsp;</span>{{role.name}}&nbsp;&nbsp;
                                 </span>
                             </p>
 
