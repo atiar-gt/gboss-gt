@@ -1,15 +1,5 @@
 <div class="flex flex-col m-6 w-full">
 
-    <!-- <div class="flex flex-wrap items-center font-medium mb-4 text-black">
-        <a class="whitespace-nowrap">Setup</a>
-        <div class="flex items-center ml-1 whitespace-nowrap">
-            <mat-icon
-                class="icon-size-5 text-secondary"
-                [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
-            <a class="ml-1">Requisition Product</a>
-        </div>
-    </div> -->
-
     <div class="flex flex- justify-between py-4">
         <div><span class="font-semibold text-lg mb-3">Requisition Product</span></div>
 
@@ -33,7 +23,7 @@
                             <div class="inventory-grid items-center z-10 sticky top-0 grid gap-4 py-4 px-6 md:px-8 shadow text-md font-semibold text-secondary bg-gray-50 dark:bg-black dark:bg-opacity-5"
                                 matSort matSortDisableClear>
                                 <!-- <div class="text-center">Image</div> -->
-                                <div class="text-center" >Name</div>
+                                <div class="text-center">Name</div>
                                 <div class="text-center">
                                     Category
                                 </div>
@@ -62,11 +52,6 @@
                                                         <mat-icon>more_vert</mat-icon>
                                                     </button>
                                                     <mat-menu #menu="matMenu">
-                                                        <!-- <button mat-menu-item>
-                                                            <img class="h-6 w-6 mr-4"
-                                                                src="assets/icons/option-icon.svg">
-                                                            <span>View</span>
-                                                        </button> -->
                                                         <button (click)="onEdit(item)" mat-menu-item>
                                                             <img class="h-6 w-6 mr-4" src="assets/icons/edit-icon.svg">
                                                             <span>Edit</span>

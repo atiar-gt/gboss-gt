@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { SnackbarComponent } from 'app/shared/components/snackbar/snackbar.component';
+import { Subject, takeUntil } from 'rxjs';
 import { Requisition } from '../../models/requisition.model';
 import { RequisitionService } from '../../services/requisition/requisition.service';
 import { RequisitionDetailsComponent } from './requisition-details/requisition-details.component';
@@ -19,6 +20,7 @@ export class RequisitionComponent implements OnInit {
     // types = ['Accepted', 'Rejected', 'Pending'];
     pagination: { currentPage: 1; pageCount: 2; dataCount: 12 };
     // success: true,
+    private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     constructor(
         public _dialog: MatDialog,
@@ -31,19 +33,25 @@ export class RequisitionComponent implements OnInit {
     }
 
     getPendingRequisitions(): void {
-        this._requisitionService.getPendingRequisitions().subscribe((res) => {
-            if (res.success) {
-                this.requisitions = res.data;
-            }
-        });
+        this._requisitionService
+            .getPendingRequisitions()
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe((res) => {
+                if (res.success) {
+                    this.requisitions = res.data;
+                }
+            });
     }
 
     getAllRequisitions(): void {
-        this._requisitionService.getAll().subscribe((res) => {
-            if (res.success) {
-                this.requisitions = res.data;
-            }
-        });
+        this._requisitionService
+            .getAll()
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe((res) => {
+                if (res.success) {
+                    this.requisitions = res.data;
+                }
+            });
     }
 
     onView(requisition: Requisition): void {
@@ -72,7 +80,6 @@ export class RequisitionComponent implements OnInit {
         });
     }
 
-
     tabChanged = (tabChangeEvent: MatTabChangeEvent): void => {
         console.log('tabChangeEvent => ', tabChangeEvent);
         console.log('index => ', tabChangeEvent.index);
@@ -84,4 +91,9 @@ export class RequisitionComponent implements OnInit {
             this.currentState = 'History';
         }
     };
+
+    ngOnDestroy(): void {
+        this._unsubscribeAll.next(null);
+        this._unsubscribeAll.complete();
+    }
 }
