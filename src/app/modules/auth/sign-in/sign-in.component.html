@@ -56,7 +56,7 @@
                 <!-- Password field -->
                 <mat-form-field class="w-full">
                     <mat-label>Password</mat-label>
-                    <input id="password" matInput type="password" [formControlName]="'password'" #passwordField />
+                    <input id="password" matInput type="password" [formControlName]="'password'" #passwordField autocomplete="on"/>
                     <button mat-icon-button type="button" (click)="
                             passwordField.type === 'password'
                                 ? (passwordField.type = 'text')

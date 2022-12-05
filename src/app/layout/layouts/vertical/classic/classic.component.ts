@@ -94,9 +94,15 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
         this._navigationService.navigation$
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((navigation: Navigation) => {
-                this.redirectUrl = navigation.default[0].route;
-                this.navigation = navigation;
-                console.log('navigations rolesrolesroles', this.roles);
+                console.log('nav', navigation);
+                
+                if (navigation.default.length > 0) {
+                    this.redirectUrl = navigation.default[0].route;
+                    this.navigation = navigation;
+                }
+                else {
+                    console.log('navigations doenst exist', this.roles);
+                }
             });
 
         // Subscribe to media changes
