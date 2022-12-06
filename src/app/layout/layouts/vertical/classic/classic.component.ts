@@ -72,6 +72,8 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
      * On init
      */
     ngOnInit(): void {
+        console.log('classic');
+        
         this.getRoles();
         this.form = this._fb.group({
             roleId: [''],
