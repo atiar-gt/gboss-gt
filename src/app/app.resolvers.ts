@@ -41,7 +41,7 @@ export class InitialDataResolver implements Resolve<any>
         return forkJoin([
             this._navigationService.getNavs(),
             // this._messagesService.getAll(),
-            this._notificationsService.getAll(),
+            // this._notificationsService.getAll(),
             // this._quickChatService.getChats(),
             // this._shortcutsService.getAll()
         ]);
