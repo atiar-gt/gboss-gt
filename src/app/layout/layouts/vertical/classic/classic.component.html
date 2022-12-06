@@ -27,7 +27,8 @@
         </button>
 
 
-        <img (click)="onLogo()" class="w-24 h-8 cursor-pointer" src="assets/images/logo/gboss-logo.svg" alt="Logo image">
+        <img (click)="onLogo()" class="w-24 h-8 cursor-pointer" src="assets/images/logo/gboss-logo.svg"
+            alt="Logo image">
 
         <!-- Components -->
         <div class="flex items-center pl-2 ml-auto space-x-0.5 sm:space-x-2">
@@ -45,18 +46,6 @@
             <app-dark-mode-toggle class="hidden md:block"></app-dark-mode-toggle>
             <fuse-fullscreen class="hidden md:block"></fuse-fullscreen>
             <notifications class="hidden md:block"></notifications>
-
-            <!-- <search [appearance]="'bar'"></search> -->
-            <!-- <shortcuts></shortcuts> -->
-            <!-- <messages></messages> -->
-
-            <!-- <button
-                class="lg:hidden"
-                mat-icon-button
-                (click)="quickChat.toggle()">
-                <mat-icon [svgIcon]="'heroicons_outline:chat-alt-2'"></mat-icon>
-            </button> -->
-            <!-- <user></user> -->
             <button class="pl-4 hidden md:block" [matMenuTriggerFor]="userActions">
                 <div class="flex flex-col text-start">
                     <div>
@@ -68,13 +57,6 @@
                 </div>
             </button>
             <mat-menu [xPosition]="'before'" #userActions="matMenu">
-                <!-- <button mat-menu-item>
-                    <span class="flex flex-col leading-none">
-                        <span>Signed in as</span>
-                        <span class="mt-1.5 text-md font-medium">{{user.email}}</span>
-                    </span>
-                </button> -->
-                <!-- <mat-divider class="my-2"></mat-divider> -->
                 <button mat-menu-item>
                     <mat-icon [svgIcon]="'heroicons_outline:user-circle'"></mat-icon>
                     <span>Profile</span>
@@ -83,17 +65,13 @@
                     <mat-icon [svgIcon]="'heroicons_outline:cog'"></mat-icon>
                     <span>Settings</span>
                 </button>
-                <!-- <button mat-menu-item [matMenuTriggerFor]="userStatus">
-                    <mat-icon [svgIcon]="'heroicons_outline:dots-circle-horizontal'"></mat-icon>
-                    <span>Status</span>
-                </button> -->
                 <mat-divider class="my-2"></mat-divider>
                 <button mat-menu-item (click)="signOut()">
                     <mat-icon [svgIcon]="'heroicons_outline:logout'"></mat-icon>
                     <span>Sign out</span>
                 </button>
             </mat-menu>
-            
+
 
             <!-- <mat-menu class="user-status-menu" #userStatus="matMenu">
                 <button mat-menu-item (click)="updateUserStatus('online')">
@@ -116,17 +94,6 @@
         </div>
     </div>
 
-    <!-- Content -->
-    <!-- <div class="flex flex-row flex-auto">
-        <div style="background:rgba(255, 255, 255, 0.45)" class="w-[307px] h-[556px] my-8 rounded-md ml-4"
-            *ngIf="isNav">
-        <ng-container *ngFor="let menu of menus">
-            <div class="flex flex-col ml-20">{{menu}}</div>
-        </ng-container>
-        
-        </div>
-    </div> -->
-
     <!-- Navigation -->
     <div *ngIf="navigation" class="flex flex-row max-h-36">
         <fuse-vertical-navigation class="bg-white print:hidden rounded-md" [mode]="isScreenSmall ? 'over' : 'side'"
@@ -137,14 +104,6 @@
         </fuse-vertical-navigation>
         <router-outlet *ngIf="true"></router-outlet>
     </div>
-    <div class="h-[100vh] text-center mt-26 text-4xl font-extrabold" *ngIf="!navigation">No Role available!</div>
-
-    <!-- Footer -->
-    <!-- <div class="relative flex flex-0 items-center justify-start w-full h-14 px-4 md:px-6 z-49 border-t bg-card dark:bg-transparent print:hidden">
-        <span class="font-medium text-secondary">Fuse &copy; {{currentYear}}</span>
-    </div> -->
+    <div class="h-[100vh] text-center mt-26 text-5xl font-extrabold" *ngIf="!navigation">No Roles available!</div>
 
 </div>
-
-<!-- Quick chat -->
-<!-- <quick-chat #quickChat="quickChat"></quick-chat> -->

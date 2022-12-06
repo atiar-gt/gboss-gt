@@ -47,7 +47,7 @@ export class AssignRoleComponent implements OnInit {
         this.form = this._fb.group({
             employeeAdmin: [],
             employeeHr: [],
-            employee: [],
+            // employee: [],
             employeeSuperVisor: [],
             superAdmin: [],
         });
@@ -64,17 +64,20 @@ export class AssignRoleComponent implements OnInit {
 
     checkRoles(roles): void {
         roles.forEach((element) => {
-            if (element.name === 'Employee') {
-                this.form.get('employee').setValue(true);
+            // if (element.name === 'Employee') {
+            //     this.form.get('employee').setValue(true);
+            if (element.name === 'Super Admin') {
+                this.form.get('superAdmin').setValue(true);
             } else if (element.name === 'Admin') {
                 this.form.get('employeeAdmin').setValue(true);
             } else if (element.name === 'HR') {
                 this.form.get('employeeHr').setValue(true);
             } else if (element.name === 'Supervisor') {
                 this.form.get('employeeSuperVisor').setValue(true);
-            } else if (element.name === 'Super Admin') {
-                this.form.get('superAdmin').setValue(true);
-            }
+            } 
+            // else if (element.name === 'Super Admin') {
+            //     this.form.get('superAdmin').setValue(true);
+            // }
         });
     }
 
