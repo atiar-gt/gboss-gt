@@ -1,0 +1,31 @@
+// .select {
+//     height: 44px !important;
+//     // font-size: 13px !important;
+// }
+.content {
+    max-height: 100vh;
+}
+
+.close-button {
+    float: right;
+    top: -10px;
+    right: 2px;
+}
+
+.close-icon {
+    transition: 1s ease-in-out;
+}
+
+.close-icon:hover {
+    transform: rotate(180deg);
+}
+
+::ng-deep .icon-outside .close-button {
+    float: right;
+    top: -52px;
+    right: -52px;
+}
+
+::ng-deep .icon-outside .mat-dialog-container {
+    overflow: unset;
+}

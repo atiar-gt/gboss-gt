@@ -1,10 +1,13 @@
 <div class="w-full flex flex-col">
-    <div class="pl-9 pt-5">
-        <span class="font-semibold text-lg mb-3">Edit Permission for {{permissionData.menuName + ' - ' +
+    <div class="flex flex-row justify-between">
+        <span class="font-semibold text-lg mb-3 bottom-3">Edit Permission for {{permissionData.menuName + ' - ' +
             permissionData.roleName}}</span>
-        <mat-divider class="mt-4"></mat-divider>
+        <!-- <mat-divider class="mt-4"></mat-divider> -->
+        <button (click)="close()" mat-icon-button class="close-button" [mat-dialog-close]="true">
+            <mat-icon class="close-icon" color="warn">close</mat-icon>
+        </button>
     </div>
-    <form [formGroup]="form" class="pl-9 pt-5">
+    <form [formGroup]="form" class="pt-2">
 
         <div class="flex flex-col space">
             <div class="w-full md:w-1/4 pb-3 mb-2 md:mb-0">
@@ -30,16 +33,10 @@
 
 
     </form>
-    <div class="flex flex-row pl-9 pt-5">
+    <div class="flex flex-row pt-2">
         <ng-container>
             <button (click)="save()" class="rounded-md bg-primary-600 text-white" mat-flat-button>
                 Save
-            </button>
-        </ng-container>
-
-        <ng-container>
-            <button (click)="close()" class="rounded-md ml-2" mat-stroked-button>
-                Close
             </button>
         </ng-container>
 
