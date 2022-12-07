@@ -41,30 +41,30 @@ export class PermissionComponent implements OnInit, OnDestroy {
     ) {}
 
     ngOnInit(): void {
-        this.getData();
+        this.selected = +localStorage.getItem('roleId') ?? '';
+        // this.getData();
+        this.onRole(this.selected);
         this.getRoles();
     }
 
-    getData(): void {
-        this._paginatorService.tableChangeEvent.subscribe(
-            (reloadEvent) => {
-                this._menuPermissionService
-                    .getAll(reloadEvent)
-                    .pipe(takeUntil(this._unsubscribeAll))
-                    .subscribe((res) => {
-                        this.permissionData = res.data;
-                        console.log('permission data', this.permissionData);
-                        
-                        this.selected = res.data[0].roleId;
-                        this.paginator = res.pagination;
-                        this._paginatorService._onTableDataChange.next(
-                            res.pagination.dataCount
-                        );
-                    });
-            },
-            (error) => {}
-        );
-    }
+    // getData(): void {
+    //     this._paginatorService.tableChangeEvent.subscribe(
+    //         (reloadEvent) => {
+    //             this._menuPermissionService
+    //                 .getAll(reloadEvent)
+    //                 .pipe(takeUntil(this._unsubscribeAll))
+    //                 .subscribe((res) => {
+    //                     this.permissionData = res.data;
+    //                     // this.selected = res.data[0].roleId;
+    //                     this.paginator = res.pagination;
+    //                     this._paginatorService._onTableDataChange.next(
+    //                         res.pagination.dataCount
+    //                     );
+    //                 });
+    //         },
+    //         (error) => {}
+    //     );
+    // }
 
     getRoles(): void {
         this._roleService
@@ -113,7 +113,8 @@ export class PermissionComponent implements OnInit, OnDestroy {
                     .update(data, item.id)
                     .subscribe((res) => {
                         if (res.success) {
-                            this.getData();
+                            // this.getData();
+                            this.onRole(this.selected);
                         }
                         this._snackbar.openSnackBar(res.message);
                     });
@@ -127,14 +128,15 @@ export class PermissionComponent implements OnInit, OnDestroy {
             .afterClosed()
             .subscribe((result) => {
                 if (result === 'confirmed') {
-                    this.permissionData =
-                        this.permissionData.filter(
-                            (item: any) => item.id !== role.id
-                        );
+                    this.permissionData = this.permissionData.filter(
+                        (item: any) => item.id !== role.id
+                    );
 
-                    this._menuPermissionService.delete(role.id).subscribe((res) => {
-                        this._snackbar.openSnackBar(res.message);
-                    });
+                    this._menuPermissionService
+                        .delete(role.id)
+                        .subscribe((res) => {
+                            this._snackbar.openSnackBar(res.message);
+                        });
                 }
             });
     }
@@ -154,8 +156,8 @@ export class PermissionComponent implements OnInit, OnDestroy {
                 this._menuPermissionService.create(data).subscribe((res) => {
                     this._snackbar.openSnackBar(res.message);
                     if (res.success) {
-                        this.permissionData.unshift(res.data)
-                        
+                        this.permissionData.unshift(res.data);
+
                         // this.getData();
                     }
                 });

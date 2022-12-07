@@ -48,9 +48,9 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
         private _fuseNavigationService: FuseNavigationService,
         private _fuseConfigService: FuseConfigService
     ) {
-        this._dataService.currentMessage.subscribe(
-            (message) => (this.message = message)
-        );
+        // this._dataService.currentMessage.subscribe(
+        //     (message) => (this.message = message)
+        // );
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -73,16 +73,16 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
      */
     ngOnInit(): void {
         console.log('classic');
-        
+
         this.getRoles();
         this.form = this._fb.group({
             roleId: [''],
         });
 
         this.getNavigations();
-        this._dataService.currentMessage.subscribe(
-            (message) => (this.message = message)
-        );
+        // this._dataService.currentMessage.subscribe(
+        //     (message) => (this.message = message)
+        // );
     }
 
     getRoles(): void {
@@ -97,12 +97,11 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((navigation: Navigation) => {
                 console.log('nav', navigation);
-                
+
                 if (navigation.default.length > 0) {
                     this.redirectUrl = navigation.default[0].route;
                     this.navigation = navigation;
-                }
-                else {
+                } else {
                     console.log('navigations doenst exist', this.roles);
                 }
             });
@@ -154,11 +153,14 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
 
     getUserInfo(): void {
         this.userInfo = this._authService.authInfo;
+        console.log('userInfo', this.userInfo);
+
         if (this.roles) {
             this.roles.forEach((item) => {
                 if (item.selected === true) {
                     this.form.get('roleId').setValue(item.id);
                     this.selectedRole = item;
+                    localStorage.setItem('roleId', item.id);
                 }
             });
         }

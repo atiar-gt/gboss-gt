@@ -16,9 +16,9 @@ export class DataService {
         @Inject('customUrl') @Optional() protected customUrl: string
     ) {}
 
-    changeMessage(message: string) {
-        this.messageSource.next(message);
-    }
+    // changeMessage(message: string) {
+    //     this.messageSource.next(message);
+    // }
 
     getAll(urlParameters?): Observable<any> {
         return this.http.get(`${this._baseUrl}`, {
