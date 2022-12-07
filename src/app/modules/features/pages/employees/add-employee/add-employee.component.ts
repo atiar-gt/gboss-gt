@@ -69,9 +69,6 @@ export class AddEmployeeComponent implements OnInit {
     }
 
     public checkError = (controlName: string, errorName: string) => {
-        console.log('C name', controlName);
-        console.log('E name', errorName);
-        
         return this.form.controls[controlName].hasError(errorName);
     };
 

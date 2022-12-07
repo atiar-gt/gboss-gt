@@ -1,7 +1,10 @@
 <div class="w-full flex flex-col">
-    <div class="">
-        <span class="font-semibold text-lg mb-3">Assign Permission</span>
+    <div class="flex flex-row justify-between">
+        <div class="font-semibold text-lg mb-3 mt-3">Assign Permission</div>
         <mat-divider class="mt-4"></mat-divider>
+        <button (click)="close()" mat-icon-button class="close-button" [mat-dialog-close]="true">
+            <mat-icon class="close-icon" color="warn">close</mat-icon>
+        </button>
     </div>
     <form [formGroup]="form" class="pt-5">
 
@@ -76,11 +79,11 @@
             </button>
         </ng-container>
 
-        <ng-container>
+        <!-- <ng-container>
             <button (click)="close()" class="rounded-md ml-2" mat-stroked-button>
                 Close
             </button>
-        </ng-container>
+        </ng-container> -->
 
     </div>
 
