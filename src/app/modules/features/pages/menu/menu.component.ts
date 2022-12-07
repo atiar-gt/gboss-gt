@@ -25,7 +25,7 @@ export class MenuComponent implements OnInit, OnDestroy {
         private _snackbar: SnackbarComponent,
         private _confirmationService: FuseConfirmationService,
         private _paginatorService: PaginatorService,
-        public _dialog: MatDialog
+        private _dialog: MatDialog
     ) {}
 
     ngOnInit(): void {

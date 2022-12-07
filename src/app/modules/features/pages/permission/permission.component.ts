@@ -34,7 +34,7 @@ export class PermissionComponent implements OnInit, OnDestroy {
         // private _route: ActivatedRoute,
         private _paginatorService: PaginatorService,
         private _roleService: RoleService,
-        public _dialog: MatDialog,
+        private _dialog: MatDialog,
         private _confirmationService: FuseConfirmationService,
         private _snackbar: SnackbarComponent,
         private _menuPermissionService: MenuPermissionService

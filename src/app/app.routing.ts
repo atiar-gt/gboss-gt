@@ -6,7 +6,7 @@ import { InitialDataResolver } from 'app/app.resolvers';
 
 export const appRoutes: Route[] = [
     // Redirect empty path to '/example'
-    { path: '', pathMatch: 'full', redirectTo: 'employee' },
+    { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
     // { path: '', canActivate: [AuthGuard], loadChildren: () => import('app/modules/features/pages/employees/employees.module').then(m => m.EmployeesModule) },
 
     // Redirect signed in user to the '/example'
