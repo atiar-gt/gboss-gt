@@ -1,5 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { FuseConfirmationService } from '@fuse/services/confirmation';
 import { SnackbarComponent } from 'app/shared/components/snackbar/snackbar.component';
@@ -18,7 +19,8 @@ import { EmployeeDetailsViewComponent } from './employee-details-view/employee-d
 export class EmployeesComponent implements OnInit, OnDestroy {
     private _unsubscribeAll: Subject<any> = new Subject<any>();
     employeeData: Employee[] = [];
-    paginator;
+    // paginator;
+    @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
     constructor(
         private _confirmationService: FuseConfirmationService,
@@ -42,6 +44,7 @@ export class EmployeesComponent implements OnInit, OnDestroy {
                     .subscribe((res) => {
                         this.employeeData = res.data;
                         this.paginator = res.pagination;
+
                         this._paginatorService._onTableDataChange.next(
                             res.pagination.dataCount
                         );
@@ -68,14 +71,11 @@ export class EmployeesComponent implements OnInit, OnDestroy {
 
         dialogRef.afterClosed().subscribe((data) => {
             if (data) {
-                this._employeeService
-                    .assignEmployee(data)
-                    .subscribe((res) => {
-                        if (res.success) {
-                            
-                        }
-                        this._snackbar.openSnackBar(res.message);
-                    });
+                this._employeeService.assignEmployee(data).subscribe((res) => {
+                    if (res.success) {
+                    }
+                    this._snackbar.openSnackBar(res.message);
+                });
             }
         });
     }
@@ -120,6 +120,7 @@ export class EmployeesComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
+        this._paginatorService.tableChangeEvent.next({ page: 1 });
         this._unsubscribeAll.next(null);
         this._unsubscribeAll.complete();
     }

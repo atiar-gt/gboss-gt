@@ -21,7 +21,9 @@ export class PaginatorComponent implements OnInit {
             return;
         });
     }
-    onPageChange($event: PageEvent): void {        
+    onPageChange($event: PageEvent): void {     
+        console.log('on page change', $event);
+           
         this.paginatorService.onPageChange($event);
     }
 

@@ -4,9 +4,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { Sort } from '@angular/material/sort';
 import { BehaviorSubject } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class PaginatorService {
 
   _onTableDataChange: BehaviorSubject<any> = new BehaviorSubject<any>(null);
@@ -27,6 +25,10 @@ export class PaginatorService {
     // super(http, '');
   }
 
+  // setTableData(totalCount): void {
+  //   this._onTableDataChange.next(totalCount);
+  // }
+  
   setTableData(totalCount): void {
     this._onTableDataChange.next(totalCount);
   }
@@ -34,6 +36,8 @@ export class PaginatorService {
 
   onPageChange($event: PageEvent): void {
     this._page = { pageNumber: $event.pageIndex, pageSize: $event.pageSize };
+    console.log('_PAGE', this._page);
+    
     const PageEventChange = {
       page: $event.pageIndex + 1
     };

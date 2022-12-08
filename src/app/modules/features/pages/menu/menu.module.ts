@@ -22,6 +22,7 @@ import { AssignRoleToMenuComponent } from './assign-role-to-menu/assign-role-to-
 import { PermissionComponent } from '../permission/permission.component';
 import { EditPermissionComponent } from '../permission/edit-permission/edit-permission.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { PaginatorService } from 'app/shared/services/paginator/paginator.service';
 
 const menuRoutes: Route[] = [
     {
@@ -71,5 +72,6 @@ const menuRoutes: Route[] = [
         MatSelectModule,
         PaginatorModule,
     ],
+    providers: [PaginatorService],
 })
 export class MenuModule {}

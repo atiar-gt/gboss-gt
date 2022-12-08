@@ -1,5 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { FuseConfirmationService } from '@fuse/services/confirmation';
 import { SnackbarComponent } from 'app/shared/components/snackbar/snackbar.component';
@@ -16,8 +17,9 @@ import { AssignRoleToMenuComponent } from './assign-role-to-menu/assign-role-to-
 })
 export class MenuComponent implements OnInit, OnDestroy {
     private _unsubscribeAll: Subject<any> = new Subject<any>();
-    paginator;
+    // paginator;
     menuData: Menu[];
+    @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
     constructor(
         private _router: Router,
@@ -36,7 +38,6 @@ export class MenuComponent implements OnInit, OnDestroy {
         this._router.navigateByUrl('menu-management/add-new');
     }
 
-
     addRoleToMenu(data) {
         const dialogConfig = new MatDialogConfig();
         dialogConfig.data = { roleId: data.id };
@@ -52,11 +53,11 @@ export class MenuComponent implements OnInit, OnDestroy {
     //     this._router.navigateByUrl(`menu-management/permission`);
     // }
 
-    
-    
     getData(): void {
         this._paginatorService.tableChangeEvent.subscribe(
             (reloadEvent) => {
+                console.log('Reload Event', reloadEvent);
+
                 this._menuService
                     .getAll(reloadEvent)
                     .pipe(takeUntil(this._unsubscribeAll))
@@ -103,6 +104,7 @@ export class MenuComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
+        this._paginatorService._onTableDataChange.next({ page: 0 });
         this._unsubscribeAll.next(null);
         this._unsubscribeAll.complete();
     }

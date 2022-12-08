@@ -19,6 +19,7 @@ import { UserModule } from 'app/layout/common/user/user.module';
 import { PaginatorModule } from 'app/shared/components/paginator/paginator.module';
 import { EmployeeDetailsViewComponent } from './employee-details-view/employee-details-view.component';
 import { AssignRoleComponent } from './assign-role/assign-role.component';
+import { PaginatorService } from 'app/shared/services/paginator/paginator.service';
 
 const employeeRoutes: Route[] = [
     {
@@ -36,7 +37,12 @@ const employeeRoutes: Route[] = [
 ];
 
 @NgModule({
-    declarations: [EmployeesComponent, AddEmployeeComponent, EmployeeDetailsViewComponent, AssignRoleComponent],
+    declarations: [
+        EmployeesComponent,
+        AddEmployeeComponent,
+        EmployeeDetailsViewComponent,
+        AssignRoleComponent,
+    ],
     imports: [
         CommonModule,
         RouterModule.forChild(employeeRoutes),
@@ -56,5 +62,6 @@ const employeeRoutes: Route[] = [
         MatDialogModule,
         PaginatorModule,
     ],
+    providers: [PaginatorService],
 })
 export class EmployeesModule {}
