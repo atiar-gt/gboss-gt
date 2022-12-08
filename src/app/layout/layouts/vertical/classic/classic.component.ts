@@ -153,8 +153,6 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
 
     getUserInfo(): void {
         this.userInfo = this._authService.authInfo;
-        console.log('userInfo', this.userInfo);
-
         if (this.roles) {
             this.roles.forEach((item) => {
                 if (item.selected === true) {

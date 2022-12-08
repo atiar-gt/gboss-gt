@@ -74,15 +74,15 @@
     <div class="fuse-vertical-navigation-footer">
         <ng-content select="[fuseVerticalNavigationFooter]"></ng-content>
 
-        <div *ngIf="currentHour < 17" class="pb-18 lg:pb-24 text-[#808080] text-2xl pl-14 font-semibold">
+        <div *ngIf="currentHour < 17" class="pb-36 text-[#808080] text-2xl pl-14 font-semibold">
+            <img class="h-40 w-40" src="../../../../assets/images/sun-clouds.svg" alt="">
             <span>Good Morning!</span>
             <p class="text-xl font-normal text-end pr-26">Dhaka 22°</p>
-            <img class="h-40 w-40" src="../../../../assets/images/sun-clouds.svg" alt="">
         </div>
-        <div *ngIf="currentHour > 16" class="pb-56 text-[#808080] text-2xl pl-16 font-semibold">
-            <span>Good Night!</span>
-            <p class="text-xl font-normal text-end pr-16">Dhaka 22°</p>
+        <div *ngIf="currentHour > 16" class="pb-36 text-[#808080] text-2xl pl-14 font-semibold">
             <img class="h-40 w-40" src="../../../../assets/images/moon-stars-cloud.svg" alt="">
+            <p class="text-xl font-normal text-end pr-16">Dhaka 22°</p>
+            <span>Good Night!</span>
         </div>
 
     </div>
