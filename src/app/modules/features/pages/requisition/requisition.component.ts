@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { SnackbarComponent } from 'app/shared/components/snackbar/snackbar.component';
+import { PaginatorService } from 'app/shared/services/paginator/paginator.service';
 import { Subject, takeUntil } from 'rxjs';
 import { Requisition } from '../../models/requisition.model';
 import { RequisitionService } from '../../services/requisition/requisition.service';
@@ -11,6 +12,7 @@ import { RequisitionDetailsComponent } from './requisition-details/requisition-d
     selector: 'app-requisition',
     templateUrl: './requisition.component.html',
     styleUrls: ['./requisition.component.scss'],
+    providers: [PaginatorService],
 })
 export class RequisitionComponent implements OnInit {
     requisitions: Requisition[];

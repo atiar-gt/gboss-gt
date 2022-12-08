@@ -58,8 +58,6 @@ export class MenuComponent implements OnInit, OnDestroy {
     getData(): void {
         this._paginatorService.tableChangeEvent.subscribe(
             (reloadEvent) => {
-                console.log('Reload Event', reloadEvent);
-
                 this._menuService
                     .getAll(reloadEvent)
                     .pipe(takeUntil(this._unsubscribeAll))
