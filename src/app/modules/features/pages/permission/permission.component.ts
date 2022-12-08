@@ -20,6 +20,7 @@ import { EditPermissionComponent } from './edit-permission/edit-permission.compo
     selector: 'app-permission',
     templateUrl: './permission.component.html',
     styleUrls: ['./permission.component.scss'],
+    providers: [PaginatorService],
 })
 export class PermissionComponent implements OnInit, OnDestroy {
     userId: number;
@@ -166,7 +167,9 @@ export class PermissionComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        this._paginatorService._onTableDataChange.next({ page: 0 });
+        console.log('Permission ngDestroy called!');
+        
+        // this._paginatorService._onTableDataChange.next({ page: 0 });
         this._unsubscribeAll.next(null);
         this._unsubscribeAll.complete();
     }

@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 import { Router } from '@angular/router';
 import { FuseConfirmationService } from '@fuse/services/confirmation';
 import { SnackbarComponent } from 'app/shared/components/snackbar/snackbar.component';
@@ -14,6 +15,7 @@ import { AssignRoleToMenuComponent } from './assign-role-to-menu/assign-role-to-
     selector: 'app-menu',
     templateUrl: './menu.component.html',
     styleUrls: ['./menu.component.scss'],
+    providers: [PaginatorService],
 })
 export class MenuComponent implements OnInit, OnDestroy {
     private _unsubscribeAll: Subject<any> = new Subject<any>();
@@ -73,6 +75,11 @@ export class MenuComponent implements OnInit, OnDestroy {
         );
     }
 
+    // tabChanged = (tabChangeEvent: MatTabChangeEvent): void => {
+    //     console.log('tabChangeEvent => ', tabChangeEvent);
+    //     console.log('index => ', tabChangeEvent.index);
+    // };
+
     onEdit(menu) {
         this._router.navigateByUrl(`menu-management/edit/${menu.id}`);
     }
@@ -104,7 +111,6 @@ export class MenuComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        this._paginatorService._onTableDataChange.next({ page: 0 });
         this._unsubscribeAll.next(null);
         this._unsubscribeAll.complete();
     }

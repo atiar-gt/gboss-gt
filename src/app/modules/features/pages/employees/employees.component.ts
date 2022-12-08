@@ -15,6 +15,7 @@ import { EmployeeDetailsViewComponent } from './employee-details-view/employee-d
     selector: 'app-employees',
     templateUrl: './employees.component.html',
     styleUrls: ['./employees.component.scss'],
+    providers: [PaginatorService],
 })
 export class EmployeesComponent implements OnInit, OnDestroy {
     private _unsubscribeAll: Subject<any> = new Subject<any>();
@@ -120,7 +121,7 @@ export class EmployeesComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        this._paginatorService.tableChangeEvent.next({ page: 1 });
+        // this._paginatorService.tableChangeEvent.next({ page: 1 });
         this._unsubscribeAll.next(null);
         this._unsubscribeAll.complete();
     }

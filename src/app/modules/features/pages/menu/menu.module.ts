@@ -72,6 +72,5 @@ const menuRoutes: Route[] = [
         MatSelectModule,
         PaginatorModule,
     ],
-    providers: [PaginatorService],
 })
 export class MenuModule {}

@@ -62,6 +62,5 @@ const employeeRoutes: Route[] = [
         MatDialogModule,
         PaginatorModule,
     ],
-    providers: [PaginatorService],
 })
 export class EmployeesModule {}
