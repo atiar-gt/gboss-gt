@@ -126,6 +126,10 @@ export class AddEditMenuComponent implements OnInit {
             });
     }
 
+    onIcon(): void {
+        window.open("https://angular-material.fusetheme.com/ui/icons/heroicons-outline", "_blank")
+    }
+
     ngOnDestroy(): void {
         this._unsubscribeAll.next(null);
         this._unsubscribeAll.complete();

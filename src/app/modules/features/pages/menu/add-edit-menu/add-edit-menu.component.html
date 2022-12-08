@@ -78,8 +78,7 @@
                 <mat-form-field class="w-full">
                     <mat-label>Icon</mat-label>
                     <input formControlName="icon" matInput placeholder="e.g: heroicons_outline:icon-name">
-                    <mat-hint>Click <a class="text-ellipsis" href="https://angular-material.fusetheme.com/ui/icons/heroicons-outline"
-                            target="_blank">here</a> for Icons</mat-hint>
+                    <mat-hint class="cursor-pointer">Click <strong (click)="onIcon()">here</strong> for Icons</mat-hint>
                 </mat-form-field>
             </div>
         </div>
