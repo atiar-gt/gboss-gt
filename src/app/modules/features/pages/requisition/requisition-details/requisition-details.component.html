@@ -34,9 +34,10 @@
                             <mat-radio-button value=2>Reject</mat-radio-button>
                         </mat-radio-group> -->
                         <mat-form-field class="w-full">
-                            <mat-label><b>Remarks:</b></mat-label>
-                            <textarea matInput placeholder="Write a remark"></textarea>
+                            <mat-label class="font-bold text-md">Remarks:</mat-label>
+                            <textarea matInput formControlName="remarks" placeholder="Write a remark"></textarea>
                         </mat-form-field>
+                        
                     </form>
                     <!-- <button (click)="save()" class="rounded-md ml-2 bg-primary-500 text-white" mat-raised-button>
                         Submit
