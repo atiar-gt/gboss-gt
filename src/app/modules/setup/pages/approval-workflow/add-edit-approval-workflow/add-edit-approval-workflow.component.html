@@ -1,0 +1,105 @@
+<div class="w-full flex flex-col">
+    <div class="flex flex-wrap items-center font-medium text-sm m-9 text-black dark:text-white cursor-pointer">
+        <a class="whitespace-nowrap">Setup</a>
+        <div class="flex items-center ml-1 whitespace-nowrap">
+            <mat-icon class="icon-size-5 text-secondary" [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
+            <span class="hover:text-primary-700">Approval Workflow</span>
+            <mat-icon class="icon-size-5 text-secondary" [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
+            <a *ngIf="!userId" class="ml-1 hover:text-primary-700">Add New Approval Workflow</a>
+            <a *ngIf="userId" class="ml-1 hover:text-primary-700">Edit Approval Workflow</a>
+        </div>
+    </div>
+    <div class="pl-9 pt-5">
+        <span *ngIf="userId" class="font-semibold text-lg mb-3">Edit Approval Workflow</span>
+        <span *ngIf="!userId" class="font-semibold text-lg mb-3">Add Approval Workflow</span>
+        <mat-divider class="mt-4 w-3/4"></mat-divider>
+    </div>
+
+    <form [formGroup]="form" class="m-6">
+
+        <div class="flex flex-col sm:flex-row">
+            <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
+
+                <mat-form-field class="w-full">
+                    <mat-label>Approval Type</mat-label>
+                    <input formControlName="name" matInput>
+                    <mat-error>
+                        Approval Type is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
+                <mat-form-field class="w-full">
+                    <mat-label>Code</mat-label>
+                    <input formControlName="code" matInput>
+                    <mat-error>
+                        Code is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+
+        </div>
+
+
+
+
+        <div class="flex flex-col sm:flex-row" formArrayName="approval"
+            *ngFor="let a of form.get('approval')?.controls; let i = index">
+            <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0 flex flex-row items-center" [formGroupName]="i">
+
+                <mat-form-field class="w-full">
+                    <mat-label>Approval {{i+1}}</mat-label>
+                    <input formControlName="roleId" matInput>
+                    <mat-error>
+                        Role is required
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- <button class="ml-4" (click)="deleteItem()" mat-mini-fab aria-label="Example icon button with a home icon">
+                    <mat-icon>home</mat-icon>
+                  </button> -->
+            </div>
+            <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0 flex flex-row items-center" [formGroupName]="i">
+
+                <!-- <button class="ml-4" (click)="deleteItem()" mat-mini-fab aria-label="Example icon button with a home icon">
+                    <mat-icon>home</mat-icon>
+                  </button> -->
+                <button (click)="deleteItem()" mat-icon-button aria-label="Example icon button with a open in new tab icon">
+                    <mat-icon>add_circle_outline</mat-icon>
+                </button>
+                <button (click)="deleteItem()" mat-icon-button aria-label="Example icon button with a open in new tab icon">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </div>
+
+
+
+
+
+        </div>
+
+
+        <!-- <div class="flex flex-col sm:flex-row mt-4">
+            <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
+                <button (click)="onSubmit()"
+                    class="bg-primary-500 large w-full hover:bg-primary-700 text-white py-2 px-8 rounded-md">
+                    Save
+                </button>
+            </div>
+        </div> -->
+
+    </form>
+
+    <div class="w-full md:w-1/4 pl-9 mb-6 md:mb-0 pt-2">
+        <button (click)="addItem()"
+            class="bg-gray-500 large w-full hover:bg-gray-700 text-white py-2 px-8 rounded-md flex flex-row text-center">
+            <mat-icon class="text-white ml-16">add_circle_outline</mat-icon>
+            <div class="ml-2">
+                Add Approval
+            </div>
+        </button>
+    </div>
+
+</div>

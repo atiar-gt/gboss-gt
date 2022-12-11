@@ -19,8 +19,22 @@ import { UserModule } from 'app/layout/common/user/user.module';
 import { AddEditRequisitionTypeComponent } from './pages/requisition-type/add-edit-requisition-type/add-edit-requisition-type.component';
 import { AddEditRequisitionCategoryComponent } from './pages/requisition-category/add-edit-requisition-category/add-edit-requisition-category.component';
 import { AddEditRequisitionProductComponent } from './pages/requisition-product/add-edit-requisition-product/add-edit-requisition-product.component';
+import { ApprovalWorkflowComponent } from './pages/approval-workflow/approval-workflow.component';
+import { AddEditApprovalWorkflowComponent } from './pages/approval-workflow/add-edit-approval-workflow/add-edit-approval-workflow.component';
 
 const setupRoutes: Route[] = [
+    {
+        path: 'approval-workflow',
+        component: ApprovalWorkflowComponent,
+    },
+    {
+        path: 'approval-workflow/add-new',
+        component: AddEditApprovalWorkflowComponent,
+    },
+    {
+        path: 'approval-workflow/edit/:id',
+        component: AddEditApprovalWorkflowComponent,
+    },
     {
         path: 'requisition-type',
         component: RequisitionTypeComponent,
@@ -67,6 +81,8 @@ const setupRoutes: Route[] = [
         AddEditRequisitionTypeComponent,
         AddEditRequisitionCategoryComponent,
         AddEditRequisitionProductComponent,
+        ApprovalWorkflowComponent,
+        AddEditApprovalWorkflowComponent,
     ],
     imports: [
         CommonModule,
